@@ -21,6 +21,8 @@ setopt INC_APPEND_HISTORY # save history entries as soon as they are entered
 setopt HIST_REDUCE_BLANKS # remove superfluous blanks from history items
 setopt SHARE_HISTORY # share history between different instances of the shell
 
+source ~/.zsh/.zaliases
+
 #
 # load machine specific configuration
 #
