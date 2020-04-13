@@ -1,0 +1,92 @@
+#!/usr/bin/env zsh
+
+##############################################################################
+# Z Shell Plugins Configuration
+##############################################################################
+
+# https://github.com/unixorn/awesome-zsh-plugins#antibody
+source <(antibody init)
+
+#
+# baseline zsh plugins
+#
+
+# An architecture for building color themes http://chriskempson.com/projects/base16
+# https://github.com/russelltsherman/base16-shell
+antibody bundle russelltsherman/base16-shell
+
+# plugin enhances the terminal environment with 256 colors
+# https://github.com/russelltsherman/zsh-256color
+antibody bundle russelltsherman/zsh-256color
+
+# custom aliases packaged as zsh plugin
+# https://github.com/russelltsherman/zsh-aliases
+antibody bundle russelltsherman/zsh-aliases
+
+# your terminal should be able to perform tasks asynchronously without external tools!
+# https://github.com/russelltsherman/zsh-async
+antibody bundle russelltsherman/zsh-async
+
+# custom aliases packaged as zsh plugin
+# https://github.com/russelltsherman/zsh-aws-vault
+antibody bundle russelltsherman/zsh-aws-vault
+
+# Quickly go back to a specific parent directory
+# https://github.com/russelltsherman/zsh-bd
+antibody bundle russelltsherman/zsh-bd
+
+# custom docker aliases and functions packaged as zsh plugin
+# https://github.com/russelltsherman/zsh-docker
+antibody bundle russelltsherman/zsh-docker
+
+# extract function supporting multiple archive formats
+# https://github.com/russelltsherman/zsh-extract
+antibody bundle russelltsherman/zsh-extract
+
+# easily see what's happening with your ports
+# https://github.com/russelltsherman/zsh-ports
+antibody bundle russelltsherman/zsh-ports # kind:path
+
+# add color to man pages
+# https://github.com/russelltsherman/zsh-solarized-man
+antibody bundle russelltsherman/zsh-solarized-man
+
+# Zsh prompt for Astronauts.
+# https://github.com/russelltsherman/zsh-spaceship-prompt
+antibody bundle russelltsherman/zsh-spaceship-prompt
+
+# ZSH plugin for wakatime tracking tool
+# https://github.com/russelltsherman/zsh-wakatime
+antibody bundle russelltsherman/zsh-wakatime
+
+# Fish-like autosuggestions for zsh
+# https://github.com/zsh-users/zsh-autosuggestions
+antibody bundle zsh-users/zsh-autosuggestions
+
+# Additional completion definitions for Zsh.
+# https://github.com/zsh-users/zsh-completions
+antibody bundle zsh-users/zsh-completions
+
+# ZSH port of Fish history search (up arrow)
+# https://github.com/zsh-users/zsh-history-substring-search
+antibody bundle zsh-users/zsh-history-substring-search
+
+# Fish shell like syntax highlighting for Zsh.
+# https://github.com/zsh-users/zsh-syntax-highlighting
+antibody bundle zsh-users/zsh-syntax-highlighting
+
+# antibody bundle russelltsherman/zsh-git # kind:path
+# antibody bundle russelltsherman/zsh-github # kind:path
+# antibody bundle russelltsherman/zsh-git-add-remote # kind:path
+# antibody bundle russelltsherman/zsh-git-fetch-merge # kind:path
+# antibody bundle russelltsherman/zsh-git-sync # kind:path
+# antibody bundle russelltsherman/zsh-jvm
+# antibody bundle russelltsherman/zsh-mkc
+# antibody bundle russelltsherman/zsh-open-pr # kind:path
+# antibody bundle russelltsherman/zsh-z
+# antibody bundle zsh-users/zaw
+
+#
+# load machine specific configuration
+#
+[ -f "$0.local" ] && source "$0.local"

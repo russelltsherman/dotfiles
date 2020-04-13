@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-# shellcheck disable=SC2206
+#!/usr/bin/env zsh
 
 #
 # Z Shell Startup File
@@ -19,6 +18,32 @@ setopt CORRECT_ALL # autocorrect commands
 setopt INTERACTIVE_COMMENTS # Allow comments even in interactive shells
 
 ##############################################################################
+# Z Shell Autocomplete Configuration
+##############################################################################
+setopt COMPLETE_IN_WORD # Allow completion from within a word/phrase
+setopt ALWAYS_TO_END # When completing from the middle of a word, move the cursor to the end of the word
+
+autoload -U compaudit compinit
+zstyle ':completion:*' menu select
+
+zmodload zsh/complist
+
+ZCOMPDUMPFILE="$ZDOTCACHEDIR/.zcompdump-$ZSH_VERSION"
+compinit -d "$ZCOMPDUMPFILE" -C 
+_comp_options+=(globdots) # Include hidden files.
+
+##############################################################################
+# Z Shell Colors Configuration
+##############################################################################
+
+autoload -U colors
+colors
+
+# The colors function records the names of colors and similar attributes 
+# (bold, underline and so on) in the associative array color.
+# echo ${(o)color}
+
+##############################################################################
 # Z Shell History Configuration
 ##############################################################################
 
@@ -35,6 +60,41 @@ setopt INC_APPEND_HISTORY # save history entries as soon as they are entered
 setopt SHARE_HISTORY # share history between different instances of the shell
 setopt HIST_FIND_NO_DUPS # When searching history don't display results already cycled through twice
 
+##############################################################################
+# Z Shell Keybindings Configuration
+##############################################################################
+
+# To see the key combo you want to use just do:
+# cat > /dev/null
+# And press it
+
+bindkey -v # Default to standard vim bindings
+
+# bindkey "^W"      kill-whole-line                      # ctrl-k
+# bindkey "^R"      history-incremental-search-backward  # ctrl-r
+# bindkey "^S"      history-incremental-search-forward   # ctrl-s
+# bindkey "^A"      beginning-of-line                    # ctrl-a
+# bindkey "^E"      end-of-line                          # ctrl-e
+# bindkey "^N"      history-search-forward               # ctrl-n
+# bindkey "^P"      history-search-backward              # ctrl-p
+# bindkey "^D"      delete-char                          # ctrl-d
+# bindkey "^F"      forward-char                         # ctrl-f
+# bindkey "^B"      backward-char                        # ctrl-b
+
+##############################################################################
+# Z Shell Prompt Configuration
+##############################################################################
+setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arithmetic expansion in the prompt
+# unsetopt MENU_COMPLETE
+
+# set a default prompt
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
+##############################################################################
+# other customizations
+##############################################################################
+source ~/.zsh/.zplugins
+source ~/.zsh/.zfunctions
 source ~/.zsh/.zaliases
 
 #

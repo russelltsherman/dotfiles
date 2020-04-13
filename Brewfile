@@ -1,3 +1,5 @@
+# The fastest shell plugin manager http://getantibody.github.io
+brew "getantibody/tap/antibody"
 
 # Access GitHub's .gitignore boilerplates 
 # https://github.com/simonwhitaker/gibo

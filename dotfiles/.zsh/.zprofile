@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-# shellcheck disable=SC2206
+#!/usr/bin/env zsh
 
 #
 # Z Shell Startup File
