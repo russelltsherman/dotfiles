@@ -13,5 +13,9 @@ brew "git-crypt"
 # https://github.com/nvie/gitflow
 brew "git-flow"
 
+# Terminal multiplexer 
+# https://tmux.github.io/
+brew "tmux"
+
 # https://code.visualstudio.com
 cask "visual-studio-code"
