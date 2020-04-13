@@ -1,2 +1,5 @@
 # ignore build harness
 *build-harness
+
+# ignore homebrew bundle lockfile
+Brewfile.lock.json
