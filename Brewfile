@@ -1,6 +1,9 @@
 # The fastest shell plugin manager http://getantibody.github.io
 brew "getantibody/tap/antibody"
 
+# direnv is an environment switcher for the shell.
+brew "direnv"
+
 # Access GitHub's .gitignore boilerplates
 # https://github.com/simonwhitaker/gibo
 brew "gibo"
@@ -22,6 +25,16 @@ brew "nano"
 
 # ui gpg pin entry
 brew "pinentry-mac"
+
+# Python version management https://github.com/pyenv/pyenv
+brew "pyenv"
+
+# Pyenv plugin to manage virtualenv https://github.com/pyenv/pyenv-virtualenv
+brew "pyenv-virtualenv"
+
+# Interpreted, interactive, object-oriented programming language
+# https://www.python.org/
+brew "python"
 
 # Terminal multiplexer
 # https://tmux.github.io/

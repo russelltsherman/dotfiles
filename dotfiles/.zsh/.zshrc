@@ -29,7 +29,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 
 ZCOMPDUMPFILE="$ZDOTCACHEDIR/.zcompdump-$ZSH_VERSION"
-compinit -d "$ZCOMPDUMPFILE" -C 
+compinit -d "$ZCOMPDUMPFILE" -C
 _comp_options+=(globdots) # Include hidden files.
 
 ##############################################################################
@@ -39,7 +39,7 @@ _comp_options+=(globdots) # Include hidden files.
 autoload -U colors
 colors
 
-# The colors function records the names of colors and similar attributes 
+# The colors function records the names of colors and similar attributes
 # (bold, underline and so on) in the associative array color.
 # echo ${(o)color}
 
@@ -93,6 +93,16 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 ##############################################################################
 # other customizations
 ##############################################################################
+
+# initialize direnv shell hooks
+type direnv &>/dev/null && eval "$(direnv hook ${SHELL})"
+
+# initialize pyenv shell hooks
+type pyenv &>/dev/null && eval "$(pyenv init -)"
+
+# initialize pyenv virtualenv shell hooks
+type pyenv &>/dev/null && eval "$(pyenv virtualenv-init -)"
+
 source ~/.zsh/.zplugins
 source ~/.zsh/.zfunctions
 source ~/.zsh/.zaliases
