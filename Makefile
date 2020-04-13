@@ -10,3 +10,6 @@ update: refresh-build-harness
 	git pull
 	make bootstrap
 .PHONY: update
+
+/etc/hosts:
+	sudo wget -O /etc/hosts https://someonewhocares.org/hosts/hosts
