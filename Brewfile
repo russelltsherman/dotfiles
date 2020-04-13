@@ -13,9 +13,15 @@ brew "git-crypt"
 # https://github.com/nvie/gitflow
 brew "git-flow"
 
+# GNU Pretty Good Privacy (PGP) package https://gnupg.org/
+brew "gnupg", link: false
+
 # Free (GNU) replacement for the Pico text editor
 # https://www.nano-editor.org/
 brew "nano"
+
+# ui gpg pin entry
+brew "pinentry-mac"
 
 # Terminal multiplexer
 # https://tmux.github.io/
