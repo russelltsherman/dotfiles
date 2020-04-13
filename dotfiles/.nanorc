@@ -1,0 +1,17 @@
+# Settings for `nano` editor
+# Full list of settings might be shown via `man nano`
+# or: https://www.nano-editor.org/dist/v3/nanorc.5.html
+
+# Editor:
+set morespace
+set tabstospaces
+
+# UX:
+set smooth
+
+# Extra files:
+set backup
+set historylog
+
+# line numbers are copied with text
+set linenumbers
