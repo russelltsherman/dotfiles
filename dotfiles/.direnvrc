@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Usage: use node
+#
+# make node projects load node versions from NVM
+#
+use_node() {
+  NODE_VERSIONS=$HOME/.nvm/versions/node
+
+  local version=$1
+  local via=""
+  local node_version_prefix="v"
+  local node_wanted
+  local node_prefix
+
+  if [[ -z $NODE_VERSIONS ]] || [[ ! -d $NODE_VERSIONS ]]; then
+    log_error "You must specify a \$NODE_VERSIONS environment variable and the directory specified must exist!"
+    return 1
+  fi
+
+  if [[ -z $version ]] && [[ -f .nvmrc ]]; then
+    version=$(< .nvmrc)
+    via=".nvmrc"
+  fi
+
+  if [[ -z $version ]] && [[ -f .node-version ]]; then
+    version=$(< .node-version)
+    via=".node-version"
+  fi
+
+  if [[ -z $version ]]; then
+    log_error "I do not know which NodeJS version to load because one has not been specified!"
+    return 1
+  fi
+
+  # if version starts with prefix, clean it..
+  if [[ $version = $node_version_prefix* ]]; then
+    node_wanted=${version}
+  else
+    node_wanted=${node_version_prefix}${version}
+  fi
+
+  node_prefix=$(
+    # Look for matching node versions in $NODE_VERSIONS path
+    find "$NODE_VERSIONS" -maxdepth 1 -mindepth 1 -type d -name "$node_wanted*" |
+    # Strip possible "/" suffix from $NODE_VERSIONS, then use that to
+    # Strip $NODE_VERSIONS/$node_version_prefix prefix from line.
+    while IFS= read -r line; do echo "${line#${NODE_VERSIONS%/}/${node_version_prefix}}"; done |
+    # Sort by version: split by "." then reverse numeric sort for each piece of the version string
+    sort -t . -k 1,1rn -k 2,2rn -k 3,3rn |
+    # The first one is the highest
+    head -1
+  )
+
+  node_prefix="${NODE_VERSIONS}/${node_version_prefix}${node_prefix}"
+
+  echo "NODE_VERSIONS: $NODE_VERSIONS"
+  echo "version: $version"
+  echo "node_prefix: $node_prefix"
+  echo "node_wanted: $node_wanted"
+
+  if [[ ! -d $node_prefix ]]; then
+    log_error "Unable to find NodeJS version ($version) in ($NODE_VERSIONS)!"
+    return 1
+  fi
+
+  if [[ ! -x $node_prefix/bin/node ]]; then
+    log_error "Unable to load NodeJS binary (node) for version ($version) in ($NODE_VERSIONS)!"
+    return 1
+  fi
+
+  load_prefix "$node_prefix"
+
+  if [[ -z $via ]]; then
+    log_status "Successfully loaded NodeJS $(node --version), from prefix ($node_prefix)"
+  else
+    log_status "Successfully loaded NodeJS $(node --version) (via $via), from prefix ($node_prefix)"
+  fi
+}

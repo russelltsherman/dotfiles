@@ -101,6 +101,14 @@ type pyenv &>/dev/null && eval "$(pyenv init -)"
 # initialize pyenv virtualenv shell hooks
 type pyenv &>/dev/null && eval "$(pyenv virtualenv-init -)"
 
+# initialize node version manager
+export NODE_VERSIONS=$HOME/.nvm/versions/node
+export NVM_DIR="$HOME/.nvm"
+[ ! -d "$NVM_DIR" ] && mkdir "$NVM_DIR" # ensure .nvm dir exists
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" # load nvm
+# if npm not found we will install lastest node using node version manager
+command -v npm >/dev/null 2>&1 || { nvm install node }
+
 source ~/.zsh/.zplugins
 source ~/.zsh/.zfunctions
 source ~/.zsh/.zaliases

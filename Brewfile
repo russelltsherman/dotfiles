@@ -110,6 +110,10 @@ cask "kicad"
 # https://www.amazon.com/gp/digital/fiona/kcp-landing-page
 cask "kindle"
 
+# NodeJS Version Manager
+# - POSIX-compliant bash script to manage multiple active node.js versions
+brew "nvm"
+
 # https://osxfuse.github.io/
 cask "osxfuse"
 
