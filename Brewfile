@@ -12,3 +12,6 @@ brew "git-crypt"
 # Extensions to follow Vincent Driessen's branching model 
 # https://github.com/nvie/gitflow
 brew "git-flow"
+
+# https://code.visualstudio.com
+cask "visual-studio-code"
