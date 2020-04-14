@@ -157,6 +157,7 @@ fi
 # plugins, functions, aliases
 ##############################################################################
 source ~/.zsh/.zplugins
+source ~/.zsh/.zdocker
 source ~/.zsh/.zfunctions
 source ~/.zsh/.zaliases
 
