@@ -114,6 +114,10 @@ brew "mas"
 # https://www.nano-editor.org/
 brew "nano"
 
+# Fast, highly customisable system info script
+# https://github.com/dylanaraps/neofetch
+brew "neofetch"
+
 # Utility for managing network connections
 # https://netcat.sourceforge.io/
 brew "netcat"

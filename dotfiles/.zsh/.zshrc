@@ -161,6 +161,8 @@ source ~/.zsh/.zdocker
 source ~/.zsh/.zfunctions
 source ~/.zsh/.zaliases
 
+neofetch
+
 #
 # load machine specific configuration
 #
