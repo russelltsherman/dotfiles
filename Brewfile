@@ -272,6 +272,10 @@ cask "kicad"
 # https://www.amazon.com/gp/digital/fiona/kcp-landing-page
 cask "kindle"
 
+# One command for an instant, secure URL to your localhost server through any NAT or firewall.
+# https://ngrok.com/
+cask "ngrok"
+
 # NodeJS Version Manager
 # - POSIX-compliant bash script to manage multiple active node.js versions
 brew "nvm"
