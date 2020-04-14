@@ -91,17 +91,43 @@ setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arit
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 ##############################################################################
-# other customizations
+# direnv and pyenv shell hooks
 ##############################################################################
-
-# initialize direnv shell hooks
 type direnv &>/dev/null && eval "$(direnv hook ${SHELL})"
-# initialize pyenv shell hooks
 type pyenv &>/dev/null && eval "$(pyenv init -)"
-# initialize pyenv virtualenv shell hooks
 type pyenv &>/dev/null && eval "$(pyenv virtualenv-init -)"
 
+
+##############################################################################
+# add core utils to path https://www.gnu.org/software/coreutils
+##############################################################################
+if [ -d "$(brew --prefix coreutils)" ]; then
+  newpath="$(brew --prefix coreutils)/libexec/gnubin:${PATH}"
+  export PATH=$newpath
+fi
+
+##############################################################################
+# add findutils to path https://www.gnu.org/software/findutils
+##############################################################################
+if [ -d "$(brew --prefix findutils)" ]; then
+  newpath="$(brew --prefix findutils)/libexec/gnubin:${PATH}"
+  export PATH=$newpath
+  newmanpath="$(brew --prefix findutils)/libexec/gnuman:${MANPATH}"
+  export MANPATH=$newmanpath
+fi
+
+##############################################################################
+# iTerm2 may be integrated with the unix shell so that it can keep track of your command history,
+# current working directory, host name, and more--even over ssh.
+# load iterm2 shell integration if present
+##############################################################################
+if [ -f "${HOME}/.iterm2_shell_integration.$(basename "${SHELL}")" ];then
+  source "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
+fi
+
+##############################################################################
 # initialize node version manager
+##############################################################################
 export NODE_VERSIONS=$HOME/.nvm/versions/node
 export NVM_DIR="$HOME/.nvm"
 [ ! -d "$NVM_DIR" ] && mkdir "$NVM_DIR" # ensure .nvm dir exists
@@ -109,6 +135,27 @@ export NVM_DIR="$HOME/.nvm"
 # if npm not found we will install lastest node using node version manager
 command -v npm >/dev/null 2>&1 || { nvm install node }
 
+# add yarn to path
+if [ type yarn &>/dev/null ]; then
+  PATH="${PATH}:$(yarn global bin)"
+  export PATH
+fi
+
+# initialize GO
+if [ type go &>/dev/null ]; then
+  GOPATH="$HOME"
+  PATH="${PATH}:${GOPATH}/bin"
+  GOROOT="$(go env GOROOT)"
+  alias gotour="\${GOPATH}/bin/gotour"
+  export GOPATH
+  export PATH
+  export GOROOT
+  export GO111MODULE=on
+fi
+
+##############################################################################
+# plugins, functions, aliases
+##############################################################################
 source ~/.zsh/.zplugins
 source ~/.zsh/.zfunctions
 source ~/.zsh/.zaliases
