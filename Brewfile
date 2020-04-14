@@ -299,6 +299,14 @@ cask "qlmarkdown"
 # https://whomwah.github.io/qlstephen/
 cask "qlstephen"
 
+# quicklook plugin to display thumbnails, static QuickLook previews, cover art and metadata for most types of video files.
+# https://github.com/Marginal/QLVideo
+cask "qlvideo"
+
+# A quicklook plugin to preview json files
+# http://www.sagtau.com/quicklookjson.html
+cask "quicklook-json"
+
 # https://signal.org
 cask "signal"
 
@@ -308,6 +316,10 @@ cask "slack"
 # osx window management/tiling
 # https://www.spectacleapp.com
 cask "spectacle"
+
+# Quicklook plugin to inspect package files
+# https://www.mothersruin.com/software/SuspiciousPackage/
+cask "suspicious-package"
 
 # multiformat decompression utility
 # https://theunarchiver.com
