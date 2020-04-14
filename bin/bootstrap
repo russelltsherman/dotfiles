@@ -34,10 +34,10 @@ echo "clone or update dotfiles repo"
 echo "#######################################################################"
 if [ -d  "${HOME}/dotfiles" ]
 then
-  # baseline repo clone exists.. update
+  # dotfiles repo clone exists.. update
   ( cd "${HOME}/dotfiles" || exit; git pull --rebase )
 else
-  # clone baseline repo
+  # clone dotfiles repo
   git clone https://github.com/russelltsherman/dotfiles "${HOME}/dotfiles"
 fi
 
@@ -45,25 +45,25 @@ echo ""
 echo "#######################################################################"
 echo "allow passwordless sudo"
 echo "#######################################################################"
-make -C "${HOME}/baseline" sudo/noprompt
+make -C "${HOME}/dotfiles" sudo/noprompt
 
 echo ""
 echo "#######################################################################"
 echo "initialize baseline build harness"
 echo "#######################################################################"
-make -C "${HOME}/baseline" init
+make -C "${HOME}/dotfiles" init
 
 echo ""
 echo "#######################################################################"
 echo "execute baseline bootstrap"
 echo "#######################################################################"
-make -C "${HOME}/baseline" bootstrap
+make -C "${HOME}/dotfiles" bootstrap
 
 echo ""
 echo "#######################################################################"
 echo "remove passwordless sudo"
 echo "#######################################################################"
-make -C "${HOME}/baseline" sudo/prompt
+make -C "${HOME}/dotfiles" sudo/prompt
 
 echo ""
 echo "#######################################################################"
