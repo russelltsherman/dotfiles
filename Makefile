@@ -5,7 +5,7 @@ DOTFILE_NAMES := $(subst ./dotfiles/, , $(shell find ./dotfiles -maxdepth 1 -nam
 DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
 
 ## initialize project
-bootstrap: 
+bootstrap:
 	-make brew
 	make dotfiles
 .PHONY: bootstrap
@@ -17,6 +17,14 @@ cleandotfiles: # if there are existing symlinks for our dotfiles in ~/ remove th
 dotfiles: cleandotfiles \
 	$(DOTFILES) # iterate our list of dotfiles and ensure they are symlinked
 .PHONY: dotfiles
+
+sudo/noprompt:
+	echo "$(shell whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$(shell whoami)
+.PHONY: sudo/noprompt
+
+sudo/prompt:
+	sudo rm -rf /etc/sudoers.d/$(shell whoami)
+.PHONY: sudo/prompt
 
 ## pull upstream changes
 update: refresh-build-harness
