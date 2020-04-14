@@ -222,9 +222,6 @@ cask "armory"
 # https://github.com/99designs/aws-vault
 cask "aws-vault"
 
-# https://bitwarden.com
-cask "bitwarden"
-
 # Dash gives you instant offline access to 200+ API documentation sets.
 # https://kapeli.com/dash
 cask "dash"
