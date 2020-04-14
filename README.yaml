@@ -1,0 +1,51 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: Dotfiles
+
+# Short description of this project
+description: |-
+  baseline provisioning for OSX workstations
+
+# Canonical GitHub repo
+github_repo: russelltsherman/dotfiles
+
+# How to get started quickly
+quickstart: |-
+  On a fresh mac you won't have git or other required dependencies installed..
+  open a Terminal and run...
+
+  ```sh
+  curl https://raw.githubusercontent.com/russelltsherman/dotfiles/master/bin/bootstrap | bash
+  ```
+
+usage: |-
+  the slower start
+
+  1. `git clone https://github.com/russelltsherman/dotfiles` to pull down the repository
+  1. `make init` to initialize the [`build-harness`](https://github.com/opsbot/build-harness/)
+  1. `make bootstrap` to initialize workstation apps and settings
+
+  this script does the following
+
+  - install XCode Command Line Tools
+  - create a git clone of this repo in your home directory
+  - install [Homebrew package manager](https://brew.sh)
+  - install cli and gui apps from [Brewfile](./Brewfile)
+
+  ## Adblocking Hosts file
+
+  Use this file to prevent your computer from connecting to selected internet hosts.
+  This is an easy and effective way to protect you from many types of spyware,
+  reduces bandwidth use, blocks certain pop-up traps, prevents user tracking by
+  way of "web bugs" embedded in spam, provides partial protection to IE from certain
+  web-based exploits and blocks most advertising you would otherwise be subjected
+  to on the internet.
+
+  ```sh
+  make -B /etc/hosts
+  ```
