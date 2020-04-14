@@ -56,11 +56,6 @@ use_node() {
 
   node_prefix="${NODE_VERSIONS}/${node_version_prefix}${node_prefix}"
 
-  echo "NODE_VERSIONS: $NODE_VERSIONS"
-  echo "version: $version"
-  echo "node_prefix: $node_prefix"
-  echo "node_wanted: $node_wanted"
-
   if [[ ! -d $node_prefix ]]; then
     log_error "Unable to find NodeJS version ($version) in ($NODE_VERSIONS)!"
     return 1
