@@ -283,6 +283,22 @@ brew "nvm"
 # https://osxfuse.github.io/
 cask "osxfuse"
 
+# QLColorCode Quick Look plugin for source code with syntax highlighting.
+# https://github.com/anthonygelibert/QLColorCode
+cask "qlcolorcode"
+
+# QuickLook plugin to display the dimensions, size and DPI of an image
+# https://github.com/Nyx0uf/qlImageSize
+cask "qlimagesize"
+
+# QuickLook generator for Markdown files.
+# https://github.com/toland/qlmarkdown
+cask "qlmarkdown"
+
+# A QuickLook plugin that lets you view plain text files without a file extension
+# https://whomwah.github.io/qlstephen/
+cask "qlstephen"
+
 # https://signal.org
 cask "signal"
 
@@ -323,3 +339,4 @@ cask "vlc"
 
 # https://www.xquartz.org
 cask "xquartz"
+
