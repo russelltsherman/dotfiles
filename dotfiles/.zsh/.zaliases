@@ -7,8 +7,24 @@
 # Lock the screen (when going AFK)
 alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 
+alias cp='cp -i' # copy file interactive
+
 alias dnsflush='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder; echo "OK"' # Flush the DNS cache
 alias flushdns='dnsflush' # memory is hard sometimes
+
+alias g="git"
+
+alias grep='grep --color=auto ' # Always enable colored `grep` output
+
+alias h="history"
+
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1
+then
+	colorflag="--color" # GNU `ls`
+else
+	colorflag="-G" # OS X `ls`
+fi
 
 # Directory listings
 # LS_COLORS='no=01;37:fi=01;37:di=07;96:ln=01;36:pi=01;32:so=01;35:do=01;35:bd=01;33:cd=01;33:ex=01;31:mi=00;05;37:or=00;05;37:'
@@ -16,8 +32,14 @@ alias flushdns='dnsflush' # memory is hard sometimes
 # -l Long format
 # -h Short size suffixes (B, K, M, G, P)
 # -p Postpend slash to folders
-alias ls='ls -G -h -p '
-alias ll='ls -a -l -G -h -p '
+
+alias l="ls -lhFp ${colorflag}" # List all files colorized in long format
+alias la="ls -lahF ${colorflag}" # List all files colorized in long format, including dot files
+alias ll="ls -lahp ${colorflag}"
+alias ls="command ls ${colorflag}" # Always use color output for `ls`
+alias lsd="ls -lhF ${colorflag} | grep --color=never '^d'" # List only directories
+
+alias mv='mv -i' # move file interactive
 
 alias pip="pip3"
 alias python="python3"
@@ -29,8 +51,12 @@ alias sha265sum='shasum -a 256 ' # Print or Check SHA Checksums
 alias spotoff='sudo mdutil -a -i off' # Disable Spotlight
 alias spoton='sudo mdutil -a -i on' # Enable Spotlight
 
+alias sudo='sudo ' # Enable aliases to be sudo’ed
+
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
+
+alias week='date +%V' # Get week number
 
 #
 # load machine specific configuration
