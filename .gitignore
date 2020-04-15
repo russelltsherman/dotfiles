@@ -3,3 +3,6 @@
 
 # ignore homebrew bundle lockfile
 Brewfile.lock.json
+
+# ignore vim bundles
+dotfiles/.vim/bundle/*
