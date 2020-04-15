@@ -126,10 +126,6 @@ brew "netcat"
 # https://nmap.org/
 brew "nmap"
 
-# Tiny, lightning fast, feature-packed file manager
-# https://github.com/jarun/nnn
-brew "nnn"
-
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
 # https://openvpn.net/index.php/download/community-downloads.html
 brew "openvpn"
@@ -197,6 +193,10 @@ brew "tree"
 # Terminal interaction recorder and player
 # http://0xcc.net/ttyrec/
 brew "ttyrec"
+
+# Ncurses based file manager with vi like keybindings
+# https://vifm.info/
+brew "vifm"
 
 # Executes a program periodically, showing output fullscreen
 # https://gitlab.com/procps-ng/procps

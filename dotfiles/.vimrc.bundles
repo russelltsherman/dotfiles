@@ -42,10 +42,6 @@ Plugin 'fatih/vim-go'
 " https://github.com/itchyny/lightline.vim
 Plugin 'itchyny/lightline.vim'
 
-" Fast and featureful file manager in vim/neovim powered by nnn
-" http://github.com/mcchrish/nnn.vim
-Plugin 'mcchrish/nnn.vim'
-
 " surround.vim: quoting/parenthesizing made simple
 " http://github.com/tpope/vim-surround
 Plugin 'tpope/vim-surround'
@@ -53,6 +49,14 @@ Plugin 'tpope/vim-surround'
 " The ultimate snippet solution for Vim.
 " https://github.com/SirVer/ultisnips
 Plugin 'SirVer/ultisnips'
+
+" Vim plugin that allows use of vifm as a file picker
+" https://github.com/vifm/vifm.vim
+Plugin 'vifm/vifm.vim'
+
+" File and directory icons for Vifm (vi file manager)
+" https://github.com/cirala/vifm_devicons
+Plugin 'cirala/vifm_devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
