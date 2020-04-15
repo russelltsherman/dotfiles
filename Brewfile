@@ -110,6 +110,10 @@ brew "make"
 # https://github.com/mas-cli/mas
 brew "mas"
 
+# Mongrel of mail user agents (part elm, pine, mush, mh, etc.)
+# http://www.mutt.org/
+brew "mutt"
+
 # Free (GNU) replacement for the Pico text editor
 # https://www.nano-editor.org/
 brew "nano"
