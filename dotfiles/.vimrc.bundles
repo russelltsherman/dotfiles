@@ -42,6 +42,10 @@ Plugin 'fatih/vim-go'
 " https://github.com/itchyny/lightline.vim
 Plugin 'itchyny/lightline.vim'
 
+" Fast and featureful file manager in vim/neovim powered by nnn
+" http://github.com/mcchrish/nnn.vim
+Plugin 'mcchrish/nnn.vim'
+
 " surround.vim: quoting/parenthesizing made simple
 " http://github.com/tpope/vim-surround
 Plugin 'tpope/vim-surround'
