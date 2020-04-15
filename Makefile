@@ -1,18 +1,29 @@
 -include $(shell curl -sSL -o .build-harness "https://raw.githubusercontent.com/opsbot/build-harness/master/templates/Makefile.build-harness"; echo .build-harness)
 
 current_dir = $(shell pwd)
+BINSCRIPT_NAMES := $(subst ./, , $(shell find ./bin -maxdepth 1 -type f \( ! -iname "bootstrap" \)))
+BINSCRIPTS := $(addprefix ~/, $(BINSCRIPT_NAMES))
 DOTFILE_NAMES := $(subst ./dotfiles/, , $(shell find ./dotfiles -maxdepth 1 -name ".*"))
 DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
 
 ## initialize project
 bootstrap:
 	-make brew
+	make binscripts
 	make dotfiles
 	pip install -r requirements.txt
 .PHONY: bootstrap
 
+binscripts: cleanbinscripts \
+	$(BINSCRIPTS) # iterate our list of dotfiles and ensure they are symlinked
+.PHONY: binscripts
+
+cleanbinscripts: # if there are existing symlinks for our dotfiles in ~/ remove them
+	@for file in $(BINSCRIPT_NAMES) ; do if [ -L ~/$$file ];then rm ~/$$file; fi; done
+.PHONY: cleanbinscripts
+
 cleandotfiles: # if there are existing symlinks for our dotfiles in ~/ remove them
-	for file in $(DOTFILE_NAMES) ; do if [ -L ~/$$file ];then rm ~/$$file; fi; done
+	@for file in $(DOTFILE_NAMES) ; do if [ -L ~/$$file ];then rm ~/$$file; fi; done
 .PHONY: cleandotfiles
 
 dotfiles: cleandotfiles \
@@ -83,3 +94,6 @@ vscode:
 
 ~/.%: # create symlink form ~/.dotfile and ./dotfiles/.dotfile
 	cd ~ && ln -sv $(current_dir)/dotfiles/$(notdir $@) $@
+
+~/bin/%: # create symlink form ~/bin/binscript and ./bin/binscript
+	cd ~ && ln -sv $(current_dir)/bin/$(notdir $@) $@
