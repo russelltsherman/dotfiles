@@ -1,4 +1,5 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
+# shellcheck disable=SC1090
 
 ##############################################################################
 # Z Shell Functions Configuration
@@ -6,16 +7,16 @@
 
 # TODO --
 # if no profile argument is provided iterate over all profiles and output codes
-function mfa() {
-	local profile="${1}"
-	local file="${XDG_CONFIG_HOME}/mfa/${profile}.mfa"
+mfa() {
+	profile="${1}"
+	file="${XDG_CONFIG_HOME}/mfa/${profile}.mfa"
 
-  if [ -f "${file}" ]
+  if [ -f "$file" ]
   then
-		code="$(oathtool --base32 --totp "$(cat ${file})")" 
-    echo $code # output the code to screen
-    echo $code | pbcopy # push code into system clipboard
-	elif [ -z "${profile}" ]
+		code="$(oathtool --base32 --totp "$(cat "$file")")"
+    echo "$code" # output the code to screen
+    echo "$code" | pbcopy # push code into system clipboard
+	elif [ -z "$profile" ]
   then
 		echo "No MFA profile defined" >&2
 	else
@@ -25,7 +26,7 @@ function mfa() {
 
 # From http://dotfiles.org/~_why/.zshrc
 # Sets the window title nicely no matter where you are
-function title() {
+title() {
   # escape '%' chars in $1, make nonprintables visible
   a=${(V)1//\%/\%\%}
 
@@ -42,25 +43,25 @@ function title() {
   esac
 }
 
-function zsh_recompile {
+zsh_recompile() {
   autoload -U zrecompile
   rm -f ~/.zsh/*.zwc
-  [[ -f ~/.zshrc ]] && zrecompile -p ~/.zshrc
-  [[ -f ~/.zshrc.zwc.old ]] && rm -f ~/.zshrc.zwc.old
+  [ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
+  [ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old
 
   for f in ~/.zsh/**/*.zsh; do
-    [[ -f $f ]] && zrecompile -p $f
-    [[ -f $f.zwc.old ]] && rm -f $f.zwc.old
+    [ -f "$f" ] && zrecompile -p "$f"
+    [ -f "${f}.zwc.old" ] && rm -f "${f}.zwc.old"
   done
 
-  [[ -f ~/.zcompdump ]] && zrecompile -p ~/.zcompdump
-  [[ -f ~/.zcompdump.zwc.old ]] && rm -f ~/.zcompdump.zwc.old
+  [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
+  [ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old
 
-  source ~/.zshrc
+  . ~/.zshrc
 }
 
 #
 # load machine specific configuration
 #
-[ -f "$0.local" ] && source "$0.local"
+[ -f "$0.local" ] && . "$0.local"
 

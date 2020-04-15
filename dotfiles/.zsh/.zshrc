@@ -1,4 +1,7 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
+# shellcheck disable=SC1090
+# shellcheck disable=SC1091
+# shellcheck disable=SC2034
 
 #
 # Z Shell Startup File
@@ -22,6 +25,7 @@ setopt INTERACTIVE_COMMENTS # Allow comments even in interactive shells
 ##############################################################################
 setopt COMPLETE_IN_WORD # Allow completion from within a word/phrase
 setopt ALWAYS_TO_END # When completing from the middle of a word, move the cursor to the end of the word
+setopt GLOB_DOTS # Do not require a leading ‘.’ in a filename to be matched explicitly.
 
 autoload -U compaudit compinit
 zstyle ':completion:*' menu select
@@ -30,7 +34,6 @@ zmodload zsh/complist
 
 ZCOMPDUMPFILE="$ZDOTCACHEDIR/.zcompdump-$ZSH_VERSION"
 compinit -d "$ZCOMPDUMPFILE" -C
-_comp_options+=(globdots) # Include hidden files.
 
 ##############################################################################
 # Z Shell Colors Configuration
@@ -41,7 +44,7 @@ colors
 
 # The colors function records the names of colors and similar attributes
 # (bold, underline and so on) in the associative array color.
-# echo ${(o)color}
+# echo "${(o)color}"
 
 ##############################################################################
 # Z Shell History Configuration
@@ -88,14 +91,14 @@ setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arit
 # unsetopt MENU_COMPLETE
 
 # set a default prompt
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 ##############################################################################
 # direnv and pyenv shell hooks
 ##############################################################################
-type direnv &>/dev/null && eval "$(direnv hook ${SHELL})"
-type pyenv &>/dev/null && eval "$(pyenv init -)"
-type pyenv &>/dev/null && eval "$(pyenv virtualenv-init -)"
+command -v direnv > /dev/null && eval "$(direnv hook "$SHELL")"
+command -v pyenv > /dev/null && eval "$(pyenv init -)"
+command -v pyenv > /dev/null && eval "$(pyenv virtualenv-init -)"
 
 
 ##############################################################################
@@ -122,7 +125,7 @@ fi
 # load iterm2 shell integration if present
 ##############################################################################
 if [ -f "${HOME}/.iterm2_shell_integration.$(basename "${SHELL}")" ];then
-  source "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
+  . "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
 fi
 
 ##############################################################################
@@ -133,16 +136,18 @@ export NVM_DIR="$HOME/.nvm"
 [ ! -d "$NVM_DIR" ] && mkdir "$NVM_DIR" # ensure .nvm dir exists
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" # load nvm
 # if npm not found we will install lastest node using node version manager
-command -v npm >/dev/null 2>&1 || { nvm install node }
+command -v npm >/dev/null 2>&1 || (nvm install node)
 
 # add yarn to path
-if [ type yarn &>/dev/null ]; then
+if command -v yarn > /dev/null
+then
   PATH="${PATH}:$(yarn global bin)"
   export PATH
 fi
 
 # initialize GO
-if [ type go &>/dev/null ]; then
+if command -v go> /dev/null
+then
   GOPATH="$HOME"
   PATH="${PATH}:${GOPATH}/bin"
   GOROOT="$(go env GOROOT)"
@@ -156,14 +161,14 @@ fi
 ##############################################################################
 # plugins, functions, aliases
 ##############################################################################
-source ~/.zsh/.zplugins
-source ~/.zsh/.zdocker
-source ~/.zsh/.zfunctions
-source ~/.zsh/.zaliases
+. ~/.zsh/.zplugins
+. ~/.zsh/.zdocker
+. ~/.zsh/.zfunctions
+. ~/.zsh/.zaliases
 
 neofetch
 
 #
 # load machine specific configuration
 #
-[ -f "$0.local" ] && source "$0.local"
+[ -f "$0.local" ] && . "$0.local"

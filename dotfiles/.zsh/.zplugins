@@ -1,11 +1,12 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
+# shellcheck disable=SC1090
 
 ##############################################################################
 # Z Shell Plugins Configuration
 ##############################################################################
 
 # https://github.com/unixorn/awesome-zsh-plugins#antibody
-source <(antibody init)
+eval "$(antibody init)"
 
 #
 # baseline zsh plugins
@@ -89,4 +90,4 @@ antibody bundle zsh-users/zsh-syntax-highlighting
 #
 # load machine specific configuration
 #
-[ -f "$0.local" ] && source "$0.local"
+[ -f "$0.local" ] && . "$0.local"

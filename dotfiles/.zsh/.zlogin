@@ -1,4 +1,5 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
+# shellcheck disable=SC1090
 
 #
 # Z Shell Startup File
@@ -14,4 +15,4 @@
 #
 # load machine specific configuration
 #
-[ -f "$0.local" ] && source "$0.local"
+[ -f "$0.local" ] && . "$0.local"
