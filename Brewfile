@@ -221,12 +221,15 @@ brew "zsh-completions"
 # GUI Applications
 #########################
 
-# Arduino IDE https://www.arduino.cc
+# Arduino IDE
+# https://www.arduino.cc
 cask "arduino"
 
+# Python-based fully-featured Bitcoin Wallet Software
 # https://btcarmory.com
 cask "armory"
 
+# A vault for securely storing and accessing AWS credentials in development environments
 # https://github.com/99designs/aws-vault
 cask "aws-vault"
 
@@ -234,12 +237,15 @@ cask "aws-vault"
 # https://kapeli.com/dash
 cask "dash"
 
+# DiffMerge is an application to visually compare and merge files on Windows, OS X and Linux.
 # https://www.sourcegear.com/diffmerge
 cask "diffmerge"
 
+# The Industry-Leading Container Runtime
 # https://www.docker.com/community-edition
 cask "docker"
 
+# it's dropbox yo
 # https://www.dropbox.com
 cask "dropbox"
 
@@ -252,6 +258,7 @@ cask "font-roboto-mono"
 cask "font-roboto-mono-for-powerline"
 cask "font-hack-nerd-font"
 
+# The Free & Open Source Image Editor
 # https://www.gimp.org
 cask "gimp"
 
@@ -259,9 +266,11 @@ cask "gimp"
 # https://www.google.com/chrome/
 cask "google-chrome"
 
+# One simple package with everything you need, to protect your emails and files.
 # https://gpgtools.org
 cask "gpg-suite"
 
+# The Untimate Notification system for OS X
 # http://growl.info/downloads
 cask "growlnotify"
 
@@ -269,15 +278,19 @@ cask "growlnotify"
 # https://www.mowglii.com/itsycal/
 cask "itsycal"
 
+# A terminal emulator for OS X that does amazing things
 # https://www.iterm2.com
 cask "iterm2"
 
+# End-to-end encryption for things that matter.
 # https://keybase.io
 cask "keybase"
 
+# A Cross Platform and Open Source Electronics Design Automation Suite
 # http://kicad-pcb.org
 cask "kicad"
 
+# Amazon book reading app
 # https://www.amazon.com/gp/digital/fiona/kcp-landing-page
 cask "kindle"
 
@@ -285,10 +298,11 @@ cask "kindle"
 # https://ngrok.com/
 cask "ngrok"
 
-# NodeJS Version Manager
-# - POSIX-compliant bash script to manage multiple active node.js versions
+# POSIX-compliant bash script to manage multiple active node.js versions
+# https://github.com/nvm-sh/nvm
 brew "nvm"
 
+# File system integration made easy
 # https://osxfuse.github.io/
 cask "osxfuse"
 
@@ -316,10 +330,13 @@ cask "qlvideo"
 # http://www.sagtau.com/quicklookjson.html
 cask "quicklook-json"
 
+# Say "hello" to a different messaging experience.
+# An unexpected focus on privacy, combined with all of the features you expect.
 # https://signal.org
 cask "signal"
 
-# slack team chat https://slack.com
+# slack team chat
+# https://slack.com
 cask "slack"
 
 # osx window management/tiling
@@ -339,6 +356,7 @@ cask "suspicious-package"
 # https://theunarchiver.com
 cask "the-unarchiver"
 
+# A GUI for GIT
 # https://www.git-tower.com
 # cask "tower"
 
@@ -346,23 +364,31 @@ cask "the-unarchiver"
 # https://transmissionbt.com
 cask "transmission"
 
-# VPN client
+# Tunnelblick helps you control OpenVPN® VPNs on macOS
 # https://www.tunnelblick.net
 cask "tunnelblick"
 
+# Development Environments Made Easy
 # https://www.vagrantup.com
 cask "vagrant"
 
-# virtualbox to handle virtual machines
+# VirtualBox is a powerful x86 and AMD64/Intel64 virtualization product
+# https://www.virtualbox.org/
 cask "virtualbox"
+
+# Oracle VirtualBox Extension Pack
+# https://www.virtualbox.org/
 cask "virtualbox-extension-pack"
 
+# Code editing. Redefined.
 # https://code.visualstudio.com
 cask "visual-studio-code"
 
+# VLC is a free and open source cross-platform multimedia player and framework
 # https://www.videolan.org/vlc
 cask "vlc"
 
+# The XQuartz project is an open-source effort to develop a version of the X.Org X Window System that runs on OS X.
 # https://www.xquartz.org
 cask "xquartz"
 
