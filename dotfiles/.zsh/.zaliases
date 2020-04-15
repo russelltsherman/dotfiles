@@ -41,6 +41,13 @@ alias lsd="ls -lhF ${colorflag} | grep --color=never '^d'" # List only directori
 
 alias mv='mv -i' # move file interactive
 
+# alias clipboard commands for linux systems to facilitate consistent interface for all systems
+if [ ! "$(uname -s)" = "Darwin" ]
+then
+	alias pbcopy='xclip -selection clipboard'
+	alias pbpaste='xclip -selection clipboard -o'
+fi
+
 alias pip="pip3"
 alias python="python3"
 

@@ -4,6 +4,25 @@
 # Z Shell Functions Configuration
 ##############################################################################
 
+# TODO --
+# if no profile argument is provided iterate over all profiles and output codes
+function mfa() {
+	local profile="${1}"
+	local file="${XDG_CONFIG_HOME}/mfa/${profile}.mfa"
+
+  if [ -f "${file}" ]
+  then
+		code="$(oathtool --base32 --totp "$(cat ${file})")" 
+    echo $code # output the code to screen
+    echo $code | pbcopy # push code into system clipboard
+	elif [ -z "${profile}" ]
+  then
+		echo "No MFA profile defined" >&2
+	else
+		echo "No MFA profile for $profile" >&2
+	fi
+}
+
 # From http://dotfiles.org/~_why/.zshrc
 # Sets the window title nicely no matter where you are
 function title() {
@@ -44,3 +63,4 @@ function zsh_recompile {
 # load machine specific configuration
 #
 [ -f "$0.local" ] && source "$0.local"
+

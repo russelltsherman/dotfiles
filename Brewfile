@@ -134,6 +134,10 @@ brew "openvpn"
 # https://www.gopass.pw/
 brew "gopass"
 
+# Tools for one-time password authentication systems
+# https://www.nongnu.org/oath-toolkit/
+brew "oath-toolkit"
+
 # Pinentry for GPG on Mac
 # https://github.com/GPGTools/pinentry-mac
 brew "pinentry-mac"

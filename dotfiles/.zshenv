@@ -16,6 +16,8 @@
 # $ZDOTDIR/.zlogin
 # $ZDOTDIR/.zlogout
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 export ZDOTCACHEDIR="${HOME}/.cache/zsh"
 [ ! -d "$ZDOTCACHEDIR" ] && mkdir -p "$ZDOTCACHEDIR" # ensure $ZDOTCACHEDIR dir exists
 
