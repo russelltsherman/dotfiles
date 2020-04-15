@@ -130,6 +130,10 @@ brew "nmap"
 # https://openvpn.net/index.php/download/community-downloads.html
 brew "openvpn"
 
+# gopass is a simple but powerful password manager for your terminal.
+# https://www.gopass.pw/
+brew "gopass"
+
 # Pinentry for GPG on Mac
 # https://github.com/GPGTools/pinentry-mac
 brew "pinentry-mac"
@@ -317,6 +321,11 @@ cask "slack"
 # osx window management/tiling
 # https://www.spectacleapp.com
 cask "spectacle"
+
+# CLI that provides on-demand secrets access for common DevOps tools.
+# https://github.com/cyberark/summon
+tap "cyberark/tools"
+brew "summon"
 
 # Quicklook plugin to inspect package files
 # https://www.mothersruin.com/software/SuspiciousPackage/
