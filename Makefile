@@ -8,6 +8,7 @@ DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
 bootstrap:
 	-make brew
 	make dotfiles
+	pip install -r requirements.txt
 .PHONY: bootstrap
 
 cleandotfiles: # if there are existing symlinks for our dotfiles in ~/ remove them
