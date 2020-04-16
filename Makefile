@@ -46,6 +46,7 @@ update: refresh-build-harness
 
 ## load Visual Studio Code extensions
 vscode:
+	code --install-extension 4ops.terraform
 	code --install-extension amazonwebservices.aws-toolkit-vscode
 	code --install-extension bradymholt.pgformatter
 	code --install-extension budparr.language-hugo-vscode
@@ -67,7 +68,6 @@ vscode:
 	code --install-extension JPTarquino.postgresql
 	code --install-extension marcostazi.vs-code-vagrantfile
 	code --install-extension mark-tucker.aws-cli-configure
-	code --install-extension mauve.terraform
 	code --install-extension ms-azuretools.vscode-docker
 	code --install-extension ms-python.python
 	code --install-extension ms-vscode.cpptools
