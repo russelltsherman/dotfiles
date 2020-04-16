@@ -7,6 +7,18 @@
 # Z Shell Startup File
 #
 
+##############################################################################
+# add core utils to path https://www.gnu.org/software/coreutils
+##############################################################################
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+# set path before compinin tries to use stat to be sure we use gnu stat
+
+##############################################################################
+# add findutils to path https://www.gnu.org/software/findutils
+##############################################################################
+export PATH="/usr/local/opt/findutils/libexec/gnubin:${PATH}"
+export MANPATH="/usr/local/opt/findutils/libexec/gnuman:${MANPATH}"
+
 # `.zshrc' is sourced in interactive shells.
 # It should contain commands to set up aliases, functions, options, key bindings, etc.
 
@@ -27,13 +39,19 @@ setopt COMPLETE_IN_WORD # Allow completion from within a word/phrase
 setopt ALWAYS_TO_END # When completing from the middle of a word, move the cursor to the end of the word
 setopt GLOB_DOTS # Do not require a leading ‘.’ in a filename to be matched explicitly.
 
-autoload -U compaudit compinit
+autoload -Uz compaudit compinit
+
+daynum="$(date +'%j')"
+filedaynum="$(date +'%j' -d "$(stat -c '%w' "$ZDOTDIR/.zcompdump" | cut -d' ' -f1)")"
+if [ "$daynum" != "$filedaynum" ]
+then
+  compinit
+else
+  compinit -C
+fi
+
 zstyle ':completion:*' menu select
-
 zmodload zsh/complist
-
-ZCOMPDUMPFILE="$ZDOTCACHEDIR/.zcompdump-$ZSH_VERSION"
-compinit -d "$ZCOMPDUMPFILE" -C
 
 ##############################################################################
 # Z Shell Colors Configuration
@@ -50,10 +68,9 @@ colors
 # Z Shell History Configuration
 ##############################################################################
 
-HISTDUP=erase                         # Erase duplicates in the history file
-HISTFILE="$ZDOTCACHEDIR/.zsh_history" # History file location
-HISTSIZE=1000                         # How many lines of history to keep in memory
-SAVEHIST=1000                         # Number of history entries to save to disk
+HISTDUP=erase # Erase duplicates in the history file
+HISTSIZE=1000 # How many lines of history to keep in memory
+SAVEHIST=1000 # Number of history entries to save to disk
 
 setopt APPEND_HISTORY # Allow multiple terminal sessions to all append to one zsh command history
 setopt EXTENDED_HISTORY # Include more information about when the command was executed, etc
@@ -100,45 +117,28 @@ command -v direnv > /dev/null && eval "$(direnv hook "$SHELL")"
 command -v pyenv > /dev/null && eval "$(pyenv init -)"
 command -v pyenv > /dev/null && eval "$(pyenv virtualenv-init -)"
 
-
-##############################################################################
-# add core utils to path https://www.gnu.org/software/coreutils
-##############################################################################
-if [ -d /usr/local/opt/coreutils ]
-then
-  newpath="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-  export PATH=$newpath
-fi
-
-##############################################################################
-# add findutils to path https://www.gnu.org/software/findutils
-##############################################################################
-if [ -d /usr/local/opt/findutils ]
-then
-  newpath="/usr/local/opt/findutils/libexec/gnubin:${PATH}"
-  export PATH=$newpath
-  newmanpath="/usr/local/opt/findutils/libexec/gnuman:${MANPATH}"
-  export MANPATH=$newmanpath
-fi
-
 ##############################################################################
 # iTerm2 may be integrated with the unix shell so that it can keep track of your command history,
 # current working directory, host name, and more--even over ssh.
 # load iterm2 shell integration if present
 ##############################################################################
-if [ -f "${HOME}/.iterm2_shell_integration.$(basename "${SHELL}")" ];then
-  . "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
-fi
+. "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
 
 ##############################################################################
-# initialize node version manager
+# do not initialize nvm untill it's called
 ##############################################################################
 export NODE_VERSIONS=$HOME/.nvm/versions/node
 export NVM_DIR="$HOME/.nvm"
 [ ! -d "$NVM_DIR" ] && mkdir "$NVM_DIR" # ensure .nvm dir exists
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" # load nvm
-# if npm not found we will install lastest node using node version manager
-command -v npm >/dev/null 2>&1 || (nvm install node)
+nvm() {
+  if [ -s "/usr/local/opt/nvm/nvm.sh" ]
+  then
+    . "/usr/local/opt/nvm/nvm.sh" # load nvm
+    nvm "$@" # reissue original command
+  fi
+  # if npm not found we will install lastest node using node version manager
+  command -v npm >/dev/null 2>&1 || (nvm install node)
+}
 
 # add yarn to path
 if command -v yarn > /dev/null
@@ -168,7 +168,11 @@ fi
 . ~/.zsh/.zfunctions
 . ~/.zsh/.zaliases
 
-neofetch
+# neofetch is cool.. but it adds ~500ms load time to launching a new terminal
+# neofetch
+
+# pfetch isnt as cool as neofetch.. but has no significant impact on load time
+pfetch
 
 #
 # load machine specific configuration

@@ -6,3 +6,9 @@ Brewfile.lock.json
 
 # ignore vim bundles
 dotfiles/.vim/bundle/*
+
+# ignore zsh hostory
+dotfiles/.zsh/.zsh_history
+
+# ignore zsh completion
+dotfiles/.zsh/.zcompdump*
