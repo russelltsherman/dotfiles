@@ -3,6 +3,7 @@ amazonwebservices.aws-toolkit-vscode
 bradymholt.pgformatter
 budparr.language-hugo-vscode
 bungcip.better-toml
+CoenraadS.bracket-pair-colorizer
 coolbear.systemd-unit-file
 cssho.vscode-svgviewer
 DavidAnson.vscode-markdownlint
@@ -34,5 +35,6 @@ tomphilbin.gruvbox-themes
 vscoss.vscode-ansible
 WakaTime.vscode-wakatime
 wholroyd.jinja
+xabikos.JavaScriptSnippets
 xaver.clang-format
 zxh404.vscode-proto3
