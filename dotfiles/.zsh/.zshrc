@@ -104,18 +104,20 @@ command -v pyenv > /dev/null && eval "$(pyenv virtualenv-init -)"
 ##############################################################################
 # add core utils to path https://www.gnu.org/software/coreutils
 ##############################################################################
-if [ -d "$(brew --prefix coreutils)" ]; then
-  newpath="$(brew --prefix coreutils)/libexec/gnubin:${PATH}"
+if [ -d /usr/local/opt/coreutils ]
+then
+  newpath="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
   export PATH=$newpath
 fi
 
 ##############################################################################
 # add findutils to path https://www.gnu.org/software/findutils
 ##############################################################################
-if [ -d "$(brew --prefix findutils)" ]; then
-  newpath="$(brew --prefix findutils)/libexec/gnubin:${PATH}"
+if [ -d /usr/local/opt/findutils ]
+then
+  newpath="/usr/local/opt/findutils/libexec/gnubin:${PATH}"
   export PATH=$newpath
-  newmanpath="$(brew --prefix findutils)/libexec/gnuman:${MANPATH}"
+  newmanpath="/usr/local/opt/findutils/libexec/gnuman:${MANPATH}"
   export MANPATH=$newmanpath
 fi
 
