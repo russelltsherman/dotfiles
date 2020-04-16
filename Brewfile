@@ -38,6 +38,10 @@ brew "fontconfig"
 # https://www.gnu.org/software/findutils/
 brew "findutils"
 
+# Command-line fuzzy finder written in Go
+# https://github.com/junegunn/fzf
+brew "fzf"
+
 # GNU awk utility
 # https://www.gnu.org/software/gawk/
 brew "gawk"
