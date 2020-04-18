@@ -42,6 +42,7 @@ sudo/prompt:
 ## pull upstream changes
 update: refresh-build-harness
 	git pull
+	-rvm get stable
 	make bootstrap
 .PHONY: update
 
