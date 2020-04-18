@@ -12,6 +12,7 @@ bootstrap:
 	make binscripts
 	make dotfiles
 	pip install -r requirements.txt
+	~/.rvm/scripts/rvm
 .PHONY: bootstrap
 
 binscripts: cleanbinscripts \
@@ -51,7 +52,6 @@ vscode:
 	@ln -sv ~/.vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 .PHONY: vscode
 
-
 ## write Visual Studio Code extensions to manifest file
 vscode/backup:
 	code --list-extensions > ./dotfiles/.vscode/.extensions-manifest
@@ -65,3 +65,8 @@ vscode/backup:
 
 ~/bin/%: # create symlink form ~/bin/binscript and ./bin/binscript
 	cd ~ && ln -sv $(current_dir)/bin/$(notdir $@) $@
+
+~/.rvm/scripts/rvm:
+	gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+	\curl -sSL https://get.rvm.io | bash -s stable --rails
+	sudo usermod -a -G rvm $$(whoami)
