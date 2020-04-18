@@ -178,3 +178,7 @@ pfetch
 # load machine specific configuration
 #
 [ -f "$0.local" ] && . "$0.local"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export RVM_DIR="$HOME/.rvm/"
+[ ! -d "$RVM_DIR" ] && export PATH="$PATH:$HOME/.rvm/bin"
