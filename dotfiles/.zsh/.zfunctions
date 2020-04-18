@@ -24,6 +24,12 @@ mfa() {
 	fi
 }
 
+# create a file and make it executable
+mkexec() {
+  file="${1}"
+  touch "$file" && chmod +x "$file"
+}
+
 # From http://dotfiles.org/~_why/.zshrc
 # Sets the window title nicely no matter where you are
 title() {
