@@ -206,6 +206,10 @@ brew "ttyrec"
 # https://vifm.info/
 brew "vifm"
 
+# Vi 'workalike' with many additional features
+# https://www.vim.org/
+brew "vim"
+
 # Executes a program periodically, showing output fullscreen
 # https://gitlab.com/procps-ng/procps
 brew "watch"
