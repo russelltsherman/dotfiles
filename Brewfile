@@ -233,6 +233,10 @@ brew "zsh-completions"
 # GUI Applications
 #########################
 
+# A tiling window manager for macOS
+# https://ianyh.com/amethyst/
+cask "amethyst"
+
 # Arduino IDE
 # https://www.arduino.cc
 cask "arduino"
