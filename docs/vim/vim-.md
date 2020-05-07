@@ -1,10 +1,16 @@
-# putting it all together
+# Getting Things Done
 
-[count][operator][text object / motion ]
+working with your file
 
-6+ = 6x go down to line start
-gUaW = capitalize a WORD
-3ce = 3x change to word end
-4$ = 4x go to end of line
-d]m = delete to start of next method
-% = jump to mathc of next paren or bracket
+Some quick basics on working with your file.
+
+`vi file`: open your file in vim
+
+| Keybinding           | Operation                                                  |
+| -------------------- | ---------------------------------------------------------- |
+| :w                   | write your changes to the file                             |
+| :q!                  | get out of vim (quit), but without saving your changes (!) |
+| :wq                  | write your changes and exit vim                            |
+| :x                   | a faster way to do `:wq`                                   |
+| :saveas ~/some/path/ | save your file to that locationvim                         |
+| ZZ                   | a faster way to do `:wq`                                   |
