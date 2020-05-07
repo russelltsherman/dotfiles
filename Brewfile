@@ -130,6 +130,10 @@ brew "neofetch"
 # https://netcat.sourceforge.io/
 brew "netcat"
 
+# RSS/Atom feed reader for text terminals
+# https://newsboat.org/
+brew "newsboat"
+
 # Port scanning utility for large networks
 # https://nmap.org/
 brew "nmap"
