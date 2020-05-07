@@ -7,6 +7,7 @@
 
 - Learn vim For the Last Time: A Tutorial and Primer
   `https://danielmiessler.com/study/vim/`
+  `https://github.com/danielmiessler/vim`
 
 - Mastering the Vim Language
   `https://www.youtube.com/watch?v=wlR5gYd6um0`
