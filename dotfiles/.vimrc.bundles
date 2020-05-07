@@ -10,10 +10,10 @@ call vundle#begin()             " initialize vundle
 " vundle was installed via git subtree
 
 " The ultimate snippet solution for Vim.
-" Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 
 " vim-snipmate default snippets (Previously snipmate-snippets)
-" Plugin 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 
 " Vim/Ruby Configuration Files
 " Plugin 'vim-ruby/vim-ruby'
