@@ -6,12 +6,12 @@ With vim it's the same.
 
 Here are some vim nouns:
 
-| Keybinding | Operation                           |
-| ---------- | ----------------------------------- |
-| w          | word                                |
-| s          | sentence                            |
-| )          | sentence (another way of doing it)  |
-| p          | paragraph                           |
-| }          | paragraph (another way of doing it) |
-| t          | tag block (think HTML/XML)          |
-| b          | bracket (think programming)         |
+| Key | Operation                           |
+| --- | ----------------------------------- |
+| w   | word                                |
+| s   | sentence                            |
+| )   | sentence (another way of doing it)  |
+| p   | paragraph                           |
+| }   | paragraph (another way of doing it) |
+| t   | tag block (think HTML/XML)          |
+| b   | bracket (think programming)         |

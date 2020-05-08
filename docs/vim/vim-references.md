@@ -33,6 +33,9 @@
 - Vim: hello native package loading
   `https://shapeshed.com/vim-packages/`
 
+- Sharpen your Vim with snippets
+  `https://brigade.engineering/sharpen-your-vim-with-snippets-767b693886db`
+
 ## inspirational resources
 
 - Do 90% of What Plugins Do (With Just Vim)
