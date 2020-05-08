@@ -1,0 +1,18 @@
+" conquer of completion
+neoclide/coc.nvim:release
+" A tree explorer plugin for vim.
+scrooloose/nerdtree
+" A plugin of NERDTree showing git status
+scrooloose/nerdtree-git-plugin
+" Extra syntax and highlight for nerdtree files
+tiagofumo/vim-nerdtree-syntax-highlight
+" Adds file type icons to Vim plugins such as: NERDTree
+ryanoasis/vim-devicons
+# shows git diff markers in the sign column
+airblade/vim-gitgutter
+" A Vim plugin for Prettier
+prettier/vim-prettier
+" Vim plugin for intensely nerdy commenting powers
+scrooloose/nerdcommenter
+" vim-snipmate default snippets
+honza/vim-snippets
