@@ -29,3 +29,8 @@ Temporary Items
 
 # ignore TODO files
 TODO*
+
+# ignore vim cache files
+*~
+*.swp
+*.swo
