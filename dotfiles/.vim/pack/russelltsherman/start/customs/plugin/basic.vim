@@ -47,3 +47,6 @@ set expandtab
 " inoremap <down> <nop>
 " inoremap <left> <nop>
 " inoremap <right> <nop>
+
+" spellchecking
+set spell spelllang=en_us
