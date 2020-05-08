@@ -3,7 +3,7 @@
 # show-read-feeds no
 # auto-reload yes
 
-# external-url-viewer "urlscan -dc -r 'linkhandler {}'"
+# external-url-viewer "urlscan -dc -r 'open {}'"
 
 bind-key j down
 bind-key k up
@@ -31,25 +31,26 @@ bind-key x pb-delete
 # color info red black bold
 # color article cyan default
 
-# highlight article "^Feed:.*" color5 color0
-# highlight article "^Title:.*" color3 color0 bold
-# highlight article "^Author:.*" color2 color0
-# highlight article "^Date:.*" color223 color0
-# highlight article "^Link:.*" color4 color0
-# highlight article "^Flags:.*" color9 color0
-# highlight article "\\[[0-9][0-9]*\\]" color66 default bold
-# highlight article "\\[image [0-9][0-9]*\\]" color109 default bold
-# highlight article "\\[embedded flash: [0-9][0-9]*\\]" color66 default bold
+highlight article "^Feed:.*" color5 color0
+highlight article "^Title:.*" color3 color0 bold
+highlight article "^Author:.*" color2 color0
+highlight article "^Date:.*" color223 color0
+highlight article "^Link:.*" color4 color0
+highlight article "^Links:.*" color4 color0
+highlight article "^Flags:.*" color9 color0
+highlight article "\\[[0-9][0-9]*\\]" color66 default bold
+highlight article "\\[image [0-9][0-9]*\\]" color109 default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" color66 default bold
 
-browser linkhandler
+browser open
 macro , open-in-browser
-macro t set browser "tsp youtube-dl --add-metadata -ic"; open-in-browser ; set browser linkhandler
-macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
-macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
-macro w set browser "w3m"; open-in-browser ; set browser linkhandler
-macro p set browser "dmenuhandler"; open-in-browser ; set browser linkhandler
-macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkhandler
-macro r set browser "ttrv" ; open-in-browser ; set browser linkhandler
+macro t set browser "tsp youtube-dl --add-metadata -ic"; open-in-browser ; set browser open
+macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser open
+macro v set browser "setsid nohup mpv"; open-in-browser ; set browser open
+macro w set browser "w3m"; open-in-browser ; set browser open
+macro p set browser "dmenuhandler"; open-in-browser ; set browser open
+macro c set browser "xsel -b <<<" ; open-in-browser ; set browser open
+macro r set browser "ttrv" ; open-in-browser ; set browser open
 
 # Podboat items
 download-path "~/Downloads/%h/%n"

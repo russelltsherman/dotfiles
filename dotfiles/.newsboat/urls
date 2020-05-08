@@ -1,3 +1,33 @@
+#  _   _                   ____              _     ____  ____ ____
+# | \ | | _____      _____| __ )  ___   __ _| |_  |  _ \/ ___/ ___|
+# |  \| |/ _ \ \ /\ / / __|  _ \ / _ \ / _` | __| | |_) \___ \___ \
+# | |\  |  __/\ V  V /\__ \ |_) | (_) | (_| | |_  |  _ < ___) |__) |
+# |_| \_|\___| \_/\_/ |___/____/ \___/ \__,_|\__| |_| \_\____/____/
+#
+
+# (Luke Smith)
+http://lukesmith.xyz/rss.xml "Luke Smith" blog
+https://notrelated.libsyn.com/rss "Luke Smith" podcast
+
+# (Daniel Miessler)
+https://danielmiessler.com/feed/ "Daniel Miessler" blog
+
+# (Twitter)
+http://twitrss.me/twitter_user_to_rss/?user=chiuwilliam
+
+# (Reddit)
+https://www.reddit.com/r/commandline.rss reddit
+https://www.reddit.com/r/Jokes.rss reddit
+https://www.reddit.com/r/puns.rss reddit
+https://www.reddit.com/r/programmerhumor.rss reddit
+https://www.reddit.com/r/vim.rss reddit
+https://www.reddit.com/r/vimplugins.rss reddit
+https://www.reddit.com/r/vim_magic.rss reddit
+
+
+# (Other)
 https://newsboat.org/news.atom
 https://www.artofmanliness.com/rss
 
+# (Youtube)
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg youtube DistroTube
