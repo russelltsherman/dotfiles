@@ -22396,7 +22396,7 @@ class Plugin extends events_1.EventEmitter {
         return false;
     }
     get version() {
-        return workspace_1.default.version + ( true ? '-' + "2d7dd4dbfe" : undefined);
+        return workspace_1.default.version + ( true ? '-' + "be094451df" : undefined);
     }
     async showInfo() {
         if (!this.infoChannel) {
@@ -22409,7 +22409,8 @@ class Plugin extends events_1.EventEmitter {
         channel.appendLine('## versions');
         channel.appendLine('');
         let out = await this.nvim.call('execute', ['version']);
-        channel.appendLine('vim version: ' + out.trim().split('\n', 2)[0]);
+        let first = out.trim().split('\n', 2)[0].replace(/\(.*\)/, '').trim();
+        channel.appendLine('vim version: ' + first + `${workspace_1.default.isVim ? ' ' + workspace_1.default.env.version : ''}`);
         channel.appendLine('node version: ' + process.version);
         channel.appendLine('coc.nvim version: ' + this.version);
         channel.appendLine('term: ' + (process.env.TERM_PROGRAM || process.env.TERM));
@@ -22988,7 +22989,7 @@ class DiagnosticManager {
                 await this.echoMessage(true);
             }, this.config.messageDelay);
         }, null, this.disposables);
-        if (this.config.virtualText) {
+        if (this.config.virtualText && this.config.virtualTextCurrentLineOnly) {
             let fn = debounce_1.default(async (bufnr, cursor) => {
                 let buf = this.buffers.find(buf => buf.bufnr == bufnr);
                 if (buf)
@@ -23385,7 +23386,7 @@ class DiagnosticManager {
             clearTimeout(this.timer);
         let useFloat = config.messageTarget == 'float';
         let [bufnr, cursor, filetype, mode] = await this.nvim.eval('[bufnr("%"),coc#util#cursor(),&filetype,mode()]');
-        if (mode != 'n')
+        if (mode != 'n' || bufnr == this.floatFactory.bufnr)
             return;
         let diagnostics = this.getDiagnosticsAt(bufnr, cursor);
         if (diagnostics.length == 0) {
@@ -23511,6 +23512,7 @@ class DiagnosticManager {
             joinMessageLines: config.get('joinMessageLines', false),
             messageDelay: config.get('messageDelay', 200),
             virtualText: config.get('virtualText', false),
+            virtualTextCurrentLineOnly: config.get('virtualTextCurrentLineOnly', true),
             virtualTextPrefix: config.get('virtualTextPrefix', " "),
             virtualTextLineSeparator: config.get('virtualTextLineSeparator', " \\ "),
             virtualTextLines: config.get('virtualTextLines', 3),
@@ -23604,17 +23606,20 @@ exports.default = new DiagnosticManager();
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = __webpack_require__(45);
 const debounce_1 = tslib_1.__importDefault(__webpack_require__(219));
+const events_1 = tslib_1.__importDefault(__webpack_require__(177));
 const mutex_1 = __webpack_require__(232);
 const vscode_languageserver_protocol_1 = __webpack_require__(190);
-const events_1 = tslib_1.__importDefault(__webpack_require__(189));
+const events_2 = tslib_1.__importDefault(__webpack_require__(189));
 const manager_1 = tslib_1.__importDefault(__webpack_require__(233));
 const util_1 = __webpack_require__(217);
 const workspace_1 = tslib_1.__importDefault(__webpack_require__(234));
 const floatBuffer_1 = tslib_1.__importDefault(__webpack_require__(399));
+const object_1 = __webpack_require__(239);
 const logger = __webpack_require__(44)('model-float');
 // factory class for floating window
-class FloatFactory {
+class FloatFactory extends events_1.default {
     constructor(nvim, env, preferTop = false, maxHeight = 999, maxWidth, autoHide = true) {
+        super();
         this.nvim = nvim;
         this.env = env;
         this.preferTop = preferTop;
@@ -23622,7 +23627,7 @@ class FloatFactory {
         this.maxWidth = maxWidth;
         this.autoHide = autoHide;
         this.winid = 0;
-        this.bufnr = 0;
+        this._bufnr = 0;
         this.disposables = [];
         this.alignTop = false;
         this.pumAlignTop = false;
@@ -23630,26 +23635,34 @@ class FloatFactory {
             return;
         this.mutex = new mutex_1.Mutex();
         this.floatBuffer = new floatBuffer_1.default(nvim);
-        events_1.default.on('BufEnter', bufnr => {
-            if (bufnr == this.bufnr
+        events_2.default.on('BufEnter', bufnr => {
+            if (bufnr == this._bufnr
                 || bufnr == this.targetBufnr)
                 return;
             this.close();
         }, null, this.disposables);
-        events_1.default.on('MenuPopupChanged', async (ev, cursorline) => {
+        events_2.default.on('MenuPopupChanged', async (ev, cursorline) => {
             let pumAlignTop = this.pumAlignTop = cursorline > ev.row;
             if (pumAlignTop == this.alignTop) {
                 this.close();
             }
         }, null, this.disposables);
-        this.onCursorMoved = debounce_1.default(this._onCursorMoved.bind(this), 300);
-        events_1.default.on('CursorMoved', this.onCursorMoved, null, this.disposables);
-        events_1.default.on('CursorMovedI', this.onCursorMoved, null, this.disposables);
+        this.onCursorMoved = debounce_1.default(this._onCursorMoved.bind(this), 200);
+        events_2.default.on('CursorMoved', this.onCursorMoved, null, this.disposables);
+        events_2.default.on('CursorMovedI', this.onCursorMoved, null, this.disposables);
+        this.disposables.push(vscode_languageserver_protocol_1.Disposable.create(() => {
+            this.onCursorMoved.clear();
+            this.cancel();
+        }));
     }
-    _onCursorMoved() {
-        let { bufnr, insertMode } = workspace_1.default;
-        if (bufnr == this.bufnr)
+    _onCursorMoved(bufnr, cursor) {
+        let { insertMode } = workspace_1.default;
+        if (bufnr == this._bufnr)
             return;
+        if (bufnr == this.targetBufnr && object_1.equals(cursor, this.cursor)) {
+            // cursor not moved
+            return;
+        }
         if (this.autoHide) {
             this.close();
             return;
@@ -23659,14 +23672,10 @@ class FloatFactory {
             return;
         }
     }
-    get columns() {
-        return this.env.columns;
-    }
-    get lines() {
-        return this.env.lines - this.env.cmdheight - 1;
-    }
     getWindowConfig(docs, win_position, offsetX = 0) {
-        let { columns, preferTop, lines } = this;
+        let { columns } = this.env;
+        let lines = this.env.lines - this.env.cmdheight - 1;
+        let { preferTop } = this;
         let alignTop = false;
         let [row, col] = win_position;
         if ((preferTop && row >= 3) || (!preferTop && row >= lines - row - 1)) {
@@ -23716,19 +23725,22 @@ class FloatFactory {
         let arr = await this.nvim.call('coc#util#get_float_mode', [allowSelection, alignTop, pumAlignTop]);
         if (!arr || token.isCancellationRequested)
             return;
-        let [mode, targetBufnr, win_position] = arr;
+        let [mode, targetBufnr, win_position, cursor] = arr;
         this.targetBufnr = targetBufnr;
+        this.cursor = cursor;
         let config = this.getWindowConfig(docs, win_position, offsetX);
         // calculat highlights
         await floatBuffer.setDocuments(docs, config.width);
         if (token.isCancellationRequested)
             return;
+        if (mode == 's')
+            nvim.call('feedkeys', ['\x1b', "in"], true);
         // create window
-        let res = await this.nvim.call('coc#util#create_float_win', [this.winid, this.bufnr, config]);
+        let res = await this.nvim.call('coc#util#create_float_win', [this.winid, this._bufnr, config]);
         if (!res || token.isCancellationRequested)
             return;
         let winid = this.winid = res[0];
-        let bufnr = this.bufnr = res[1];
+        let bufnr = this._bufnr = res[1];
         let showBottom = alignTop && docs.length > 1;
         nvim.pauseNotification();
         if (workspace_1.default.isNvim) {
@@ -23743,6 +23755,7 @@ class FloatFactory {
             nvim.call('win_execute', [winid, `noa normal! ${showBottom ? 'G' : 'gg'}0`], true);
             nvim.command('redraw', true);
         }
+        this.emit('show', winid, bufnr);
         let [, err] = await nvim.resumeNotification();
         if (err)
             throw new Error(`Error on ${err[0]}: ${err[1]} - ${err[2]}`);
@@ -23759,10 +23772,11 @@ class FloatFactory {
         let { winid } = this;
         this.cancel();
         if (winid) {
+            // TODO: sometimes this won't work at all
             this.nvim.call('coc#util#close_win', [winid], true);
+            this.winid = 0;
             if (workspace_1.default.isVim)
                 this.nvim.command('redraw', true);
-            this.winid = 0;
         }
     }
     cancel() {
@@ -23773,10 +23787,22 @@ class FloatFactory {
         }
     }
     dispose() {
-        if (this.tokenSource) {
-            this.tokenSource.cancel();
-        }
+        this.removeAllListeners();
         util_1.disposeAll(this.disposables);
+    }
+    get bufnr() {
+        return this._bufnr;
+    }
+    get buffer() {
+        return this.bufnr ? this.nvim.createBuffer(this.bufnr) : null;
+    }
+    get window() {
+        return this.winid ? this.nvim.createWindow(this.winid) : null;
+    }
+    async activated() {
+        if (!this.winid)
+            return false;
+        return await this.nvim.call('coc#util#valid_float_win', [this.winid]);
     }
 }
 exports.default = FloatFactory;
@@ -25182,7 +25208,7 @@ class Workspace {
             filepath = filepath.replace(/\$[\w]+/g, match => {
                 if (match == '$HOME')
                     return os_1.default.homedir();
-                return process.env[match.replace('$', '')] || match;
+                return process.env[match.slice(1)] || match;
             });
         }
         return filepath;
@@ -41290,12 +41316,7 @@ class ExtensionManager {
         });
         fs_1.default.writeFileSync(jsonFile, JSON.stringify(sortedObj, null, 2), { encoding: 'utf8' });
         onMessage(`Moving to new folder.`);
-        if (typeof fs_1.default.rmdirSync === 'function') {
-            fs_1.default.rmdirSync(folder, { recursive: true });
-        }
-        else {
-            rimraf_1.default.sync(folder, { glob: false });
-        }
+        rimraf_1.default.sync(folder, { glob: false });
         await util_1.promisify(mv_1.default)(tmpFolder, folder, { mkdirp: true, clobber: true });
     }
     async install(npm, def) {
@@ -52969,8 +52990,10 @@ class Languages {
                 let startcol = this.getStartColumn(opt.line, completeItems);
                 let option = Object.assign({}, opt);
                 let prefix;
-                if (startcol != null && startcol < option.col) {
-                    prefix = string_1.byteSlice(opt.line, startcol, option.col);
+                if (startcol != null) {
+                    if (startcol < option.col) {
+                        prefix = string_1.byteSlice(opt.line, startcol, option.col);
+                    }
                     option.col = startcol;
                 }
                 let items = completeItems.map((o, index) => {
@@ -54179,7 +54202,7 @@ class RenameManager extends manager_1.default {
         let res = await Promise.resolve(provider.prepareRename(document, position, token));
         // can not rename
         if (res == null)
-            false;
+            return false;
         return res;
     }
     dispose() {
@@ -54341,7 +54364,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const vscode_languageserver_types_1 = __webpack_require__(202);
 const parser_1 = __webpack_require__(307);
 const string_1 = __webpack_require__(266);
-// const logger = require('./logger')('util-complete')
+const logger = __webpack_require__(44)('util-complete');
 function getPosition(opt) {
     let { line, linenr, colnr } = opt;
     let part = string_1.byteSlice(line, 0, colnr - 1);
@@ -54608,7 +54631,6 @@ class FloatBuffer {
             for (let line of lines) {
                 // lines excluded on neovim
                 if (doc.filetype == 'markdown'
-                    && workspace_1.default.isNvim
                     && /^\s*```/.test(line)) {
                     continue;
                 }
@@ -55517,7 +55539,8 @@ class ServiceManager extends events_1.EventEmitter {
                         onDidServiceReady.fire(void 0);
                         resolve();
                     }, e => {
-                        workspace_1.default.showMessage(`Server ${id} failed to start: ${e ? e.message : ''}`, 'error');
+                        workspace_1.default.showMessage(`Server ${id} failed to start: ${e}`, 'error');
+                        logger.error(`Server ${id} failed to start:`, e);
                         service.state = types_1.ServiceStat.StartFailed;
                         resolve();
                     });
@@ -55718,7 +55741,6 @@ const child_process_1 = tslib_1.__importDefault(__webpack_require__(218));
 const fs_1 = tslib_1.__importDefault(__webpack_require__(46));
 const path_1 = tslib_1.__importDefault(__webpack_require__(62));
 const vscode_languageserver_protocol_1 = __webpack_require__(190);
-const which_1 = tslib_1.__importDefault(__webpack_require__(223));
 const types_1 = __webpack_require__(238);
 const util_1 = __webpack_require__(217);
 const Is = tslib_1.__importStar(__webpack_require__(240));
@@ -55883,7 +55905,7 @@ class LanguageClient extends client_1.BaseLanguageClient {
         this._serverProcess = undefined;
         super.handleConnectionClosed();
     }
-    async createMessageTransports(encoding) {
+    createMessageTransports(encoding) {
         function getEnvironment(env) {
             if (!env)
                 return process.env;
@@ -55902,34 +55924,35 @@ class LanguageClient extends client_1.BaseLanguageClient {
         let server = this._serverOptions;
         // We got a function.
         if (Is.func(server)) {
-            let result = await Promise.resolve(server());
-            if (client_1.MessageTransports.is(result)) {
-                this._isDetached = !!result.detached;
-                return result;
-            }
-            else if (StreamInfo.is(result)) {
-                this._isDetached = !!result.detached;
-                return {
-                    reader: new vscode_languageserver_protocol_1.StreamMessageReader(result.reader),
-                    writer: new vscode_languageserver_protocol_1.StreamMessageWriter(result.writer)
-                };
-            }
-            else {
-                let cp;
-                if (ChildProcessInfo.is(result)) {
-                    cp = result.process;
-                    this._isDetached = result.detached;
+            return server().then(result => {
+                if (client_1.MessageTransports.is(result)) {
+                    this._isDetached = !!result.detached;
+                    return result;
+                }
+                else if (StreamInfo.is(result)) {
+                    this._isDetached = !!result.detached;
+                    return {
+                        reader: new vscode_languageserver_protocol_1.StreamMessageReader(result.reader),
+                        writer: new vscode_languageserver_protocol_1.StreamMessageWriter(result.writer)
+                    };
                 }
                 else {
-                    cp = result;
-                    this._isDetached = false;
+                    let cp;
+                    if (ChildProcessInfo.is(result)) {
+                        cp = result.process;
+                        this._isDetached = result.detached;
+                    }
+                    else {
+                        cp = result;
+                        this._isDetached = false;
+                    }
+                    cp.stderr.on('data', data => this.appendOutput(data, encoding));
+                    return {
+                        reader: new vscode_languageserver_protocol_1.StreamMessageReader(cp.stdout),
+                        writer: new vscode_languageserver_protocol_1.StreamMessageWriter(cp.stdin)
+                    };
                 }
-                cp.stderr.on('data', data => this.appendOutput(data, encoding));
-                return {
-                    reader: new vscode_languageserver_protocol_1.StreamMessageReader(cp.stdout),
-                    writer: new vscode_languageserver_protocol_1.StreamMessageWriter(cp.stdin)
-                };
-            }
+            });
         }
         let json = server;
         let runDebug = server;
@@ -55945,135 +55968,139 @@ class LanguageClient extends client_1.BaseLanguageClient {
         else {
             json = server;
         }
-        let serverWorkingDir = await this._getServerWorkingDir(json.options);
-        if (NodeModule.is(json) && json.module) {
-            let node = json;
-            let transport = node.transport || TransportKind.stdio;
-            let args = [];
-            let options = node.options || Object.create(null);
-            let runtime = node.runtime || process.execPath;
-            if (options.execArgv)
-                options.execArgv.forEach(element => args.push(element));
-            if (transport != TransportKind.ipc)
-                args.push(node.module);
-            if (node.args)
-                node.args.forEach(element => args.push(element));
-            let execOptions = Object.create(null);
-            execOptions.cwd = serverWorkingDir;
-            execOptions.env = getEnvironment(options.env);
-            let pipeName;
-            if (transport === TransportKind.ipc) {
-                execOptions.stdio = [null, null, null];
-                args.push('--node-ipc');
-            }
-            else if (transport === TransportKind.stdio) {
-                args.push('--stdio');
-            }
-            else if (transport === TransportKind.pipe) {
-                pipeName = vscode_languageserver_protocol_1.generateRandomPipeName();
-                args.push(`--pipe=${pipeName}`);
-            }
-            else if (Transport.isSocket(transport)) {
-                args.push(`--socket=${transport.port}`);
-            }
-            args.push(`--clientProcessId=${process.pid.toString()}`);
-            if (transport === TransportKind.ipc) {
-                let forkOptions = {
-                    cwd: serverWorkingDir,
-                    env: getEnvironment(options.env),
-                    stdio: [null, null, null, 'ipc'],
-                    execPath: runtime,
-                    execArgv: options.execArgv || [],
-                };
-                let serverProcess = child_process_1.default.fork(node.module, args, forkOptions);
-                if (!serverProcess || !serverProcess.pid) {
-                    throw new Error(`Launching server ${node.module} failed.`);
+        return this._getServerWorkingDir(json.options).then(serverWorkingDir => {
+            if (NodeModule.is(json) && json.module) {
+                let node = json;
+                let transport = node.transport || TransportKind.stdio;
+                let args = [];
+                let options = node.options || Object.create(null);
+                let runtime = node.runtime || process.execPath;
+                if (options.execArgv)
+                    options.execArgv.forEach(element => args.push(element));
+                if (transport != TransportKind.ipc)
+                    args.push(node.module);
+                if (node.args)
+                    node.args.forEach(element => args.push(element));
+                let execOptions = Object.create(null);
+                execOptions.cwd = serverWorkingDir;
+                execOptions.env = getEnvironment(options.env);
+                let pipeName;
+                if (transport === TransportKind.ipc) {
+                    execOptions.stdio = [null, null, null];
+                    args.push('--node-ipc');
                 }
-                logger.info(`${this.id} started with ${serverProcess.pid}`);
-                this._serverProcess = serverProcess;
-                serverProcess.stdout.on('data', data => this.appendOutput(data, encoding));
-                serverProcess.stderr.on('data', data => this.appendOutput(data, encoding));
-                return {
-                    reader: new vscode_languageserver_protocol_1.IPCMessageReader(serverProcess),
-                    writer: new vscode_languageserver_protocol_1.IPCMessageWriter(serverProcess)
-                };
-            }
-            else if (transport === TransportKind.stdio) {
-                let serverProcess = child_process_1.default.spawn(runtime, args, execOptions);
-                if (!serverProcess || !serverProcess.pid) {
-                    throw new Error(`Launching server ${node.module} failed.`);
+                else if (transport === TransportKind.stdio) {
+                    args.push('--stdio');
                 }
-                logger.info(`${this.id} started with ${serverProcess.pid}`);
-                this._serverProcess = serverProcess;
+                else if (transport === TransportKind.pipe) {
+                    pipeName = vscode_languageserver_protocol_1.generateRandomPipeName();
+                    args.push(`--pipe=${pipeName}`);
+                }
+                else if (Transport.isSocket(transport)) {
+                    args.push(`--socket=${transport.port}`);
+                }
+                args.push(`--clientProcessId=${process.pid.toString()}`);
+                if (transport === TransportKind.ipc) {
+                    let forkOptions = {
+                        cwd: serverWorkingDir,
+                        env: getEnvironment(options.env),
+                        stdio: [null, null, null, 'ipc'],
+                        execPath: runtime,
+                        execArgv: options.execArgv || [],
+                    };
+                    let serverProcess = child_process_1.default.fork(node.module, args, forkOptions);
+                    if (!serverProcess || !serverProcess.pid) {
+                        return Promise.reject(`Launching server module "${node.module}" failed.`);
+                    }
+                    serverProcess.on('error', e => {
+                        logger.error(e);
+                    });
+                    logger.info(`${this.id} started with ${serverProcess.pid}`);
+                    this._serverProcess = serverProcess;
+                    serverProcess.stdout.on('data', data => this.appendOutput(data, encoding));
+                    serverProcess.stderr.on('data', data => this.appendOutput(data, encoding));
+                    return {
+                        reader: new vscode_languageserver_protocol_1.IPCMessageReader(serverProcess),
+                        writer: new vscode_languageserver_protocol_1.IPCMessageWriter(serverProcess)
+                    };
+                }
+                else if (transport === TransportKind.stdio) {
+                    let serverProcess = child_process_1.default.spawn(runtime, args, execOptions);
+                    if (!serverProcess || !serverProcess.pid) {
+                        return Promise.reject(`Launching server module "${node.module}" failed.`);
+                    }
+                    logger.info(`${this.id} started with ${serverProcess.pid}`);
+                    this._serverProcess = serverProcess;
+                    serverProcess.stderr.on('data', data => this.appendOutput(data, encoding));
+                    return {
+                        reader: new vscode_languageserver_protocol_1.StreamMessageReader(serverProcess.stdout),
+                        writer: new vscode_languageserver_protocol_1.StreamMessageWriter(serverProcess.stdin)
+                    };
+                }
+                else if (transport == TransportKind.pipe) {
+                    return Promise.resolve(vscode_languageserver_protocol_1.createClientPipeTransport(pipeName)).then(transport => {
+                        let process = child_process_1.default.spawn(runtime, args, execOptions);
+                        if (!process || !process.pid) {
+                            return Promise.reject(`Launching server module "${node.module}" failed.`);
+                        }
+                        logger.info(`Language server ${this.id} started with ${process.pid}`);
+                        this._serverProcess = process;
+                        process.stderr.on('data', data => this.appendOutput(data, encoding));
+                        process.stdout.on('data', data => this.appendOutput(data, encoding));
+                        return Promise.resolve(transport.onConnected()).then(protocol => {
+                            return { reader: protocol[0], writer: protocol[1] };
+                        });
+                    });
+                }
+                else if (Transport.isSocket(node.transport)) {
+                    return Promise.resolve(vscode_languageserver_protocol_1.createClientSocketTransport(node.transport.port)).then(transport => {
+                        let process = child_process_1.default.spawn(runtime, args, execOptions);
+                        if (!process || !process.pid) {
+                            return Promise.reject(`Launching server ${node.module} failed.`);
+                        }
+                        process.on('exit', code => {
+                            if (code != 0)
+                                this.error(`command "${runtime} ${args.join(' ')}" exited with code: ${code}`);
+                        });
+                        logger.info(`Language server ${this.id} started with ${process.pid}`);
+                        this._serverProcess = process;
+                        process.stderr.on('data', data => this.appendOutput(data, encoding));
+                        process.stdout.on('data', data => this.appendOutput(data, encoding));
+                        return Promise.resolve(transport.onConnected()).then(protocol => {
+                            return { reader: protocol[0], writer: protocol[1] };
+                        });
+                    });
+                }
+            }
+            else if (Executable.is(json) && json.command) {
+                let command = json;
+                let args = command.args || [];
+                let options = Object.assign({}, command.options);
+                options.env = options.env ? Object.assign({}, options.env, process.env) : process.env;
+                options.cwd = serverWorkingDir;
+                let cmd = workspace_1.default.expand(json.command);
+                let serverProcess = child_process_1.default.spawn(cmd, args, options);
+                serverProcess.on('error', e => {
+                    logger.error(e);
+                });
+                if (!serverProcess || !serverProcess.pid) {
+                    return Promise.reject(`Launching server "${this.id}" using command ${command.command} failed.`);
+                }
+                logger.info(`Language server "${this.id}" started with ${serverProcess.pid}`);
+                serverProcess.on('exit', code => {
+                    if (code != 0)
+                        this.error(`${command.command} exited with code: ${code}`);
+                });
                 serverProcess.stderr.on('data', data => this.appendOutput(data, encoding));
+                this._serverProcess = serverProcess;
+                this._isDetached = !!options.detached;
                 return {
                     reader: new vscode_languageserver_protocol_1.StreamMessageReader(serverProcess.stdout),
                     writer: new vscode_languageserver_protocol_1.StreamMessageWriter(serverProcess.stdin)
                 };
             }
-            else if (transport == TransportKind.pipe) {
-                let transport = await Promise.resolve(vscode_languageserver_protocol_1.createClientPipeTransport(pipeName));
-                let process = child_process_1.default.spawn(runtime, args, execOptions);
-                if (!process || !process.pid) {
-                    throw new Error(`Launching server ${node.module} failed.`);
-                }
-                logger.info(`${this.id} started with ${process.pid}`);
-                this._serverProcess = process;
-                process.stderr.on('data', data => this.appendOutput(data, encoding));
-                process.stdout.on('data', data => this.appendOutput(data, encoding));
-                let protocol = await Promise.resolve(transport.onConnected());
-                return { reader: protocol[0], writer: protocol[1] };
-            }
-            else if (Transport.isSocket(node.transport)) {
-                let transport = await Promise.resolve(vscode_languageserver_protocol_1.createClientSocketTransport(node.transport.port));
-                let process = child_process_1.default.spawn(runtime, args, execOptions);
-                if (!process || !process.pid) {
-                    throw new Error(`Launching server ${node.module} failed.`);
-                }
-                logger.info(`${this.id} started with ${process.pid}`);
-                this._serverProcess = process;
-                process.stderr.on('data', data => this.appendOutput(data, encoding));
-                process.stdout.on('data', data => this.appendOutput(data, encoding));
-                let protocol = await Promise.resolve(transport.onConnected());
-                return { reader: protocol[0], writer: protocol[1] };
-            }
-        }
-        else if (Executable.is(json) && json.command) {
-            let command = json;
-            let args = command.args || [];
-            let options = Object.assign({}, command.options);
-            options.env = options.env ? Object.assign({}, options.env, process.env) : process.env;
-            options.cwd = options.cwd || serverWorkingDir;
-            let cmd = json.command;
-            cmd = workspace_1.default.expand(cmd);
-            if (path_1.default.isAbsolute(cmd) && !fs_1.default.existsSync(cmd)) {
-                logger.info(`${cmd} of ${this.id} not exists`);
-                return;
-            }
-            try {
-                which_1.default.sync(cmd);
-            }
-            catch (e) {
-                throw new Error(`Command "${cmd}" of ${this.id} is not executable: ${e}`);
-            }
-            let serverProcess = child_process_1.default.spawn(cmd, args, options);
-            if (!serverProcess || !serverProcess.pid) {
-                throw new Error(`Launching server using command ${command.command} failed.`);
-            }
-            logger.info(`${this.id} started with ${serverProcess.pid}`);
-            serverProcess.on('exit', code => {
-                if (code != 0)
-                    this.error(`${command.command} exited with code: ${code}`);
-            });
-            serverProcess.stderr.on('data', data => this.appendOutput(data, encoding));
-            this._serverProcess = serverProcess;
-            this._isDetached = !!options.detached;
-            return {
-                reader: new vscode_languageserver_protocol_1.StreamMessageReader(serverProcess.stdout),
-                writer: new vscode_languageserver_protocol_1.StreamMessageWriter(serverProcess.stdin)
-            };
-        }
-        throw new Error(`Unsupported server configuration ` + JSON.stringify(server, null, 4));
+            return Promise.reject(`Unsupported server configuration ${JSON.stringify(server, null, 2)}`);
+        });
     }
     registerProposedFeatures() {
         this.registerFeatures(ProposedFeatures.createAll(this));
@@ -56113,9 +56140,6 @@ class LanguageClient extends client_1.BaseLanguageClient {
         if (global.hasOwnProperty('__TEST__')) {
             console.log(msg); // tslint:disable-line
             return;
-        }
-        if (process.env.NVIM_COC_LOG_LEVEL == 'debug') {
-            logger.debug(`[${this.id}]`, msg);
         }
         this.outputChannel.append(msg.endsWith('\n') ? msg : msg + '\n');
     }
@@ -58284,7 +58308,7 @@ class BaseLanguageClient {
         }).then(undefined, error => {
             this.state = ClientState.StartFailed;
             this._onReadyCallbacks.reject(error);
-            this.error('Starting client failed: ', error);
+            this.error('Starting client failed ', error);
         });
         return vscode_languageserver_protocol_1.Disposable.create(() => {
             if (this.needsStop()) {
@@ -69480,10 +69504,13 @@ class DiagnosticBuffer {
         let buffer = this.nvim.createBuffer(bufnr);
         let srcId = this.config.virtualTextSrcId;
         let prefix = this.config.virtualTextPrefix;
-        let diagnostics = this.diagnostics.filter(d => {
-            let { start, end } = d.range;
-            return start.line <= lnum - 1 && end.line >= lnum - 1;
-        });
+        let diagnostics = this.diagnostics;
+        if (this.config.virtualTextCurrentLineOnly) {
+            diagnostics = this.diagnostics.filter(d => {
+                let { start, end } = d.range;
+                return start.line <= lnum - 1 && end.line >= lnum - 1;
+            });
+        }
         buffer.clearNamespace(srcId);
         for (let diagnostic of diagnostics) {
             let { line } = diagnostic.range.start;
@@ -70705,13 +70732,8 @@ class Handler {
             }
         }, 100), null, this.disposables);
         if (this.preferences.currentFunctionSymbolAutoUpdate) {
-            events_1.default.on('CursorHold', async () => {
-                try {
-                    await this.getCurrentFunctionSymbol();
-                }
-                catch (e) {
-                    logger.error(e);
-                }
+            events_1.default.on('CursorHold', () => {
+                this.getCurrentFunctionSymbol().logError();
             }, null, this.disposables);
         }
         let provider = {
