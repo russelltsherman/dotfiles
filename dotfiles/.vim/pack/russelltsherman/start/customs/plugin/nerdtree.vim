@@ -1,4 +1,7 @@
 
+" see here for further configuration options
+" https://github.com/preservim/nerdtree
+
 nmap <C-n> :NERDTreeToggle<CR>
 
 " open NERDTree automatically
