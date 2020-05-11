@@ -1,8 +1,8 @@
 if exists('g:did_coc_loaded') || v:version < 800
   finish
 endif
-if has('nvim') && !has('nvim-0.3.0') 
-  finish 
+if has('nvim') && !has('nvim-0.3.0')
+  finish
 endif
 let g:did_coc_loaded = 1
 let g:coc_service_initialized = 0
@@ -302,7 +302,7 @@ function! s:ShowInfo()
     if !filereadable(file)
       let file = s:root.'/build/index.js'
       if !filereadable(file)
-        call add(lines, 'Error: javascript bundle not found, run :call coc#util#install() to fix.')
+        call add(lines, 'Error: javascript bundle not found, please compile the code of coc.nvim.')
       endif
     endif
     if !empty(lines)
@@ -377,7 +377,13 @@ nnoremap <silent> <Plug>(coc-cursors-operator) :<C-u>set operatorfunc=<SID>Curso
 vnoremap <silent> <Plug>(coc-cursors-range)    :<C-u>call coc#rpc#request('cursorsSelect', [bufnr('%'), 'range', visualmode()])<CR>
 nnoremap <silent> <Plug>(coc-cursors-word)     :<C-u>call coc#rpc#request('cursorsSelect', [bufnr('%'), 'word', 'n'])<CR>
 nnoremap <silent> <Plug>(coc-cursors-position) :<C-u>call coc#rpc#request('cursorsSelect', [bufnr('%'), 'position', 'n'])<CR>
-vnoremap <silent> <Plug>(coc-funcobj-i)        :<C-U>call coc#rpc#request('selectFunction', [v:true, visualmode()])<CR>
-vnoremap <silent> <Plug>(coc-funcobj-a)        :<C-U>call coc#rpc#request('selectFunction', [v:false, visualmode()])<CR>
-onoremap <silent> <Plug>(coc-funcobj-i)        :<C-U>call coc#rpc#request('selectFunction', [v:true, ''])<CR>
-onoremap <silent> <Plug>(coc-funcobj-a)        :<C-U>call coc#rpc#request('selectFunction', [v:false, ''])<CR>
+
+vnoremap <silent> <Plug>(coc-funcobj-i)        :<C-U>call coc#rpc#request('selectSymbolRange', [v:true, visualmode(), ['Method', 'Function']])<CR>
+vnoremap <silent> <Plug>(coc-funcobj-a)        :<C-U>call coc#rpc#request('selectSymbolRange', [v:false, visualmode(), ['Method', 'Function']])<CR>
+onoremap <silent> <Plug>(coc-funcobj-i)        :<C-U>call coc#rpc#request('selectSymbolRange', [v:true, '', ['Method', 'Function']])<CR>
+onoremap <silent> <Plug>(coc-funcobj-a)        :<C-U>call coc#rpc#request('selectSymbolRange', [v:false, '', ['Method', 'Function']])<CR>
+
+vnoremap <silent> <Plug>(coc-classobj-i)       :<C-U>call coc#rpc#request('selectSymbolRange', [v:true, visualmode(), ['Interface', 'Struct', 'Class']])<CR>
+vnoremap <silent> <Plug>(coc-classobj-a)       :<C-U>call coc#rpc#request('selectSymbolRange', [v:false, visualmode(), ['Interface', 'Struct', 'Class']])<CR>
+onoremap <silent> <Plug>(coc-classobj-i)       :<C-U>call coc#rpc#request('selectSymbolRange', [v:true, '', ['Interface', 'Struct', 'Class']])<CR>
+onoremap <silent> <Plug>(coc-classobj-a)       :<C-U>call coc#rpc#request('selectSymbolRange', [v:false, '', ['Interface', 'Struct', 'Class']])<CR>
