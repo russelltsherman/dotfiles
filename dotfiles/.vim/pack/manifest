@@ -1,9 +1,5 @@
 " conquer of completion
 neoclide/coc.nvim:release
-" A tree explorer plugin for vim.
-scrooloose/nerdtree
-" A plugin of NERDTree showing git status
-scrooloose/nerdtree-git-plugin
 " Extra syntax and highlight for nerdtree files
 tiagofumo/vim-nerdtree-syntax-highlight
 " Adds file type icons to Vim plugins such as: NERDTree
