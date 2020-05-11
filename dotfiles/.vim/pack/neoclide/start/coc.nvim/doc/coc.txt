@@ -1,6 +1,6 @@
 *coc-nvim.txt*				LSP support for Vim & Neovim.
 
-Version: 0.0.57
+Version: 0.0.78
 Author: Qiming Zhao <chemzqm at gmail.com>
 License: MIT license
 
@@ -100,30 +100,35 @@ Or use Vim's built-in plugin ecosystem: >
 ==============================================================================
 CONFIGURATION						*coc-configuration*
 
-Most of coc.nvim configuration is stored within `coc-settings.json` file that can
-be opened using `:CocConfig`. This will open either the global configuration
-file (located at `$HOME/.vim/coc-settings.json` or
-`$HOME/.config/nvim/coc-settings.json` by default) or the local configuration
-file which is located under the project root: `$ROOT/.vim/coc-settings.json`
-(see `b:coc_root_patterns` for more information about project root). The
-location of global configuration can be modified using `g:coc_config_home`.
+Configurations of coc.nvim are stored in file names `coc-settings.json` that
+can be opened using |:CocConfig| for user configuration file or
+|:CocLocalConfig| for local configuration file.
+
+The location of global configuration can be configured by `g:coc_config_home`.
+
+Configure |b:coc_root_patterns| for project root resolve.
 
 To enable JSON completion and validation support of the settings file, install
-the `coc-json` extension: `:CocInstall coc-json`.
+the `coc-json` extension by command:
+
+	CocInstall coc-json
 
 Check out https://github.com/neoclide/coc.nvim/wiki/Using-the-configuration-file
 for more details.
 
 Built-in configurations:~
 
+							*coc-config-http*
 "http.proxy":~
 
 	HTTP proxy URI, used for extensions that send request, default: `""`
 
 "http.proxyStrictSSL":~
 
-	 default: `true`
+	 Controls whether the proxy server certificate should be verified
+	 against the list of supplied CAs, default: `true`
 
+							*coc-config-suggest*
 "suggest.enablePreselect":~
 
 	Enable preselect feature on Neovim, default: `true`
@@ -140,7 +145,7 @@ Built-in configurations:~
 
 	Add preview option to 'completeopt', default: `false`
 
-"suggest.floatEnable"~
+"suggest.floatEnable":~
 
 	Enable floating window for documentation when possible, default: `true`
 
@@ -160,6 +165,11 @@ Built-in configurations:~
 	How should completion be triggered, default: `"always"`
 
 	Valid options: ["always", "trigger", "none"]
+
+	- `always`: trigger suggest on word characters and trigger
+	  characters.
+	- `trigger`: trigger suggest on trigger characters only.
+	- `none`: no auto trigger at all.
 
 "suggest.languageSourcePriority":~
 
@@ -203,7 +213,7 @@ Built-in configurations:~
 
 "suggest.triggerAfterInsertEnter":~
 
-	Trigger completion after 'InsertEnter'. Requires "suggest.autoTrigger"
+	Trigger completion after |InsertEnter|. Requires "suggest.autoTrigger"
 	to be set, default: `false`
 
 "suggest.timeout":~
@@ -251,6 +261,29 @@ Built-in configurations:~
 
 	Max items count for source priority bigger than or equal to `90`.
 
+"suggest.disableMenuShortcut":~
+
+	Disable shortcut of completion source in menu., default: `false`
+
+"suggest.removeDuplicateItems":~
+
+	Remove completion items with duplicated word for all sources, snippet
+	items are excluded., default: `false`
+
+"suggest.defaultSortMethod":~
+
+	Default sorting behavior for suggested completion items., default:
+	`length`
+
+"suggest.invalidInsertCharacters":~
+
+	Invalid character for strip valid word when inserting text of complete
+	item., default: ` ,(,<,{,[, `
+
+"suggest.asciiCharactersOnly":~
+
+	Suggest ASCII characters only, default: `false`
+
 "suggest.completionItemKindLabels":~
 
 	Set custom labels to completion item kinds.,  default: `{}`.
@@ -285,16 +318,47 @@ Built-in configurations:~
 		"default": "\uf29c"
 	}
 <
-
+							*coc-config-diagnostic*
 "diagnostic.enable":~
 
 	Display diagnostics, default: `true`
+
+"diagnostic.enableSign":~
+
+	Enable signs for diagnostics,  default: `true`
+
+"diagnostic.enableMessage":~
+
+	When to enable show messages of diagnostics.
+
+	Valid options: ["always","jump","never"], always means including
+	cursor hold and after jump to another diagnostic.
+
+	default: `"always"`
+
+"diagnostic.enableHighlightLineNumber":~
+
+	Enable highlighting line numbers for diagnostics, only works with
+	neovim and `diagnostic.enableSign` is true.
+
+	default: `true`
 
 "diagnostic.level":~
 
 	Filter diagnostics by severity, default: `"hint"`
 
 	Valid options: ["hint", "information", "warning", "error"]
+
+"diagnostic.messageDelay":~
+
+	How long to wait (in milliseconds) before displaying the diagnostic
+	message with echo or float.
+	
+	Default: `200`
+
+"diagnostic.maxWindowWidth":~
+
+	Maximum width of diagnostics floating window., default: `80`
 
 "diagnostic.checkCurrentLine":~
 
@@ -307,18 +371,13 @@ Built-in configurations:~
 
 	Valid options: ["echo", "float"]
 
-"diagnostic.joinMessageLines":~
-
-	Join messages to reduce the number of lines shown in the floating window,
-	default: `false`
-
 "diagnostic.refreshOnInsertMode":~
 
 	Refresh diagnostics when in insert mode, default: `false`
 
 "diagnostic.refreshAfterSave":~
 
-	Refresh diagnostics after save, default: `false`
+	Refresh diagnostics after file save only, default: `false`
 
 "diagnostic.displayByAle":~
 
@@ -346,16 +405,6 @@ Built-in configurations:~
 
 	The text that will mark a line end from the diagnostic message,
 	default: `" \\ "`
-
-"diagnostic.enableSign":~
-
-	Enable signs for diagnostics,  default: `true`
-
-"diagnostic.enableMessage":~
-
-	When to enable echo messages of diagnostics.,  default: `"always"`
-
-	Valid options: ["always","jump","never"]
 
 "diagnostic.locationlist":~
 
@@ -389,10 +438,31 @@ Built-in configurations:~
 
 	Maximum height of diagnostics floating window, default: `8`
 
+"diagnostic.filetypeMap":~
+
+	A map between buffer filetype and the filetype assigned to diagnostics.
+	To syntax highlight diagnostics withs their parent buffer type use
+	'\"default\": \"bufferType\"', default: `{}`
+
+"diagnostic.format":~
+
+	Define the diagnostic format.
+	Available parts: source, code, severity, message
+
+	Default: `[%source%code] [%severity] %message`
+
+"diagnostic.separateRelatedInformationAsDiagnostics":~
+
+	Separate related information as diagnostics, default: `false`
+
 "signature.enable":~
 
 	Enable signature help when trigger character typed. Requires service restart
 	on change, default: `true`
+
+"signature.floatMaxWidth":~
+
+	Max width of signature float window., default: `60`
 
 "signature.triggerSignatureWait":~
 
@@ -419,6 +489,20 @@ Built-in configurations:~
 
 	Maximum height of floating window with the signature help, default: `8`
 
+							*coc-config-refactor*
+"refactor.openCommand":~
+
+	Open command for refactor window., default: `vsplit`
+
+"refactor.beforeContext":~
+
+	Print num lines of leading context before each match., default: `3`
+
+"refactor.afterContext":~
+
+	Print num lines of trailing context after each match., default: `3`
+
+							*coc-config-codelens*
 "codeLens.enable":~
 
 	Enable `codeLens` feature. Requires Neovim with virtual text feature,
@@ -433,6 +517,7 @@ Built-in configurations:~
 	Filetypes to ignore for workspace folder resolution,
 	default: `["markdown","log","txt","help"]`
 
+							*coc-config-list*
 "list.indicator":~
 
 	The character used as first character in prompt line,  default: `">"`
@@ -487,6 +572,25 @@ Built-in configurations:~
 
 	Custom key mappings in the insert mode, default: `{}`
 
+"list.interactiveDebounceTime":~
+
+	Debouce time for input change on interactive mode., default: `100`
+
+"list.previewSplitRight":~
+
+	Use vsplit for preview window., default: `false`
+
+"list.source.symbols.excludes":~
+
+	Patterns of mimimatch for filepath to execlude from symbols list.,
+	default: `[]`
+
+"list.source.outline.ctagsFilestypes":~
+
+	Filetypes that should use `ctags` for outline instead of language server,
+	default: `[]`
+
+							*coc-config-preferences*
 "coc.preferences.maxFileSize":~
 
 	Maximum file size in bytes that coc.nvim should handle, default: `'10MB'`
@@ -509,8 +613,10 @@ Built-in configurations:~
 
 "coc.preferences.snippetStatusText":~
 
-	Text shown in 'statusline' to indicate snippet session is activate,
-	default: `"SNIP"`
+	Text shown in 'statusline' to indicate snippet session is activate.
+	Check |coc-status| for statusline integration.
+
+	Default: `"SNIP"`
 
 "coc.preferences.hoverTarget":~
 
@@ -518,13 +624,13 @@ Built-in configurations:~
 
 	Valid options: ["preview", "echo", "float"]
 
+"coc.preferences.previewAutoClose":~
+
+	Auto close preview window of hover upon cursor move, default: `true`
+
 "coc.preferences.colorSupport":~
 
 	Enable color highlight if Language Server support it, default: `true`
-
-"coc.preferences.previewAutoClose":~
-
-	Auto close preview window upon cursor move, default: `true`
 
 "coc.preferences.currentFunctionSymbolAutoUpdate":~
 
@@ -568,15 +674,16 @@ Built-in configurations:~
 
 	Valid options: ["more", "warning", "error"]
 
-"coc.preferences.bracketEnterImprove":~
-
-	Improve handling of pressing enter inside brackets (`<> {} [] ()`) by
-	adding a new empty line below and moving the cursor to it. Works with
-	`coc#on_enter()`, default: `true`
-
 "coc.preferences.formatOnType":~
 
 	Set to true to enable format on type, default: `false`
+
+"coc.preferences.bracketEnterImprove":~
+
+	Improve handling of pressing enter inside brackets (`<> {} [] ()`) by
+	adding a new empty line below and moving the cursor to it.
+
+	Works with |coc#on_enter()|, default: `true`
 
 "coc.preferences.formatOnTypeFiletypes":~
 
@@ -588,16 +695,35 @@ Built-in configurations:~
 
 	Enables snippets support, default: `true`
 
-"list.source.outline.ctagsFilestypes":~
+"coc.preferences.listOfWorkspaceEdit":~
 
-	Filetypes that should use `ctags` for outline instead of language server,
-	default: `[]`
+	List should contains changed locations after workspace edit, default
+	to vim's quickfix, default: `quickfix`
 
+"coc.preferences.highlightTimeout":~
+
+	Highlight timeout for buffer in floating window., default: `500`
+
+						*coc-config-cursors*
+"cursors.cancelKey":~
+
+	Key used for cancel cursors session., default: `<esc>`
+
+"cursors.nextKey":~
+
+	Key used for jump to next cursors position. , default: `<C-n>`
+
+"cursors.previousKey":~
+
+	Key used for jump to previous cursors position., default: `<C-p>`
+
+						*coc-config-npm*
 "npm.binPath":~
 
 	Command or full path of npm or yarn executable for install/update
 	extensions, default: `npm`
 
+						*coc-config-languageserver*
 "languageserver":~
 
 	Dictionary of Language Servers, key is the ID corresponding server,
@@ -619,7 +745,7 @@ Tips:~
 - Snippet expand and additional edit feature of LSP requires confirm
   completion to work.
 
-- Floating window is available in Neovim >= 0.4.0.
+- Floating window is available on Neovim >= 0.4.0.
 
 ------------------------------------------------------------------------------
 
@@ -805,11 +931,42 @@ normal mode, `v_` works for visual mode.
 
 <Plug>(coc-funcobj-i)			*n_coc-funcobj-i* *v_coc-funcobj-i*
 
-			Select inside function, mapped to `if` by default.
+			Select inside function. Recommend mapping:
+			  xmap if <Plug>(coc-funcobj-i)
+			  omap if <Plug>(coc-funcobj-i)
+
+			Note: Requires 'textDocument.documentSymbol' support
+			from the language server.
 
 <Plug>(coc-funcobj-a)			*n_coc-funcobj-a* *v_coc-funcobj-a*
 
-			Select current function, mapped to `af` by default.
+			Select around function. Recommended mapping:
+			  xmap af <Plug>(coc-funcobj-a)
+			  omap af <Plug>(coc-funcobj-a)
+
+			Note: Requires 'textDocument.documentSymbol' support
+			from the language server.
+
+<Plug>(coc-classobj-i)			*n_coc-classobj-i* *v_coc-classobj-i*
+
+			Select inside class/struct/interface. Recommended
+			mapping:
+			  xmap ic <Plug>(coc-classobj-i)
+			  omap ic <Plug>(coc-classobj-i)
+
+			Note: Requires 'textDocument.documentSymbol' support
+			from the language server.
+
+
+<Plug>(coc-classobj-a)			*n_coc-classobj-a* *v_coc-classobj-a*
+
+			Select around class/struct/interface. Recommended
+			mapping:
+			  xmap ac <Plug>(coc-classobj-a)
+			  omap ac <Plug>(coc-classobj-a)
+
+			Note: Requires 'textDocument.documentSymbol' support
+			from the language server.
 
 ------------------------------------------------------------------------------
 VARIABLES					*coc-variables*
@@ -1260,16 +1417,6 @@ coc#util#get_config_home()
 coc#util#get_data_home()
 
 	Get `coc` data directory.
-
-						*coc#util#install()*
-coc#util#install([{config}])
-
-	Install compiled javascript code of coc.nvim.
-
-	{config} could contains:
-
-	- `terminal` use terminal when specified.
-	- `tag` use latest tag when specified.
 
 						*coc#util#extension_root()*
 
