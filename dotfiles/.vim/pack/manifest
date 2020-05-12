@@ -24,3 +24,5 @@ honza/vim-snippets
 ctrlpvim/ctrlp.vim
 " Vim plugin that shows keybindings in popup
 liuchengxu/vim-which-key
+" Personal Wiki for Vim
+vimwiki/vimwiki
