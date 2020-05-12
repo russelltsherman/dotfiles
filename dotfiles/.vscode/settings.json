@@ -1,15 +1,31 @@
 {
   "[c]": {
+    // disable formatOnSave for c
+    "editor.formatOnSave": false
+  },
+  "[javascript]": {
+    // disable formatOnSave for javascript
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    // disable formatOnSave for react
     "editor.formatOnSave": false
   },
   "editor.codeActionsOnSave": {
+    // allow eslint to run on save
     "source.fixAll": true
   },
   "editor.cursorBlinking": "phase",
+  // enable format on save for all
   "editor.formatOnSave": true,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "indent",
   "go.formatTool": "goimports",
+  "prettier.disableLanguages": [
+    // prettier for js will be run by eslint
+    "javascript",
+    "javascriptreact"
+  ],
   "terminal.ansiBlack": "#282828",
   "terminal.ansiBlue": "#83A598",
   "terminal.ansiBrightBlack": "#665C54",
