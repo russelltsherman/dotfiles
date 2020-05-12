@@ -10,8 +10,6 @@ mhinz/vim-signify
 junegunn/gv.vim
 " conquer of completion
 neoclide/coc.nvim:release
-" Extra syntax and highlight for nerdtree files
-tiagofumo/vim-nerdtree-syntax-highlight
 " Adds file type icons to Vim plugins such as: NERDTree
 ryanoasis/vim-devicons
 # shows git diff markers in the sign column
