@@ -18,3 +18,5 @@ scrooloose/nerdcommenter
 honza/vim-snippets
 " Fuzzy file, buffer, mru, tag, etc finder
 ctrlpvim/ctrlp.vim
+" Vim plugin that shows keybindings in popup
+liuchengxu/vim-which-key
