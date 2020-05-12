@@ -8,6 +8,9 @@
     "json",
     "javascriptreact"
   ],
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•",
   "eslint.filetypes": [
     "javascript",
     "typescript",
@@ -17,7 +20,10 @@
   "eslint.options": {
     "configFile": ".eslintrc.json"
   },
-  "diagnostic.errorSign": "•",
-  "diagnostic.warningSign": "•",
-  "diagnostic.infoSign": "•"
+  "explorer": {
+    "icon": {
+      "enableNerdfont": true,
+      "enableVimDevicons": true
+    }
+  }
 }
