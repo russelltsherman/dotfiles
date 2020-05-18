@@ -30,6 +30,10 @@ brew "coreutils"
 # https://direnv.net/
 brew "direnv"
 
+# A tool for developers to create cloud-native applications on Kubernetes.
+# https://github.com/Azure/draft
+brew "azure/draft/draft"
+
 # XML-based font configuration API for X Windows
 # https://wiki.freedesktop.org/www/Software/fontconfig/
 brew "fontconfig"
@@ -102,6 +106,14 @@ brew "jenv"
 # https://stedolan.github.io/jq/
 brew "jq"
 
+# Kubernetes command-line interface
+# https://kubernetes.io/
+brew "kubectl"
+
+# The Kubernetes package manager
+# https://helm.sh/
+brew "kubernetes-helm"
+
 # Sophisticated file transfer program
 # https://lftp.yar.ru/
 brew "lftp"
@@ -113,6 +125,10 @@ brew "make"
 # A simple command line interface for the Mac App Store.
 # https://github.com/mas-cli/mas
 brew "mas"
+
+# Run a Kubernetes cluster locally
+# https://minikube.sigs.k8s.io/
+brew "minikube"
 
 # Mongrel of mail user agents (part elm, pine, mush, mh, etc.)
 # http://www.mutt.org/
