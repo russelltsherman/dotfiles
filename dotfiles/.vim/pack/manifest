@@ -26,3 +26,5 @@ ctrlpvim/ctrlp.vim
 liuchengxu/vim-which-key
 " Personal Wiki for Vim
 vimwiki/vimwiki
+" Emoji in Vim.
+junegunn/vim-emoji
