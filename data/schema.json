@@ -608,7 +608,7 @@
     },
     "diagnostic.filetypeMap": {
       "type": "object",
-      "description": "A map between buffer filetype and the filetype assigned to diagnostics. To syntax highlight diagnostics withs their parent buffer type use '\"default\": \"bufferType\"'",
+      "description": "A map between buffer filetype and the filetype assigned to diagnostics. To syntax highlight diagnostics withs their parent buffer type use `\"default\": \"bufferType\"`",
       "default": {}
     },
     "diagnostic.format": {
@@ -667,6 +667,11 @@
       "type": "string",
       "description": "Separator text for codeLens in virtual text",
       "default": "‣"
+    },
+    "codeLens.subseparator": {
+      "type": "string",
+      "description": "Subseparator between codeLenses in virtual text",
+      "default": " "
     },
     "refactor.openCommand": {
       "type": "string",
