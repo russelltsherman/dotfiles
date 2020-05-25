@@ -29,3 +29,5 @@ export ZDOTDIR="${HOME}/.zsh"
 # load machine specific configuration
 #
 [ -f .zshenv.local ] && source .zshenv.local
+
+export AWS_VAULT_BACKEND=file
