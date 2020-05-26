@@ -28,7 +28,7 @@ Temporary Items
 .apdisk
 
 # ignore TODO files
-TODO*
+TODO.md
 
 # ignore vim cache files
 *~
