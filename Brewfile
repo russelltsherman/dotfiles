@@ -1,3 +1,7 @@
+# Command-line tools for working with Architecture Decision Records
+# https://github.com/npryce/adr-tools
+brew "adr-tools"
+
 # Code-search similar to ack
 # https://github.com/ggreer/the_silver_searcher
 brew "ag"
