@@ -310,6 +310,10 @@ cask "gimp"
 # https://www.google.com/chrome/
 cask "google-chrome"
 
+# Google Cloud Cli
+# https://cloud.google.com/sdk/
+cask "google-cloud-sdk"
+
 # One simple package with everything you need, to protect your emails and files.
 # https://gpgtools.org
 cask "gpg-suite"

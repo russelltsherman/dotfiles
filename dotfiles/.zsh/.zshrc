@@ -165,6 +165,7 @@ fi
 ##############################################################################
 . ~/.zsh/.zplugins
 . ~/.zsh/.zdocker
+. ~/.zsh/.zgoogle-cloud-sdk
 . ~/.zsh/.zfunctions
 . ~/.zsh/.zaliases
 
