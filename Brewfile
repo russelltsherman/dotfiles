@@ -22,6 +22,10 @@ brew "awscli"
 # https://bitwarden.com/
 brew "bitwarden-cli"
 
+# CloudFlare's PKI toolkit
+# https://cfssl.org/
+brew "cfssl"
+
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 # https://clang.llvm.org/docs/ClangFormat.html
 brew "clang-format"
