@@ -22,6 +22,10 @@ brew "awscli"
 # https://bitwarden.com/
 brew "bitwarden-cli"
 
+# Calico CLI tool
+# https://www.projectcalico.org
+brew "calicoctl"
+
 # CloudFlare's PKI toolkit
 # https://cfssl.org/
 brew "cfssl"
@@ -169,6 +173,10 @@ brew "openvpn"
 # gopass is a simple but powerful password manager for your terminal.
 # https://www.gopass.pw/
 brew "gopass"
+
+# Kubernetes CLI To Manage Your Clusters In Style!
+# https://k9scli.io/
+brew "derailed/k9s/k9s"
 
 # Tools for one-time password authentication systems
 # https://www.nongnu.org/oath-toolkit/
