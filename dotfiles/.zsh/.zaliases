@@ -50,9 +50,6 @@ then
 	alias pbpaste='xclip -selection clipboard -o'
 fi
 
-alias pip="pip3"
-alias python="python3"
-
 alias reload="exec \${SHELL} -l" # Reload the shell (i.e. invoke as a login shell)
 
 alias sha265sum='shasum -a 256 ' # Print or Check SHA Checksums
@@ -64,7 +61,6 @@ alias sudo='sudo ' # Enable aliases to be sudo’ed
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade --greedy; brew cleanup; mas upgrade; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
-
 
 alias week='date +%V' # Get week number
 

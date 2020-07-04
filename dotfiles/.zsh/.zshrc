@@ -11,7 +11,7 @@
 # add core utils to path https://www.gnu.org/software/coreutils
 ##############################################################################
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-# set path before compinin tries to use stat to be sure we use gnu stat
+# set path before compinit tries to use stat to be sure we use gnu stat
 
 ##############################################################################
 # add findutils to path https://www.gnu.org/software/findutils
@@ -113,9 +113,9 @@ setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arit
 ##############################################################################
 # direnv and pyenv shell hooks
 ##############################################################################
-command -v direnv > /dev/null && eval "$(direnv hook "$SHELL")"
-command -v pyenv > /dev/null && eval "$(pyenv init -)"
-command -v pyenv > /dev/null && eval "$(pyenv virtualenv-init -)"
+[[ $commands[direnv] ]] && eval "$(direnv hook ${SHELL})"
+[[ $commands[pyenv] ]] && eval "$(pyenv init -)"
+[[ $commands[pyenv] ]] && eval "$(pyenv virtualenv-init -)"
 
 ##############################################################################
 # iTerm2 may be integrated with the unix shell so that it can keep track of your command history,
@@ -140,15 +140,15 @@ nvm() {
   command -v npm >/dev/null 2>&1 || (nvm install node)
 }
 
-# add yarn to path
-if command -v yarn > /dev/null
+# if yarn is installed add yarn to path
+if [[ $commands[yarn] ]]
 then
   PATH="${PATH}:$(yarn global bin)"
   export PATH
 fi
 
-# initialize GO
-if command -v go> /dev/null
+# if go is installed initialize GO
+if [[ $commands[go] ]]
 then
   GOPATH="$HOME"
   PATH="${PATH}:${GOPATH}/bin"
@@ -165,14 +165,15 @@ fi
 ##############################################################################
 . ~/.zsh/.zplugins
 . ~/.zsh/.zdocker
+. ~/.zsh/.zkubernetes
 . ~/.zsh/.zfunctions
 . ~/.zsh/.zaliases
 
 # neofetch is cool.. but it adds ~500ms load time to launching a new terminal
-# neofetch
+# [[ $commands[neofetch] ]] && neofetch
 
 # pfetch isnt as cool as neofetch.. but has no significant impact on load time
-pfetch
+[[ $commands[pfetch] ]] && pfetch
 
 #
 # load machine specific configuration
