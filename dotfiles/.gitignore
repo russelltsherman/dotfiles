@@ -27,10 +27,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# ignore TODO files
-TODO*
-
 # ignore vim cache files
 *~
 *.swp
 *.swo
+
+# ignore TODO files
+TODO*
