@@ -48,5 +48,8 @@
   "terminalCursor.background": "#D5C4A1",
   "terminalCursor.foreground": "#D5C4A1",
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Gruvbox Dark (Medium)"
+  "workbench.colorTheme": "Gruvbox Dark (Medium)",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
 }

@@ -10,6 +10,7 @@ https://blog.alexellis.io/rss/ "Alex Ellis" blog
 https://danielmiessler.com/feed/ "Daniel Miessler" blog
 http://lukesmith.xyz/rss.xml "Luke Smith" blog
 https://blog.jessfraz.com/index.xml "Jessie Frazelle" blog
+https://dave.cheney.net/feed/atom "Dave Cheny" blog
 
 # (Other)
 https://newsboat.org/news.atom
@@ -31,6 +32,7 @@ https://www.reddit.com/r/vim_magic.rss reddit
 # (Twitter)
 http://twitrss.me/twitter_user_to_rss/?user=alexellisuk
 http://twitrss.me/twitter_user_to_rss/?user=jessfraz
+http://twitrss.me/twitter_user_to_rss/?user=davecheney
 
 # (Youtube)
 https://www.youtube.com/feeds/videos.xml?channel_id=UCJsK5Zbq0dyFZUBtMTHzxjQ "Alex Ellis" youtube

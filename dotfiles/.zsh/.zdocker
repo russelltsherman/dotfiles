@@ -1,5 +1,6 @@
 #!/bin/bash
-# Bash wrappers for docker run commands
+
+#Bash wrappers for docker run commands
 
 export DOCKER_REPO_PREFIX=jess
 
@@ -88,7 +89,7 @@ apt_file(){
 		${DOCKER_REPO_PREFIX}/apt-file
 }
 alias apt-file="apt_file"
-audacity(){
+daudacity(){
 	del_stopped audacity
 
 	docker run -d \
@@ -101,20 +102,23 @@ audacity(){
 		--name audacity \
 		${DOCKER_REPO_PREFIX}/audacity
 }
-aws(){
+
+daws(){
 	docker run -it --rm \
 		-v "${HOME}/.aws:/root/.aws" \
 		--log-driver none \
 		--name aws \
 		${DOCKER_REPO_PREFIX}/awscli "$@"
 }
-az(){
+
+daz(){
 	docker run -it --rm \
 		-v "${HOME}/.azure:/root/.azure" \
 		--log-driver none \
 		${DOCKER_REPO_PREFIX}/azure-cli "$@"
 }
-bees(){
+
+dbees(){
 	docker run -it --rm \
 		-e NOTARY_TOKEN \
 		-v "${HOME}/.bees:/root/.bees" \
@@ -124,7 +128,8 @@ bees(){
 		--name bees \
 		${DOCKER_REPO_PREFIX}/beeswithmachineguns "$@"
 }
-cadvisor(){
+
+dcadvisor(){
 	docker run -d \
 		--restart always \
 		-v /:/rootfs:ro \
@@ -138,7 +143,8 @@ cadvisor(){
 	hostess add cadvisor "$(docker inspect --format '{{.NetworkSettings.Networks.bridge.IPAddress}}' cadvisor)"
 	browser-exec "http://cadvisor:8080"
 }
-cheese(){
+
+dcheese(){
 	del_stopped cheese
 
 	docker run -d \
@@ -152,7 +158,8 @@ cheese(){
 		--name cheese \
 		${DOCKER_REPO_PREFIX}/cheese
 }
-chrome(){
+
+dchrome(){
 	# add flags for proxy if passed
 	local proxy=
 	local map
@@ -194,7 +201,8 @@ chrome(){
 		--host-resolver-rules="$map" "$args"
 
 }
-consul(){
+
+dconsul(){
 	del_stopped consul
 
 	# check if we passed args and if consul is running
@@ -225,7 +233,8 @@ consul(){
 	hostess add consul "$(docker inspect --format '{{.NetworkSettings.Networks.bridge.IPAddress}}' consul)"
 	browser-exec "http://consul:8500"
 }
-cura(){
+
+dcura(){
 	del_stopped cura
 
 	docker run -d \
@@ -242,6 +251,7 @@ cura(){
 		--name cura \
 		${DOCKER_REPO_PREFIX}/cura
 }
+
 dcos(){
 	docker run -it --rm \
 		-v "${HOME}/.dcos:/root/.dcos" \
@@ -249,7 +259,8 @@ dcos(){
 		-w /root/apps \
 		${DOCKER_REPO_PREFIX}/dcos-cli "$@"
 }
-figma() {
+
+dfigma() {
 	del_stopped figma
 
 	docker run --rm -it \
@@ -259,7 +270,8 @@ figma() {
 		--name figma \
 		${DOCKER_REPO_PREFIX}/figma-wine bash
 }
-firefox(){
+
+dfirefox(){
 	del_stopped firefox
 
 	docker run -d \
@@ -284,13 +296,15 @@ firefox(){
 	# exit current shell
 	exit 0
 }
-fleetctl(){
+
+dfleetctl(){
 	docker run --rm -it \
 		--entrypoint fleetctl \
 		-v "${HOME}/.fleet://.fleet" \
 		r.j3ss.co/fleet "$@"
 }
-gcalcli(){
+
+dgcalcli(){
 	docker run --rm -it \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v "${HOME}/.gcalcli/home:/home/gcalcli/home" \
@@ -299,6 +313,7 @@ gcalcli(){
 		--name gcalcli \
 		${DOCKER_REPO_PREFIX}/gcalcli "$@"
 }
+
 dgcloud(){
 	docker run --rm -it \
 		-v "${HOME}/.gcloud:/root/.config/gcloud" \
@@ -308,7 +323,8 @@ dgcloud(){
 		--name gcloud \
 		${DOCKER_REPO_PREFIX}/gcloud "$@"
 }
-gimp(){
+
+dgimp(){
 	del_stopped gimp
 
 	docker run -d \
@@ -322,7 +338,8 @@ gimp(){
 		--name gimp \
 		${DOCKER_REPO_PREFIX}/gimp
 }
-gitsome(){
+
+dgitsome(){
 	docker run --rm -it \
 		-v /etc/localtime:/etc/localtime:ro \
 		--name gitsome \
@@ -331,32 +348,37 @@ gitsome(){
 		-v "${HOME}/.gitsomeconfigurl:/home/anon/.gitsomeconfigurl" \
 		${DOCKER_REPO_PREFIX}/gitsome
 }
-hollywood(){
+
+dhollywood(){
 	docker run --rm -it \
 		--name hollywood \
 		${DOCKER_REPO_PREFIX}/hollywood
 }
-htop(){
+
+dhtop(){
 	docker run --rm -it \
 		--pid host \
 		--net none \
 		--name htop \
 		${DOCKER_REPO_PREFIX}/htop
 }
-htpasswd(){
+
+dhtpasswd(){
 	docker run --rm -it \
 		--net none \
 		--name htpasswd \
 		--log-driver none \
 		${DOCKER_REPO_PREFIX}/htpasswd "$@"
 }
-http(){
+
+dhttp(){
 	docker run -t --rm \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		--log-driver none \
 		${DOCKER_REPO_PREFIX}/httpie "$@"
 }
-imagemin(){
+
+dimagemin(){
 	local image=$1
 	local extension="${image##*.}"
 	local filename="${image%.*}"
@@ -366,7 +388,8 @@ imagemin(){
 		-v "${HOME}/Pictures:/root/Pictures" \
 		${DOCKER_REPO_PREFIX}/imagemin sh -c "imagemin /root/Pictures/${image} > /root/Pictures/${filename}_min.${extension}"
 }
-irssi() {
+
+dirssi() {
 	del_stopped irssi
 	# relies_on notify_osd
 
@@ -383,7 +406,8 @@ irssi() {
 		--name irssi \
 		${DOCKER_REPO_PREFIX}/irssi
 }
-john(){
+
+djohn(){
 	local file
 	file=$(realpath "$1")
 
@@ -391,7 +415,8 @@ john(){
 		-v "${file}:/root/$(basename "${file}")" \
 		${DOCKER_REPO_PREFIX}/john "$@"
 }
-kernel_builder(){
+
+dkernel_builder(){
 	docker run --rm -it \
 		-v /usr/src:/usr/src \
 		-v /lib/modules:/lib/modules \
@@ -399,7 +424,8 @@ kernel_builder(){
 		--name kernel-builder \
 		${DOCKER_REPO_PREFIX}/kernel-builder
 }
-keypassxc(){
+
+dkeypassxc(){
 	del_stopped keypassxc
 
 	docker run -d \
@@ -411,7 +437,8 @@ keypassxc(){
 		--name keypassxc \
 		${DOCKER_REPO_PREFIX}/keepassxc
 }
-kicad(){
+
+dkicad(){
 	del_stopped kicad
 
 	docker run -d \
@@ -428,7 +455,8 @@ kicad(){
 		--name kicad \
 		${DOCKER_REPO_PREFIX}/kicad
 }
-kvm(){
+
+dkvm(){
 	del_stopped kvm
 	relies_on pulseaudio
 
@@ -451,7 +479,8 @@ kvm(){
 		--privileged \
 		${DOCKER_REPO_PREFIX}/kvm
 }
-libreoffice(){
+
+dlibreoffice(){
 	del_stopped libreoffice
 
 	docker run -d \
@@ -464,18 +493,21 @@ libreoffice(){
 		--name libreoffice \
 		${DOCKER_REPO_PREFIX}/libreoffice
 }
-lpass(){
+
+dlpass(){
 	docker run --rm -it \
 		-v "${HOME}/.lpass:/root/.lpass" \
 		--name lpass \
 		${DOCKER_REPO_PREFIX}/lpass "$@"
 }
-lynx(){
+
+dlynx(){
 	docker run --rm -it \
 		--name lynx \
 		${DOCKER_REPO_PREFIX}/lynx "$@"
 }
-masscan(){
+
+dmasscan(){
 	docker run -it --rm \
 		--log-driver none \
 		--net host \
@@ -483,7 +515,8 @@ masscan(){
 		--name masscan \
 		${DOCKER_REPO_PREFIX}/masscan "$@"
 }
-mc(){
+
+dmc(){
 	cwd="$(pwd)"
 	name="$(basename "$cwd")"
 
@@ -493,7 +526,8 @@ mc(){
 		--workdir "/home/mc/${name}" \
 		${DOCKER_REPO_PREFIX}/mc "$@"
 }
-mpd(){
+
+dmpd(){
 	del_stopped mpd
 
 	# adding cap sys_admin so I can use nfs mount
@@ -509,37 +543,39 @@ mpd(){
 		--name mpd \
 		${DOCKER_REPO_PREFIX}/mpd
 }
-# mutt(){
-# 	# subshell so we dont overwrite variables
-# 	(
-# 	local account=$1
-# 	export IMAP_SERVER
-# 	export SMTP_SERVER
 
-# 	if [[ "$account" == "riseup" ]]; then
-# 		export GMAIL=$MAIL_RISEUP
-# 		export GMAIL_NAME=$MAIL_RISEUP_NAME
-# 		export GMAIL_PASS=$MAIL_RISEUP_PASS
-# 		export GMAIL_FROM=$MAIL_RISEUP_FROM
-# 		IMAP_SERVER=mail.riseup.net
-# 		SMTP_SERVER=$IMAP_SERVER
-# 	fi
+dmutt(){
+	# subshell so we dont overwrite variables
+	(
+	local account=$1
+	export IMAP_SERVER
+	export SMTP_SERVER
 
-# 	docker run -it --rm \
-# 		-e GMAIL \
-# 		-e GMAIL_NAME \
-# 		-e GMAIL_PASS \
-# 		-e GMAIL_FROM \
-# 		-e GPG_ID \
-# 		-e IMAP_SERVER \
-# 		-e SMTP_SERVER \
-# 		-v "${HOME}/.gnupg:/home/user/.gnupg:ro" \
-# 		-v /etc/localtime:/etc/localtime:ro \
-# 		--name "mutt-${account}" \
-# 		${DOCKER_REPO_PREFIX}/mutt
-# 	)
-# }
-ncmpc(){
+	if [[ "$account" == "riseup" ]]; then
+		export GMAIL=$MAIL_RISEUP
+		export GMAIL_NAME=$MAIL_RISEUP_NAME
+		export GMAIL_PASS=$MAIL_RISEUP_PASS
+		export GMAIL_FROM=$MAIL_RISEUP_FROM
+		IMAP_SERVER=mail.riseup.net
+		SMTP_SERVER=$IMAP_SERVER
+	fi
+
+	docker run -it --rm \
+		-e GMAIL \
+		-e GMAIL_NAME \
+		-e GMAIL_PASS \
+		-e GMAIL_FROM \
+		-e GPG_ID \
+		-e IMAP_SERVER \
+		-e SMTP_SERVER \
+		-v "${HOME}/.gnupg:/home/user/.gnupg:ro" \
+		-v /etc/localtime:/etc/localtime:ro \
+		--name "mutt-${account}" \
+		${DOCKER_REPO_PREFIX}/mutt
+	)
+}
+
+dncmpc(){
 	del_stopped ncmpc
 
 	docker run --rm -it \
@@ -548,7 +584,8 @@ ncmpc(){
 		--name ncmpc \
 		${DOCKER_REPO_PREFIX}/ncmpc "$@"
 }
-neoman(){
+
+dneoman(){
 	del_stopped neoman
 
 	docker run -d \
@@ -560,7 +597,8 @@ neoman(){
 		--name neoman \
 		${DOCKER_REPO_PREFIX}/neoman
 }
-nes(){
+
+dnes(){
 	del_stopped nes
 	local game=$1
 
@@ -572,12 +610,14 @@ nes(){
 		--name nes \
 		${DOCKER_REPO_PREFIX}/nes "/games/${game}.rom"
 }
-netcat(){
+
+dnetcat(){
 	docker run --rm -it \
 		--net host \
 		${DOCKER_REPO_PREFIX}/netcat "$@"
 }
-nginx(){
+
+dnginx(){
 	del_stopped nginx
 
 	docker run -d \
@@ -590,12 +630,15 @@ nginx(){
 	# add domain to hosts & open nginx
 	sudo hostess add jess 127.0.0.1
 }
-nmap(){
+
+dnmap(){
 	docker run --rm -it \
 		--net host \
 		${DOCKER_REPO_PREFIX}/nmap "$@"
 }
-notify_osd(){
+
+
+dnotify_osd(){
 	del_stopped notify_osd
 
 	docker run -d \
@@ -609,13 +652,15 @@ notify_osd(){
 		--name notify_osd \
 		${DOCKER_REPO_PREFIX}/notify-osd
 }
-alias notify-send=notify_send
-notify_send(){
+
+alias notify-send=dnotify_send
+dnotify_send(){
 	relies_on notify_osd
 	local args=${*:2}
 	docker exec -i notify_osd notify-send "$1" "${args}"
 }
-now(){
+
+dnow(){
 	docker run -it --rm \
 		-v "${HOME}/.now:/root/.now" \
 		-v "$(pwd):/usr/src/repo:ro" \
@@ -623,7 +668,8 @@ now(){
 		--log-driver none \
 		${DOCKER_REPO_PREFIX}/now "$@"
 }
-openscad(){
+
+dopenscad(){
 	del_stopped openscad
 
 	docker run -d \
@@ -639,7 +685,8 @@ openscad(){
 		--name openscad \
 		${DOCKER_REPO_PREFIX}/openscad
 }
-opensnitch(){
+
+dopensnitch(){
 	del_stopped opensnitchd
 	del_stopped opensnitch
 
@@ -681,7 +728,8 @@ opensnitch(){
 		--name opensnitch \
 		${DOCKER_REPO_PREFIX}/opensnitch
 }
-osquery(){
+
+dosquery(){
 	rmctr osquery
 
 	docker run -d --restart always \
@@ -714,7 +762,8 @@ osquery(){
 		--logger_tls_endpoint=/api/v1/osquery/log \
 		--logger_tls_period=10
 }
-pandoc(){
+
+dpandoc(){
 	local file=${*: -1}
 	local lfile
 	lfile=$(readlink -m "$(pwd)/${file}")
@@ -728,7 +777,8 @@ pandoc(){
 		--name pandoc \
 		${DOCKER_REPO_PREFIX}/pandoc "${args}" "${rfile}"
 }
-pivman(){
+
+dpivman(){
 	del_stopped pivman
 
 	docker run -d \
@@ -740,7 +790,8 @@ pivman(){
 		--name pivman \
 		${DOCKER_REPO_PREFIX}/pivman
 }
-pms(){
+
+dpms(){
 	del_stopped pms
 
 	docker run --rm -it \
@@ -749,7 +800,8 @@ pms(){
 		--name pms \
 		${DOCKER_REPO_PREFIX}/pms "$@"
 }
-pond(){
+
+dpond(){
 	del_stopped pond
 	relies_on torproxy
 
@@ -758,7 +810,8 @@ pond(){
 		--name pond \
 		${DOCKER_REPO_PREFIX}/pond
 }
-privoxy(){
+
+dprivoxy(){
 	del_stopped privoxy
 	relies_on torproxy
 
@@ -772,7 +825,8 @@ privoxy(){
 
 	hostess add privoxy "$(docker inspect --format '{{.NetworkSettings.Networks.bridge.IPAddress}}' privoxy)"
 }
-pulseaudio(){
+
+dpulseaudio(){
 	del_stopped pulseaudio
 
 	docker run -d \
@@ -784,7 +838,8 @@ pulseaudio(){
 		--name pulseaudio \
 		${DOCKER_REPO_PREFIX}/pulseaudio
 }
-rainbowstream(){
+
+drainbowstream(){
 	docker run -it --rm \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v "${HOME}/.rainbow_oauth:/root/.rainbow_oauth" \
@@ -792,7 +847,8 @@ rainbowstream(){
 		--name rainbowstream \
 		${DOCKER_REPO_PREFIX}/rainbowstream
 }
-registrator(){
+
+dregistrator(){
 	del_stopped registrator
 
 	docker run -d --restart always \
@@ -801,7 +857,8 @@ registrator(){
 		--name registrator \
 		gliderlabs/registrator consul:
 }
-remmina(){
+
+dremmina(){
 	del_stopped remmina
 
 	docker run -d \
@@ -815,7 +872,8 @@ remmina(){
 		--net host \
 		${DOCKER_REPO_PREFIX}/remmina
 }
-ricochet(){
+
+dricochet(){
 	del_stopped ricochet
 
 	docker run -d \
@@ -829,7 +887,8 @@ ricochet(){
 		--name ricochet \
 		${DOCKER_REPO_PREFIX}/ricochet
 }
-rstudio(){
+
+drstudio(){
 	del_stopped rstudio
 
 	docker run -d \
@@ -843,7 +902,8 @@ rstudio(){
 		--name rstudio \
 		${DOCKER_REPO_PREFIX}/rstudio
 }
-s3cmdocker(){
+
+ds3cmdocker(){
 	del_stopped s3cmd
 
 	docker run --rm -it \
@@ -853,7 +913,8 @@ s3cmdocker(){
 		--name s3cmd \
 		${DOCKER_REPO_PREFIX}/s3cmd "$@"
 }
-scudcloud(){
+
+dscudcloud(){
 	del_stopped scudcloud
 
 	docker run -d \
@@ -880,7 +941,8 @@ scudcloud(){
 	# exit current shell
 	exit 0
 }
-shorewall(){
+
+dshorewall(){
 	del_stopped shorewall
 
 	docker run --rm -it \
@@ -890,7 +952,8 @@ shorewall(){
 		--name shorewall \
 		${DOCKER_REPO_PREFIX}/shorewall "$@"
 }
-skype(){
+
+dskype(){
 	del_stopped skype
 	relies_on pulseaudio
 
@@ -906,8 +969,10 @@ skype(){
 		--group-add audio \
 		--name skype \
 		${DOCKER_REPO_PREFIX}/skype
+
 }
-slack(){
+
+dslack(){
 	del_stopped slack
 
 	docker run -d \
@@ -924,7 +989,8 @@ slack(){
 		--name slack \
 		${DOCKER_REPO_PREFIX}/slack "$@"
 }
-spotify(){
+
+dspotify(){
 	del_stopped spotify
 
 	docker run -d \
@@ -940,7 +1006,8 @@ spotify(){
 		--name spotify \
 		${DOCKER_REPO_PREFIX}/spotify
 }
-ssh2john(){
+
+dssh2john(){
 	local file
 	file=$(realpath "$1")
 
@@ -949,7 +1016,8 @@ ssh2john(){
 		--entrypoint ssh2john \
 		${DOCKER_REPO_PREFIX}/john "$@"
 }
-sshb0t(){
+
+dsshb0t(){
 	del_stopped sshb0t
 
 	if [[ ! -d "${HOME}/.ssh" ]]; then
@@ -968,7 +1036,8 @@ sshb0t(){
 		r.j3ss.co/sshb0t \
 		--user "${GITHUB_USER}" --keyfile /root/.ssh/authorized_keys --once
 }
-steam(){
+
+dsteam(){
 	del_stopped steam
 	relies_on pulseaudio
 
@@ -984,26 +1053,31 @@ steam(){
 		--device /dev/dri \
 		--name steam \
 		${DOCKER_REPO_PREFIX}/steam
+
 }
-t(){
+
+dt(){
 	docker run -t --rm \
 		-v "${HOME}/.trc:/root/.trc" \
 		--log-driver none \
 		${DOCKER_REPO_PREFIX}/t "$@"
 }
-tarsnap(){
+
+dtarsnap(){
 	docker run --rm -it \
 		-v "${HOME}/.tarsnaprc:/root/.tarsnaprc" \
 		-v "${HOME}/.tarsnap:/root/.tarsnap" \
 		-v "$HOME:/root/workdir" \
 		${DOCKER_REPO_PREFIX}/tarsnap "$@"
 }
-telnet(){
+
+dtelnet(){
 	docker run -it --rm \
 		--log-driver none \
 		${DOCKER_REPO_PREFIX}/telnet "$@"
 }
-termboy(){
+
+dtermboy(){
 	del_stopped termboy
 	local game=$1
 
@@ -1012,7 +1086,8 @@ termboy(){
 		--name termboy \
 		${DOCKER_REPO_PREFIX}/nes "/games/${game}.rom"
 }
-terraform(){
+
+dterraform(){
 	docker run -it --rm \
 		-v "${HOME}:${HOME}:ro" \
 		-v "$(pwd):/usr/src/repo" \
@@ -1023,7 +1098,8 @@ terraform(){
 		-e SSH_AUTH_SOCK \
 		${DOCKER_REPO_PREFIX}/terraform "$@"
 }
-tor(){
+
+dtor(){
 	del_stopped tor
 
 	docker run -d \
@@ -1037,7 +1113,8 @@ tor(){
 	# validate we are running through tor
 	browser-exec "https://check.torproject.org/"
 }
-torbrowser(){
+
+dtorbrowser(){
 	del_stopped torbrowser
 
 	docker run -d \
@@ -1053,7 +1130,8 @@ torbrowser(){
 	# exit current shell
 	exit 0
 }
-tormessenger(){
+
+dtormessenger(){
 	del_stopped tormessenger
 
 	docker run -d \
@@ -1069,7 +1147,8 @@ tormessenger(){
 	# exit current shell
 	exit 0
 }
-torproxy(){
+
+dtorproxy(){
 	del_stopped torproxy
 
 	docker run -d \
@@ -1081,12 +1160,14 @@ torproxy(){
 
 	hostess add torproxy "$(docker inspect --format '{{.NetworkSettings.Networks.bridge.IPAddress}}' torproxy)"
 }
-traceroute(){
+
+dtraceroute(){
 	docker run --rm -it \
 		--net host \
 		${DOCKER_REPO_PREFIX}/traceroute "$@"
 }
-transmission(){
+
+dtransmission(){
 	del_stopped transmission
 
 	docker run -d \
@@ -1103,7 +1184,8 @@ transmission(){
 	hostess add transmission "$(docker inspect --format '{{.NetworkSettings.Networks.bridge.IPAddress}}' transmission)"
 	browser-exec "http://transmission:9091"
 }
-travis(){
+
+dtravis(){
 	docker run -it --rm \
 		-v "${HOME}/.travis:/root/.travis" \
 		-v "$(pwd):/usr/src/repo:ro" \
@@ -1111,7 +1193,8 @@ travis(){
 		--log-driver none \
 		${DOCKER_REPO_PREFIX}/travis "$@"
 }
-virsh(){
+
+dvirsh(){
 	relies_on kvm
 
 	docker run -it --rm \
@@ -1121,7 +1204,8 @@ virsh(){
 		--net container:kvm \
 		${DOCKER_REPO_PREFIX}/libvirt-client "$@"
 }
-virtualbox(){
+
+dvirtualbox(){
 	del_stopped virtualbox
 
 	docker run -d \
@@ -1132,7 +1216,8 @@ virtualbox(){
 		--name virtualbox \
 		${DOCKER_REPO_PREFIX}/virtualbox
 }
-virt_viewer(){
+
+dvirt_viewer(){
 	relies_on kvm
 
 	docker run -it --rm \
@@ -1146,8 +1231,9 @@ virt_viewer(){
 		--net container:kvm \
 		${DOCKER_REPO_PREFIX}/virt-viewer "$@"
 }
-alias virt-viewer="virt_viewer"
-visualstudio(){
+
+alias virt-viewer="dvirt_viewer"
+dvisualstudio(){
 	del_stopped visualstudio
 
 	docker run -d \
@@ -1158,8 +1244,9 @@ visualstudio(){
 		--name visualstudio \
 		${DOCKER_REPO_PREFIX}/vscode
 }
-alias vscode="visualstudio"
-vlc(){
+
+alias vscode="dvisualstudio"
+dvlc(){
 	del_stopped vlc
 	relies_on pulseaudio
 
@@ -1179,7 +1266,8 @@ vlc(){
 		--name vlc \
 		${DOCKER_REPO_PREFIX}/vlc
 }
-watchman(){
+
+dwatchman(){
 	del_stopped watchman
 
 	docker run -d \
@@ -1188,7 +1276,8 @@ watchman(){
 		--name watchman \
 		${DOCKER_REPO_PREFIX}/watchman --foreground
 }
-weematrix(){
+
+dweematrix(){
 	del_stopped weematrix
 
 	docker run --rm -it \
@@ -1204,7 +1293,8 @@ weematrix(){
 		--name weematrix \
 		${DOCKER_REPO_PREFIX}/weechat-matrix
 }
-weeslack(){
+
+dweeslack(){
 	del_stopped weeslack
 
 	docker run --rm -it \
@@ -1219,7 +1309,8 @@ weeslack(){
 		--name weeslack \
 		${DOCKER_REPO_PREFIX}/wee-slack
 }
-wg(){
+
+dwg(){
 	docker run -i --rm \
 		--log-driver none \
 		-v /tmp:/tmp \
@@ -1228,7 +1319,8 @@ wg(){
 		--name wg \
 		${DOCKER_REPO_PREFIX}/wg "$@"
 }
-wireshark(){
+
+dwireshark(){
 	del_stopped wireshark
 
 	docker run -d \
@@ -1241,13 +1333,15 @@ wireshark(){
 		--name wireshark \
 		${DOCKER_REPO_PREFIX}/wireshark
 }
-wrk(){
+
+dwrk(){
 	docker run -it --rm \
 		--log-driver none \
 		--name wrk \
 		${DOCKER_REPO_PREFIX}/wrk "$@"
 }
-ykman(){
+
+dykman(){
 	del_stopped ykpersonalize
 
 	docker run --rm -it \
@@ -1257,7 +1351,8 @@ ykman(){
 		--name ykman \
 		${DOCKER_REPO_PREFIX}/ykman bash
 }
-ykpersonalize(){
+
+dykpersonalize(){
 	del_stopped ykpersonalize
 
 	docker run --rm -it \
@@ -1267,7 +1362,9 @@ ykpersonalize(){
 		--name ykpersonalize \
 		${DOCKER_REPO_PREFIX}/ykpersonalize bash
 }
-yubico_piv_tool(){
+
+alias yubico-piv-tool="dyubico_piv_tool"
+dyubico_piv_tool(){
 	del_stopped yubico-piv-tool
 
 	docker run --rm -it \
@@ -1277,4 +1374,4 @@ yubico_piv_tool(){
 		--name yubico-piv-tool \
 		${DOCKER_REPO_PREFIX}/yubico-piv-tool bash
 }
-alias yubico-piv-tool="yubico_piv_tool"
+

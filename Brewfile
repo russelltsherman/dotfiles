@@ -1,3 +1,7 @@
+# Command-line tools for working with Architecture Decision Records
+# https://github.com/npryce/adr-tools
+brew "adr-tools"
+
 # Code-search similar to ack
 # https://github.com/ggreer/the_silver_searcher
 brew "ag"
@@ -17,6 +21,14 @@ brew "awscli"
 # open source secrets management
 # https://bitwarden.com/
 brew "bitwarden-cli"
+
+# Calico CLI tool
+# https://www.projectcalico.org
+brew "calicoctl"
+
+# CloudFlare's PKI toolkit
+# https://cfssl.org/
+brew "cfssl"
 
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 # https://clang.llvm.org/docs/ClangFormat.html
@@ -162,6 +174,10 @@ brew "openvpn"
 # https://www.gopass.pw/
 brew "gopass"
 
+# Kubernetes CLI To Manage Your Clusters In Style!
+# https://k9scli.io/
+brew "derailed/k9s/k9s"
+
 # Tools for one-time password authentication systems
 # https://www.nongnu.org/oath-toolkit/
 brew "oath-toolkit"
@@ -305,6 +321,10 @@ cask "gimp"
 # Google Chrome web Browser
 # https://www.google.com/chrome/
 cask "google-chrome"
+
+# Google Cloud Cli
+# https://cloud.google.com/sdk/
+cask "google-cloud-sdk"
 
 # One simple package with everything you need, to protect your emails and files.
 # https://gpgtools.org
