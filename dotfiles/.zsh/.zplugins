@@ -14,6 +14,10 @@ antibody bundle russelltsherman/base16-shell
 # https://github.com/russelltsherman/zsh-256color
 antibody bundle russelltsherman/zsh-256color
 
+# remind yourself of defined aliases
+# https://github.com/russelltsherman/zsh-alias-tips
+antibody bundle russelltsherman/zsh-alias-tips
+
 # your terminal should be able to perform tasks asynchronously without external tools!
 # https://github.com/russelltsherman/zsh-async
 antibody bundle russelltsherman/zsh-async
