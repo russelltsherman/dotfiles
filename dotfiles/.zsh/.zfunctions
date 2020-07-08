@@ -5,31 +5,6 @@
 # Z Shell Functions Configuration
 ##############################################################################
 
-# TODO --
-# if no profile argument is provided iterate over all profiles and output codes
-mfa() {
-	profile="${1}"
-	file="${XDG_CONFIG_HOME}/mfa/${profile}.mfa"
-
-  if [ -f "$file" ]
-  then
-		code="$(oathtool --base32 --totp "$(cat "$file")")"
-    echo "$code" # output the code to screen
-    echo "$code" | pbcopy # push code into system clipboard
-	elif [ -z "$profile" ]
-  then
-		echo "No MFA profile defined" >&2
-	else
-		echo "No MFA profile for $profile" >&2
-	fi
-}
-
-# create a file and make it executable
-mkexec() {
-  file="${1}"
-  touch "$file" && chmod +x "$file"
-}
-
 # From http://dotfiles.org/~_why/.zshrc
 # Sets the window title nicely no matter where you are
 title() {

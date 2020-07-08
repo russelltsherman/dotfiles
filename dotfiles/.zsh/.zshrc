@@ -111,13 +111,6 @@ setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arit
 # PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 ##############################################################################
-# direnv and pyenv shell hooks
-##############################################################################
-[[ $commands[direnv] ]] && eval "$(direnv hook ${SHELL})"
-[[ $commands[pyenv] ]] && eval "$(pyenv init -)"
-[[ $commands[pyenv] ]] && eval "$(pyenv virtualenv-init -)"
-
-##############################################################################
 # iTerm2 may be integrated with the unix shell so that it can keep track of your command history,
 # current working directory, host name, and more--even over ssh.
 # load iterm2 shell integration if present
@@ -125,50 +118,10 @@ setopt PROMPT_SUBST # Enable parameter expansion, command substitution, and arit
 . "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
 
 ##############################################################################
-# do not initialize nvm untill it's called
-##############################################################################
-export NODE_VERSIONS=$HOME/.nvm/versions/node
-export NVM_DIR="$HOME/.nvm"
-[ ! -d "$NVM_DIR" ] && mkdir "$NVM_DIR" # ensure .nvm dir exists
-nvm() {
-  if [ -s "/usr/local/opt/nvm/nvm.sh" ]
-  then
-    . "/usr/local/opt/nvm/nvm.sh" # load nvm
-    nvm "$@" # reissue original command
-  fi
-  # if npm not found we will install lastest node using node version manager
-  command -v npm >/dev/null 2>&1 || (nvm install node)
-}
-
-# if yarn is installed add yarn to path
-if [[ $commands[yarn] ]]
-then
-  PATH="${PATH}:$(yarn global bin)"
-  export PATH
-fi
-
-# if go is installed initialize GO
-if [[ $commands[go] ]]
-then
-  GOPATH="$HOME"
-  PATH="${PATH}:${GOPATH}/bin"
-  GOROOT="$(go env GOROOT)"
-  alias gotour="\${GOPATH}/bin/gotour"
-  export GOPATH
-  export PATH
-  export GOROOT
-  export GO111MODULE=on
-fi
-
-##############################################################################
 # plugins, functions, aliases
 ##############################################################################
 . ~/.zsh/.zplugins
-. ~/.zsh/.zdocker
-. ~/.zsh/.zkubernetes
-. ~/.zsh/.zgoogle-cloud-sdk
 . ~/.zsh/.zfunctions
-. ~/.zsh/.zaliases
 
 # neofetch is cool.. but it adds ~500ms load time to launching a new terminal
 # [[ $commands[neofetch] ]] && neofetch

@@ -36,6 +36,10 @@ antibody bundle russelltsherman/zsh-aws-vault
 # https://github.com/russelltsherman/zsh-bd
 antibody bundle russelltsherman/zsh-bd
 
+# shell hooks and aliases for direnv
+# https://github.com/russelltsherman/zsh-direnv
+antibody bundle russelltsherman/zsh-direnv
+
 # custom docker aliases and functions packaged as zsh plugin
 # https://github.com/russelltsherman/zsh-docker
 antibody bundle russelltsherman/zsh-docker
@@ -43,6 +47,26 @@ antibody bundle russelltsherman/zsh-docker
 # extract function supporting multiple archive formats
 # https://github.com/russelltsherman/zsh-extract
 antibody bundle russelltsherman/zsh-extract
+
+# custom git aliases and functions packaged as zsh plugin
+# https://github.com/russelltsherman/zsh-git
+antibody bundle russelltsherman/zsh-git
+
+# shell hooks and aliases for golang
+# https://github.com/russelltsherman/zsh-golang
+antibody bundle russelltsherman/zsh-golang
+
+# shell hooks and aliases for google
+# https://github.com/russelltsherman/zsh-google
+antibody bundle russelltsherman/zsh-google
+
+# alias and functions for kubectl
+# https://github.com/russelltsherman/zsh-kubectl
+antibody bundle russelltsherman/zsh-kubectl # kind:path
+
+# shell hooks and aliases for nvm
+# https://github.com/russelltsherman/zsh-nvm
+antibody bundle russelltsherman/zsh-nvm
 
 # easily see what's happening with your ports
 # https://github.com/russelltsherman/zsh-ports
@@ -60,6 +84,10 @@ antibody bundle russelltsherman/zsh-spaceship-prompt
 # https://github.com/russelltsherman/zsh-wakatime
 antibody bundle russelltsherman/zsh-wakatime
 
+# shell hooks and aliases for yarn
+# https://github.com/russelltsherman/zsh-yarn
+antibody bundle russelltsherman/zsh-yarn
+
 # Fish-like autosuggestions for zsh
 # https://github.com/zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-autosuggestions
@@ -76,7 +104,6 @@ antibody bundle zsh-users/zsh-history-substring-search
 # https://github.com/zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-syntax-highlighting
 
-# antibody bundle russelltsherman/zsh-git # kind:path
 # antibody bundle russelltsherman/zsh-github # kind:path
 # antibody bundle russelltsherman/zsh-git-add-remote # kind:path
 # antibody bundle russelltsherman/zsh-git-fetch-merge # kind:path

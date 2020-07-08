@@ -1,8 +1,0 @@
-#!/usr/bin/env sh
-# shellcheck disable=SC1090
-
-# source shell autocompletion for installed commands
-[[ $commands[helm] ]] && source <(helm completion zsh)
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
-[[ $commands[minikube] ]] && source <(minikube completion zsh)
-
