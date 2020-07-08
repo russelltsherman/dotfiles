@@ -30,6 +30,9 @@ antibody bundle russelltsherman/zsh-aws-vault
 # https://github.com/russelltsherman/zsh-bd
 antibody bundle russelltsherman/zsh-bd
 
+# https://github.com/russelltsherman/zsh-clipboard
+antibody bundle russelltsherman/zsh-clipboard
+
 # shell hooks and aliases for direnv
 # https://github.com/russelltsherman/zsh-direnv
 antibody bundle russelltsherman/zsh-direnv
