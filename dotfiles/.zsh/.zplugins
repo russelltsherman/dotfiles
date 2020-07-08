@@ -1,16 +1,10 @@
 #!/usr/bin/env sh
 # shellcheck disable=SC1090
 
-##############################################################################
-# Z Shell Plugins Configuration
-##############################################################################
+# customize shell function with plugins
 
 # https://github.com/unixorn/awesome-zsh-plugins#antibody
 eval "$(antibody init)"
-
-#
-# baseline zsh plugins
-#
 
 # An architecture for building color themes http://chriskempson.com/projects/base16
 # https://github.com/russelltsherman/base16-shell
@@ -19,10 +13,6 @@ antibody bundle russelltsherman/base16-shell
 # plugin enhances the terminal environment with 256 colors
 # https://github.com/russelltsherman/zsh-256color
 antibody bundle russelltsherman/zsh-256color
-
-# custom aliases packaged as zsh plugin
-# https://github.com/russelltsherman/zsh-aliases
-antibody bundle russelltsherman/zsh-aliases
 
 # your terminal should be able to perform tasks asynchronously without external tools!
 # https://github.com/russelltsherman/zsh-async
@@ -44,6 +34,10 @@ antibody bundle russelltsherman/zsh-direnv
 # https://github.com/russelltsherman/zsh-docker
 antibody bundle russelltsherman/zsh-docker
 
+# cd command with interactive filter
+# https://github.com/russelltsherman/zsh-enhancd
+antibody bundle russelltsherman/zsh-enhancd
+
 # extract function supporting multiple archive formats
 # https://github.com/russelltsherman/zsh-extract
 antibody bundle russelltsherman/zsh-extract
@@ -56,13 +50,13 @@ antibody bundle russelltsherman/zsh-git
 # https://github.com/russelltsherman/zsh-golang
 antibody bundle russelltsherman/zsh-golang
 
-# shell hooks and aliases for google
-# https://github.com/russelltsherman/zsh-google
-antibody bundle russelltsherman/zsh-google
+# shell hooks and aliases for gcloud
+# https://github.com/russelltsherman/zsh-gcloud
+antibody bundle russelltsherman/zsh-gcloud
 
 # alias and functions for kubectl
 # https://github.com/russelltsherman/zsh-kubectl
-antibody bundle russelltsherman/zsh-kubectl # kind:path
+antibody bundle russelltsherman/zsh-kubectl
 
 # shell hooks and aliases for nvm
 # https://github.com/russelltsherman/zsh-nvm
@@ -70,7 +64,11 @@ antibody bundle russelltsherman/zsh-nvm
 
 # easily see what's happening with your ports
 # https://github.com/russelltsherman/zsh-ports
-antibody bundle russelltsherman/zsh-ports # kind:path
+antibody bundle russelltsherman/zsh-ports kind:path
+
+# zsh shell customizations
+# https://github.com/russelltsherman/zsh-shell
+antibody bundle russelltsherman/zsh-shell
 
 # add color to man pages
 # https://github.com/russelltsherman/zsh-solarized-man
@@ -79,6 +77,14 @@ antibody bundle russelltsherman/zsh-solarized-man
 # Zsh prompt for Astronauts.
 # https://github.com/russelltsherman/zsh-spaceship-prompt
 antibody bundle russelltsherman/zsh-spaceship-prompt
+
+# zsh shell customizations
+# https://github.com/russelltsherman/zsh-time
+antibody bundle russelltsherman/zsh-time
+
+# zsh shell customizations
+# https://github.com/russelltsherman/tmux-xpanes
+antibody bundle russelltsherman/tmux-xpanes
 
 # ZSH plugin for wakatime tracking tool
 # https://github.com/russelltsherman/zsh-wakatime

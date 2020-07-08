@@ -10,17 +10,17 @@
 # Z Shell Startup File
 #
 
-##############################################################################
-# add core utils to path https://www.gnu.org/software/coreutils
-##############################################################################
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-# set path before compinit tries to use stat to be sure we use gnu stat
+# ##############################################################################
+# # add core utils to path https://www.gnu.org/software/coreutils
+# ##############################################################################
+# export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+# # set path before compinit tries to use stat to be sure we use gnu stat
 
-##############################################################################
-# add findutils to path https://www.gnu.org/software/findutils
-##############################################################################
-export PATH="/usr/local/opt/findutils/libexec/gnubin:${PATH}"
-export MANPATH="/usr/local/opt/findutils/libexec/gnuman:${MANPATH}"
+# ##############################################################################
+# # add findutils to path https://www.gnu.org/software/findutils
+# ##############################################################################
+# export PATH="/usr/local/opt/findutils/libexec/gnubin:${PATH}"
+# export MANPATH="/usr/local/opt/findutils/libexec/gnuman:${MANPATH}"
 
 # `.zshrc' is sourced in interactive shells.
 # It should contain commands to set up aliases, functions, options, key bindings, etc.
@@ -42,16 +42,17 @@ setopt COMPLETE_IN_WORD # Allow completion from within a word/phrase
 setopt ALWAYS_TO_END # When completing from the middle of a word, move the cursor to the end of the word
 setopt GLOB_DOTS # Do not require a leading ‘.’ in a filename to be matched explicitly.
 
-autoload -Uz compaudit compinit
+# autoload -Uz compaudit compinit
+autoload -U +X compinit && compinit
 
-daynum="$(date +'%j')"
-filedaynum="$(date +'%j' -d "$(stat -c '%w' "$ZDOTDIR/.zcompdump" | cut -d' ' -f1)")"
-if [ "$daynum" != "$filedaynum" ]
-then
-  compinit
-else
-  compinit -C
-fi
+# daynum="$(date +'%j')"
+# filedaynum="$(date +'%j' -d "$(stat -c '%w' "$ZDOTDIR/.zcompdump" | cut -d' ' -f1)")"
+# if [ "$daynum" != "$filedaynum" ]
+# then
+#   compinit
+# else
+#   compinit -C
+# fi
 
 zstyle ':completion:*' menu select
 zmodload zsh/complist
