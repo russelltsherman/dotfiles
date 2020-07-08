@@ -1,7 +1,10 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # shellcheck disable=SC1090
 # shellcheck disable=SC1091
+# shellcheck disable=SC1087
 # shellcheck disable=SC2034
+# shellcheck disable=SC2154
+# shellcheck disable=SC2203
 
 #
 # Z Shell Startup File
