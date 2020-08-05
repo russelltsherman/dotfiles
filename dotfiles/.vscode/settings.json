@@ -51,5 +51,8 @@
   "workbench.colorTheme": "Gruvbox Dark (Medium)",
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "yaml.schemas": {
+    "kubernetes": "*.yaml"
   }
 }

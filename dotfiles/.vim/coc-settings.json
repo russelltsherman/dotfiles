@@ -6,7 +6,8 @@
     "typescript",
     "typescriptreact",
     "json",
-    "javascriptreact"
+    "javascriptreact",
+    "yaml"
   ],
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
@@ -25,5 +26,8 @@
       "enableNerdfont": true,
       "enableVimDevicons": true
     }
+  },
+  "yaml.schemas": {
+    "kubernetes": "/*.yaml"
   }
 }
