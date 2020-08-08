@@ -46,18 +46,6 @@ update: refresh-build-harness
 	make bootstrap
 .PHONY: update
 
-## load Visual Studio Code extensions from manifest file
-vscode:
-	@while IFS= read -r LINE; do code --install-extension "$$LINE"; done < ./dotfiles/.vscode/.extensions-manifest
-	@mkdir -p ~/Library/Application\ Support/Code/User/
-	@ln -sv ~/.vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-.PHONY: vscode
-
-## write Visual Studio Code extensions to manifest file
-vscode/backup:
-	code --list-extensions > ./dotfiles/.vscode/.extensions-manifest
-.PHONY: vscode/backup
-
 /etc/hosts:
 	sudo wget -O /etc/hosts https://someonewhocares.org/hosts/hosts
 

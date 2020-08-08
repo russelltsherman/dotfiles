@@ -440,10 +440,6 @@ cask "virtualbox"
 # https://www.virtualbox.org/
 cask "virtualbox-extension-pack"
 
-# Code editing. Redefined.
-# https://code.visualstudio.com
-cask "visual-studio-code"
-
 # VLC is a free and open source cross-platform multimedia player and framework
 # https://www.videolan.org/vlc
 cask "vlc"
