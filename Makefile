@@ -46,6 +46,18 @@ update: refresh-build-harness
 	make bootstrap
 .PHONY: update
 
+vim:
+	curl https://raw.githubusercontent.com/russelltsherman/vim/master/bin/bootstrap | bash
+.PHONY: vim
+
+vscode:
+	curl https://raw.githubusercontent.com/russelltsherman/vscode/master/bin/bootstrap | bash
+.PHONY: vscode
+
+zsh:
+	curl https://raw.githubusercontent.com/russelltsherman/zsh/master/bin/bootstrap | bash
+.PHONY: zsh
+
 /etc/hosts:
 	sudo wget -O /etc/hosts https://someonewhocares.org/hosts/hosts
 
