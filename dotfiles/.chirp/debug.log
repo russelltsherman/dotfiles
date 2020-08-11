@@ -1,0 +1,464 @@
+[2020-05-26 17:28:09,614] chirp.logger - DEBUG: CHIRP daily-20200521 on Darwin RS-MacBook-2.localdomain 19.4.0 Darwin Kernel Version 19.4.0: Wed Mar  4 22:28:40 PST 2020; root:xnu-6153.101.6~15/RELEASE_X86_64 x86_64 (Python 2.7.16)
+[2020-05-26 17:28:09,658] chirp.directory - INFO: Registered Alinco_DR03T = DR03Radio
+[2020-05-26 17:28:09,658] chirp.directory - INFO: Registered Alinco_DR06T = DR06Radio
+[2020-05-26 17:28:09,658] chirp.directory - INFO: Registered Alinco_DR135T = DR135Radio
+[2020-05-26 17:28:09,658] chirp.directory - INFO: Registered Alinco_DR235T = DR235Radio
+[2020-05-26 17:28:09,658] chirp.directory - INFO: Registered Alinco_DR435T = DR435Radio
+[2020-05-26 17:28:09,658] chirp.directory - INFO: Registered Alinco_DJ596 = DJ596Radio
+[2020-05-26 17:28:09,658] chirp.directory - INFO: Registered Jetstream_JT220M = JT220MRadio
+[2020-05-26 17:28:09,658] chirp.directory - INFO: Registered Alinco_DJ175 = DJ175Radio
+[2020-05-26 17:28:09,658] chirp.directory - INFO: Registered Alinco_DJ-G7EG = AlincoDJG7EG
+[2020-05-26 17:28:09,661] chirp.directory - INFO: Registered AnyTone_5888UV = AnyTone5888UVRadio
+[2020-05-26 17:28:09,661] chirp.directory - INFO: Registered Intek_HR-2040 = IntekHR2040Radio
+[2020-05-26 17:28:09,661] chirp.directory - INFO: Registered Polmar_DB-50M = PolmarDB50MRadio
+[2020-05-26 17:28:09,661] chirp.directory - INFO: Registered Powerwerx_DB-750X = PowerwerxDB750XRadio
+[2020-05-26 17:28:09,681] chirp.directory - INFO: Registered AnyTone_778UV = AnyTone778UV
+[2020-05-26 17:28:09,685] chirp.directory - INFO: Registered AnyTone_TERMN-8R = AnyToneTERMN8RRadio
+[2020-05-26 17:28:09,685] chirp.directory - INFO: Registered AnyTone_OBLTR-8R = AnyToneOBLTR8RRadio
+[2020-05-26 17:28:09,696] chirp.directory - INFO: Registered Baofeng_UV-3R = UV3RRadio
+[2020-05-26 17:28:09,699] chirp.directory - INFO: Registered Baofeng_BF-A58 = BFA58
+[2020-05-26 17:28:09,699] chirp.directory - INFO: Registered Baofeng_UV-82WP = UV82WP
+[2020-05-26 17:28:09,700] chirp.directory - INFO: Registered Baofeng_GT-3WP = GT3WP
+[2020-05-26 17:28:09,700] chirp.directory - INFO: Registered Retevis_RT6 = RT6
+[2020-05-26 17:28:09,700] chirp.directory - INFO: Registered Baofeng_BF-A58S = BFA58S
+[2020-05-26 17:28:09,700] chirp.directory - INFO: Registered Baofeng_UV-9R = UV9R
+[2020-05-26 17:28:09,703] chirp.directory - INFO: Registered Baofeng_BF-T1 = BFT1
+[2020-05-26 17:28:09,705] chirp.directory - INFO: Registered Baojie_BJ-9900 = BJ9900Radio
+[2020-05-26 17:28:09,716] chirp.directory - INFO: Registered Baofeng_UV-5R = BaofengUV5RGeneric
+[2020-05-26 17:28:09,717] chirp.directory - INFO: Registered Baofeng_F-11 = BaofengF11Radio
+[2020-05-26 17:28:09,717] chirp.directory - INFO: Registered Baofeng_UV-82 = BaofengUV82Radio
+[2020-05-26 17:28:09,717] chirp.directory - INFO: Registered Radioddity_UV-82X3 = Radioddity82X3Radio
+[2020-05-26 17:28:09,717] chirp.directory - INFO: Registered Baofeng_UV-6 = BaofengUV6Radio
+[2020-05-26 17:28:09,717] chirp.directory - INFO: Registered Intek_KT-980HP = IntekKT980Radio
+[2020-05-26 17:28:09,717] chirp.directory - INFO: Registered Baofeng_BF-F8HP = BaofengBFF8HPRadio
+[2020-05-26 17:28:09,717] chirp.directory - INFO: Registered Baofeng_UV-82HP = BaofengUV82HPRadio
+[2020-05-26 17:28:09,717] chirp.directory - INFO: Registered Radioddity_UV-5RX3 = RadioddityUV5RX3Radio
+[2020-05-26 17:28:09,717] chirp.directory - INFO: Registered Baojie_BJ-UV55 = BaojieBJUV55Radio
+[2020-05-26 17:28:09,721] chirp.directory - INFO: Registered Boblov_X3Plus = BoblovX3Plus
+[2020-05-26 17:28:09,735] chirp.directory - INFO: Registered BTECH_UV-2501 = UV2501
+[2020-05-26 17:28:09,735] chirp.directory - INFO: Registered BTECH_UV-2501+220 = UV2501_220
+[2020-05-26 17:28:09,735] chirp.directory - INFO: Registered BTECH_UV-5001 = UV5001
+[2020-05-26 17:28:09,735] chirp.directory - INFO: Registered WACCOM_MINI-8900 = MINI8900
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered QYT_KT-UV980 = KTUV980
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered QYT_KT8900 = KT9800
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered QYT_KT8900R = KT9800R
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered LUITON_LT-588UV = LT588UV
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered BTECH_UV-25X2 = UV25X2
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered BTECH_UV-25X4 = UV25X4
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered BTECH_UV-50X2 = UV50X2
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered QYT_KT7900D = KT7900D
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered QYT_KT8900D = KT8900D
+[2020-05-26 17:28:09,736] chirp.directory - INFO: Registered BTECH_GMRS-50X1 = GMRS50X1
+[2020-05-26 17:28:09,739] chirp.directory - INFO: Registered Feidaxin_FD-268A = FD268ARadio
+[2020-05-26 17:28:09,739] chirp.directory - INFO: Registered Feidaxin_FD-268B = FD268BRadio
+[2020-05-26 17:28:09,739] chirp.directory - INFO: Registered Feidaxin_FD-288A = FD288ARadio
+[2020-05-26 17:28:09,739] chirp.directory - INFO: Registered Feidaxin_FD-288B = FD288BRadio
+[2020-05-26 17:28:09,739] chirp.directory - INFO: Registered Feidaxin_FD-150A = FD150ARadio
+[2020-05-26 17:28:09,740] chirp.directory - INFO: Registered Feidaxin_FD-160A = FD160ARadio
+[2020-05-26 17:28:09,740] chirp.directory - INFO: Registered Feidaxin_FD-450A = FD450ARadio
+[2020-05-26 17:28:09,740] chirp.directory - INFO: Registered Feidaxin_FD-460A = FD460ARadio
+[2020-05-26 17:28:09,740] chirp.directory - INFO: Registered Feidaxin_FD-460UH = FD460UHRadio
+[2020-05-26 17:28:09,742] chirp.directory - INFO: Registered Yaesu_FT-1500M = FT1500Radio
+[2020-05-26 17:28:09,743] chirp.directory - INFO: Registered Yaesu_FT-1802M = FT1802Radio
+[2020-05-26 17:28:09,752] chirp.directory - INFO: Registered Yaesu_FT-1D_R = FT1Radio
+[2020-05-26 17:28:09,754] chirp.directory - INFO: Registered Yaesu_FT-2800M = FT2800Radio
+[2020-05-26 17:28:09,759] chirp.directory - INFO: Registered Yaesu_FT-2900R_1900R = FT2900Radio
+[2020-05-26 17:28:09,760] chirp.directory - INFO: Registered Yaesu_FT2D_R = FT2D
+[2020-05-26 17:28:09,760] chirp.directory - INFO: Registered Yaesu_FT2D_Rv2 = FT2Dv2
+[2020-05-26 17:28:09,760] chirp.directory - INFO: Registered Yaesu_FT3D_R = FT3D
+[2020-05-26 17:28:09,765] chirp.directory - INFO: Registered Yaesu_FT-4XR = YaesuFT4XRRadio
+[2020-05-26 17:28:09,765] chirp.directory - INFO: Registered Yaesu_FT-4XE = YaesuFT4XERadio
+[2020-05-26 17:28:09,765] chirp.directory - INFO: Registered Yaesu_FT-4VR = YaesuFT4VRRadio
+[2020-05-26 17:28:09,765] chirp.directory - INFO: Registered Yaesu_FT-65R = YaesuFT65RRadio
+[2020-05-26 17:28:09,765] chirp.directory - INFO: Registered Yaesu_FT-65E = YaesuFT65ERadio
+[2020-05-26 17:28:09,765] chirp.directory - INFO: Registered Yaesu_FT-25R = YaesuFT25RRadio
+[2020-05-26 17:28:09,771] chirp.directory - INFO: Registered Yaesu_FT-450D = FT450DRadio
+[2020-05-26 17:28:09,773] chirp.directory - INFO: Registered Yaesu_FT-50 = FT50Radio
+[2020-05-26 17:28:09,777] chirp.directory - INFO: Registered Yaesu_FT-60 = FT60Radio
+[2020-05-26 17:28:09,780] chirp.directory - INFO: Registered Yaesu_FT-70D = FT70Radio
+[2020-05-26 17:28:09,785] chirp.directory - INFO: Registered Yaesu_FT-7100M = FT7100Radio
+[2020-05-26 17:28:09,789] chirp.directory - INFO: Registered Yaesu_FT-7800_7900 = FT7800Radio
+[2020-05-26 17:28:09,790] chirp.directory - INFO: Registered Yaesu_FT-8800 = FT8800Radio
+[2020-05-26 17:28:09,790] chirp.directory - INFO: Registered Yaesu_FT-8900 = FT8900Radio
+[2020-05-26 17:28:09,791] chirp.directory - INFO: Registered Yaesu_FT-8100 = FT8100Radio
+[2020-05-26 17:28:09,797] chirp.directory - INFO: Registered Yaesu_FT-817 = FT817Radio
+[2020-05-26 17:28:09,797] chirp.directory - INFO: Registered Yaesu_FT-817ND = FT817NDRadio
+[2020-05-26 17:28:09,797] chirp.directory - INFO: Registered Yaesu_FT-817ND_US = FT817NDUSRadio
+[2020-05-26 17:28:09,798] chirp.directory - INFO: Registered Yaesu_FT-818 = FT818Radio
+[2020-05-26 17:28:09,798] chirp.directory - INFO: Registered Yaesu_FT-818ND_US = FT818NDUSRadio
+[2020-05-26 17:28:09,803] chirp.directory - INFO: Registered Yaesu_FT-857_897 = FT857Radio
+[2020-05-26 17:28:09,803] chirp.directory - INFO: Registered Yaesu_FT-857_897_US = FT857USRadio
+[2020-05-26 17:28:09,805] chirp.directory - INFO: Registered Yaesu_FT-90 = FT90Radio
+[2020-05-26 17:28:09,806] chirp.directory - INFO: Registered Yaesu_FTM-3200D_R = FTM3200Radio
+[2020-05-26 17:28:09,808] chirp.directory - INFO: Registered Yaesu_FTM-350 = FTM350Radio
+[2020-05-26 17:28:09,810] chirp.directory - INFO: Registered Radioddity_GA-510 = RadioddityGA510Radio
+[2020-05-26 17:28:09,814] chirp.directory - INFO: Registered Generic_CSV = CSVRadio
+[2020-05-26 17:28:09,814] chirp.directory - INFO: Registered Commander_KG-UV = CommanderCSVRadio
+[2020-05-26 17:28:09,814] chirp.directory - INFO: Registered RT_Systems_CSV = RTCSVRadio
+[2020-05-26 17:28:09,814] chirp.directory - INFO: Registered ARRL_Travel_Plus = TpeRadio
+[2020-05-26 17:28:09,826] chirp.directory - INFO: Registered Generic_XML = XMLRadio
+[2020-05-26 17:28:09,830] chirp.directory - INFO: Registered BTECH_GMRS-V1 = GMRSV1
+[2020-05-26 17:28:09,836] chirp.directory - INFO: Registered Baofeng_BF-888 = H777Radio
+[2020-05-26 17:28:09,837] chirp.directory - INFO: Registered Radioddity_GA-2S = ROGA2SRadio
+[2020-05-26 17:28:09,838] chirp.directory - INFO: Registered HobbyPCB_RS-UV3 = HobbyPCBRSUV3Radio
+[2020-05-26 17:28:09,839] chirp.directory - INFO: Registered Icom_IC-208H = IC208Radio
+[2020-05-26 17:28:09,841] chirp.directory - INFO: Registered Icom_IC-2100H = IC2100Radio
+[2020-05-26 17:28:09,843] chirp.directory - INFO: Registered Icom_IC-2200H = IC2200Radio
+[2020-05-26 17:28:09,844] chirp.directory - INFO: Registered Icom_IC-2300H = IC2300Radio
+[2020-05-26 17:28:09,845] chirp.directory - INFO: Registered Icom_IC-2720H = IC2720Radio
+[2020-05-26 17:28:09,852] chirp.directory - INFO: Registered Icom_IC-2730A = IC2730Radio
+[2020-05-26 17:28:09,853] chirp.directory - INFO: Registered Icom_IC-2820H = IC2820Radio
+[2020-05-26 17:28:09,857] chirp.directory - INFO: Registered Icom_IC-91_92AD = IC9xRadio
+[2020-05-26 17:28:09,861] chirp.directory - INFO: Registered Icom_7200 = Icom7200Radio
+[2020-05-26 17:28:09,861] chirp.directory - INFO: Registered Icom_IC-7000 = Icom7000Radio
+[2020-05-26 17:28:09,861] chirp.directory - INFO: Registered Icom_IC-7100 = Icom7100Radio
+[2020-05-26 17:28:09,861] chirp.directory - INFO: Registered Icom_746 = Icom746Radio
+[2020-05-26 17:28:09,862] chirp.directory - INFO: Registered Icom_IC-P7 = ICP7Radio
+[2020-05-26 17:28:09,864] chirp.directory - INFO: Registered Icom_IC-Q7A = ICQ7Radio
+[2020-05-26 17:28:09,865] chirp.directory - INFO: Registered Icom_IC-T70 = ICT70Radio
+[2020-05-26 17:28:09,866] chirp.directory - INFO: Registered Icom_IC-T7H = ICT7HRadio
+[2020-05-26 17:28:09,867] chirp.directory - INFO: Registered Icom_IC-T8A = ICT8ARadio
+[2020-05-26 17:28:09,868] chirp.directory - INFO: Registered Icom_IC-W32A = ICW32ARadio
+[2020-05-26 17:28:09,868] chirp.directory - INFO: Registered Icom_IC-W32E = ICW32ERadio
+[2020-05-26 17:28:09,872] chirp.directory - INFO: Registered Icom_IC-V82_U82 = ICx8xRadio
+[2020-05-26 17:28:09,877] chirp.directory - INFO: Registered Icom_IC-E90 = ICx90Radio
+[2020-05-26 17:28:09,878] chirp.directory - INFO: Registered Icom_ID-31A = ID31Radio
+[2020-05-26 17:28:09,879] chirp.directory - INFO: Registered Icom_ID-51 = ID51Radio
+[2020-05-26 17:28:09,879] chirp.directory - INFO: Registered Icom_ID-51_Plus = ID51PLUSRadio
+[2020-05-26 17:28:09,881] chirp.directory - INFO: Registered Icom_ID-800H_v2 = ID800v2Radio
+[2020-05-26 17:28:09,883] chirp.directory - INFO: Registered Icom_ID-880H = ID880Radio
+[2020-05-26 17:28:09,883] chirp.directory - INFO: Registered Icom_ID-80H = ID80Radio
+[2020-05-26 17:28:09,885] chirp.directory - INFO: Registered Kenwood_HMK = HMKRadio
+[2020-05-26 17:28:09,886] chirp.directory - INFO: Registered Kenwood_ITM = ITMRadio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TH-D7 = THD7Radio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TH-D7G = THD7GRadio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TM-D700 = TMD700Radio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TM-V7 = TMV7Radio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TM-G707 = TMG707Radio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TH-G71 = THG71Radio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TH-F6 = THF6ARadio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TH-F7 = THF7ERadio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TM-D710 = TMD710Radio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TH-D72_live_mode = THD72Radio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TM-V71 = TMV71Radio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TM-D710G = TMD710GRadio
+[2020-05-26 17:28:09,895] chirp.directory - INFO: Registered Kenwood_TH-K2 = THK2Radio
+[2020-05-26 17:28:09,896] chirp.directory - INFO: Registered Kenwood_TM-271 = TM271Radio
+[2020-05-26 17:28:09,896] chirp.directory - INFO: Registered Kenwood_TM-281 = TM281Radio
+[2020-05-26 17:28:09,896] chirp.directory - INFO: Registered Kenwood_TM-471 = TM471Radio
+[2020-05-26 17:28:09,896] chirp.directory - INFO: Registered Kenwood_TS-590S_SG_LiveMode = TS590Radio
+[2020-05-26 17:28:09,896] chirp.directory - INFO: Registered Kenwood_TS-480_LiveMode = TS480Radio
+[2020-05-26 17:28:09,900] chirp.directory - INFO: Registered Wouxun_KG-UV8D = KGUV8DRadio
+[2020-05-26 17:28:09,904] chirp.directory - INFO: Registered Wouxun_KG-UV8D_Plus = KGUV8DPlusRadio
+[2020-05-26 17:28:09,908] chirp.directory - INFO: Registered Wouxun_KG-UV8E = KGUV8ERadio
+[2020-05-26 17:28:09,915] chirp.directory - INFO: Registered Wouxun_KG-UV9D_Plus = KGUV9DPlusRadio
+[2020-05-26 17:28:09,918] chirp.directory - INFO: Registered KYD_NC-630A = NC630aRadio
+[2020-05-26 17:28:09,920] chirp.directory - INFO: Registered KYD_IP-620 = IP620Radio
+[2020-05-26 17:28:09,925] chirp.directory - INFO: Registered Leixen_VV-898 = LeixenVV898Radio
+[2020-05-26 17:28:09,925] chirp.directory - INFO: Registered Jetstream_JT270M = JetstreamJT270MRadio
+[2020-05-26 17:28:09,925] chirp.directory - INFO: Registered Jetstream_JT270MH = JetstreamJT270MHRadio
+[2020-05-26 17:28:09,925] chirp.directory - INFO: Registered Leixen_VV-898S = LeixenVV898SRadio
+[2020-05-26 17:28:09,931] chirp.directory - INFO: Registered LUITON_LT-725UV = LT725UV
+[2020-05-26 17:28:09,931] chirp.directory - INFO: Registered Baojie_BJ-218 = Baojie218
+[2020-05-26 17:28:09,934] chirp.directory - INFO: Registered BTECH_MURS-V1 = MURSV1
+[2020-05-26 17:28:09,941] chirp.directory - INFO: Registered Wouxun_KG-UVD1P = KGUVD1PRadio
+[2020-05-26 17:28:09,941] chirp.directory - INFO: Registered Wouxun_KG-UV6 = KGUV6DRadio
+[2020-05-26 17:28:09,942] chirp.directory - INFO: Registered Wouxun_KG-816 = KG816Radio
+[2020-05-26 17:28:09,942] chirp.directory - INFO: Registered Wouxun_KG-818 = KG818Radio
+[2020-05-26 17:28:09,942] chirp.directory - INFO: Registered Puxing_PX-777 = Puxing777Radio
+[2020-05-26 17:28:09,942] chirp.directory - INFO: Registered Puxing_PX-2R = Puxing2RRadio
+[2020-05-26 17:28:09,948] chirp.directory - INFO: Registered Puxing_PX-888K = Puxing_PX888K_Radio
+[2020-05-26 17:28:09,951] chirp.directory - INFO: Registered Radioddity_R2 = RadioddityR2Generic
+[2020-05-26 17:28:09,953] chirp.directory - INFO: Registered Radtel_T18 = T18Radio
+[2020-05-26 17:28:09,956] chirp.directory - INFO: Registered Retevis_RT1 = RT1Radio
+[2020-05-26 17:28:09,959] chirp.directory - INFO: Registered Retevis_RT21 = RT21Radio
+[2020-05-26 17:28:09,961] chirp.directory - INFO: Registered Retevis_RT22 = RT22Radio
+[2020-05-26 17:28:09,961] chirp.directory - INFO: Registered WLN_KD-C1 = KDC1
+[2020-05-26 17:28:09,961] chirp.directory - INFO: Registered Zastone_ZT-X6 = ZTX6
+[2020-05-26 17:28:09,961] chirp.directory - INFO: Registered LUITON_LT-316 = LT316
+[2020-05-26 17:28:09,961] chirp.directory - INFO: Registered TID_TD-M8 = TDM8
+[2020-05-26 17:28:09,965] chirp.directory - INFO: Registered Retevis_RT23 = RT23Radio
+[2020-05-26 17:28:09,968] chirp.directory - INFO: Registered Retevis_RT26 = RT26Radio
+[2020-05-26 17:28:09,970] chirp.directory - INFO: Registered Rugged_RH5R-V2 = RH5RV2
+[2020-05-26 17:28:09,974] chirp.directory - INFO: Registered TDXone_TD-Q8A = TDXoneTDQ8A
+[2020-05-26 17:28:09,979] chirp.directory - INFO: Registered Baofeng_UV-B5 = BaofengUVB5
+[2020-05-26 17:28:09,979] chirp.directory - INFO: Registered TYT_TH-350 = Th350Radio
+[2020-05-26 17:28:09,982] chirp.directory - INFO: Registered TYT_TH-7800_File = TYTTH7800File
+[2020-05-26 17:28:09,982] chirp.directory - INFO: Registered TYT_TH-7800 = TYTTH7800Radio
+[2020-05-26 17:28:09,985] chirp.directory - INFO: Registered TYT_TH9000_220 = Th9000220Radio
+[2020-05-26 17:28:09,985] chirp.directory - INFO: Registered TYT_TH9000_144 = Th9000144Radio
+[2020-05-26 17:28:09,985] chirp.directory - INFO: Registered TYT_TH9000_440 = Th9000440Radio
+[2020-05-26 17:28:09,988] chirp.directory - INFO: Registered TYT_TH-9800_File = TYTTH9800File
+[2020-05-26 17:28:09,988] chirp.directory - INFO: Registered TYT_TH-9800 = TYTTH9800Radio
+[2020-05-26 17:28:09,989] chirp.directory - INFO: Registered TYT_TH-UV3R = TYTUV3RRadio
+[2020-05-26 17:28:09,990] chirp.directory - INFO: Registered TYT_TH-UV3R-25 = TYTUV3R25Radio
+[2020-05-26 17:28:09,996] chirp.directory - INFO: Registered TYT_TH-UV8000 = THUV8000Radio
+[2020-05-26 17:28:09,998] chirp.directory - INFO: Registered TYT_TH-UVF8D = TYTUVF8DRadio
+[2020-05-26 17:28:10,001] chirp.directory - INFO: Registered Kenwood_TH-D72_clone_mode = THD72Radio
+[2020-05-26 17:28:10,003] chirp.directory - INFO: Registered TYT_TH-UVF1 = TYTTHUVF1Radio
+[2020-05-26 17:28:10,007] chirp.directory - INFO: Registered Kenwood_TK-260 = TK260_Radio
+[2020-05-26 17:28:10,007] chirp.directory - INFO: Registered Kenwood_TK-270 = TK270_Radio
+[2020-05-26 17:28:10,007] chirp.directory - INFO: Registered Kenwood_TK-272 = TK272_Radio
+[2020-05-26 17:28:10,007] chirp.directory - INFO: Registered Kenwood_TK-278 = TK278_Radio
+[2020-05-26 17:28:10,007] chirp.directory - INFO: Registered Kenwood_TK-360 = TK360_Radio
+[2020-05-26 17:28:10,007] chirp.directory - INFO: Registered Kenwood_TK-370 = TK370_Radio
+[2020-05-26 17:28:10,007] chirp.directory - INFO: Registered Kenwood_TK-372 = TK372_Radio
+[2020-05-26 17:28:10,007] chirp.directory - INFO: Registered Kenwood_TK-378 = TK378_Radio
+[2020-05-26 17:28:10,010] chirp.directory - INFO: Registered Kenwood_TK-760 = TK760_Radio
+[2020-05-26 17:28:10,010] chirp.directory - INFO: Registered Kenwood_TK-762 = TK762_Radio
+[2020-05-26 17:28:10,010] chirp.directory - INFO: Registered Kenwood_TK-768 = TK768_Radio
+[2020-05-26 17:28:10,010] chirp.directory - INFO: Registered Kenwood_TK-860 = TK860_Radio
+[2020-05-26 17:28:10,010] chirp.directory - INFO: Registered Kenwood_TK-862 = TK862_Radio
+[2020-05-26 17:28:10,010] chirp.directory - INFO: Registered Kenwood_TK-868 = TK868_Radio
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-868G = TK868G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-862G = TK862G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-860G = TK860G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-768G = TK768G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-762G = TK762G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-760G = TK760G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-388G = TK388G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-378G = TK378G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-372G = TK372G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-370G = TK370G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-360G = TK360G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-278G = TK278G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-272G = TK272G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-270G = TK270G_Radios
+[2020-05-26 17:28:10,016] chirp.directory - INFO: Registered Kenwood_TK-260G = TK260G_Radios
+[2020-05-26 17:28:10,018] chirp.directory - INFO: Registered Kenwood_TK-7102 = KenwoodTK7102Radio
+[2020-05-26 17:28:10,018] chirp.directory - INFO: Registered Kenwood_TK-8102 = KenwoodTK8102Radio
+[2020-05-26 17:28:10,018] chirp.directory - INFO: Registered Kenwood_TK-7108 = KenwoodTK7108Radio
+[2020-05-26 17:28:10,018] chirp.directory - INFO: Registered Kenwood_TK-8108 = KenwoodTK8108Radio
+[2020-05-26 17:28:10,023] chirp.directory - INFO: Registered Kenwood_TK-7180 = KenwoodTK7180Radio
+[2020-05-26 17:28:10,023] chirp.directory - INFO: Registered Kenwood_TK-8180 = KenwoodTK8180Radio
+[2020-05-26 17:28:10,023] chirp.directory - INFO: Registered Kenwood_TK-2180 = KenwoodTK2180Radio
+[2020-05-26 17:28:10,023] chirp.directory - INFO: Registered Kenwood_TK-3180K = KenwoodTK3180K1Radio
+[2020-05-26 17:28:10,023] chirp.directory - INFO: Registered Kenwood_TK-3180K2 = KenwoodTK3180K2Radio
+[2020-05-26 17:28:10,027] chirp.directory - INFO: Registered Kenwood_TS-2000 = TS2000Radio
+[2020-05-26 17:28:10,032] chirp.directory - INFO: Registered Kenwood_TS-480_CloneMode = TS480Radio
+[2020-05-26 17:28:10,039] chirp.directory - INFO: Registered Kenwood_TS-590SG_CloneMode = TS590Radio
+[2020-05-26 17:28:10,039] chirp.directory - INFO: Registered Kenwood_TS-590S_CloneMode = TS590SRadio
+[2020-05-26 17:28:10,040] chirp.directory - INFO: Registered Kenwood_TS-850 = TS850Radio
+[2020-05-26 17:28:10,044] chirp.directory - INFO: Registered BTECH_UV-5X3 = UV5X3
+[2020-05-26 17:28:10,045] chirp.directory - INFO: Registered MTC_UV-5R-3 = MTCUV5R3Radio
+[2020-05-26 17:28:10,047] chirp.directory - INFO: Registered Baofeng_UV-6R = UV6R
+[2020-05-26 17:28:10,052] chirp.directory - INFO: Registered BTECH_UV-50X3 = UV50X3
+[2020-05-26 17:28:10,053] chirp.directory - INFO: Registered Yaesu_VX-170 = VX170Radio
+[2020-05-26 17:28:10,055] chirp.directory - INFO: Registered Yaesu_VX-2 = VX2Radio
+[2020-05-26 17:28:10,059] chirp.directory - INFO: Registered Yaesu_VX-3 = VX3Radio
+[2020-05-26 17:28:10,060] chirp.directory - INFO: Registered Yaesu_VX-5 = VX5Radio
+[2020-05-26 17:28:10,065] chirp.directory - INFO: Registered Yaesu_VX-6 = VX6Radio
+[2020-05-26 17:28:10,066] chirp.directory - INFO: Registered Yaesu_VX-7 = VX7Radio
+[2020-05-26 17:28:10,073] chirp.directory - INFO: Registered Yaesu_VX-8R = VX8Radio
+[2020-05-26 17:28:10,073] chirp.directory - INFO: Registered Yaesu_VX-8DR = VX8DRadio
+[2020-05-26 17:28:10,073] chirp.directory - INFO: Registered Yaesu_VX-8GE = VX8GERadio
+[2020-05-26 17:28:10,074] chirp.directory - INFO: Registered Vertex_Standard_VXA-700 = VXA700Radio
+[2020-05-26 17:28:10,267] chirp.ui.mainapp - WARNING: Icon  not found
+/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/Resources/chirp/chirp/ui/mainapp.py:2045: Warning: invalid cast from 'GtkMenuBar' to 'GtkWindow'
+  macapp.set_menu_bar(menu_bar)
+/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/Resources/chirp/chirp/ui/mainapp.py:2045: GtkWarning: gtk_window_add_accel_group: assertion 'GTK_IS_WINDOW (window)' failed
+  macapp.set_menu_bar(menu_bar)
+[2020-05-26 17:28:10,313] chirp.ui.mainapp - DEBUG: Initialized MacOS support
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,315] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,316] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,316] chirp.ui.mainapp - INFO: Skipping existing stock config
+[2020-05-26 17:28:10,316] chirp.ui.reporting - DEBUG: Checking for updates
+[2020-05-26 17:28:10,735] chirp.ui.reporting - DEBUG: Server reports version daily-20200521 is latest
+/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/Resources/chirp/chirp/platform.py:152: GtkWarning: Could not find the icon 'application-octet-stream'. The 'hicolor' theme
+was not found either, perhaps you need to install it.
+You can get a copy from:
+	http://icon-theme.freedesktop.org/releases
+  res = dlg.run()
+[2020-05-26 17:28:37,217] chirp.chirp_common - DEBUG: Loaded metadata: {u'chirp_version': u'daily-20200521', u'model': u'UV-5R', u'vendor': u'Baofeng', u'variant': u'', u'rclass': u'BaofengUV5RGeneric'}
+[2020-05-26 17:28:37,218] chirp.chirp_common - DEBUG: Loaded metadata: {u'chirp_version': u'daily-20200521', u'model': u'UV-5R', u'vendor': u'Baofeng', u'variant': u'', u'rclass': u'BaofengUV5RGeneric'}
+[2020-05-26 17:28:37,218] chirp.chirp_common - DEBUG: Parsed version u'daily-20200521' to (20200521,)
+[2020-05-26 17:28:37,218] chirp.chirp_common - DEBUG: Parsed version 'daily-20200521' to (20200521,)
+[2020-05-26 17:28:37,258] chirp.drivers.uv5r - DEBUG: _firmware_version_from_image: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,258] chirp.drivers.uv5r - DEBUG: @_is_orig, version_tag: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,259] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [1800000-2000000 160 Meter Band simplex , 1800000-2000000 160 Meter Band simplex mode: CW ]
+[2020-05-26 17:28:37,259] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [1800000-1810000 Digimodes simplex , 1800000-1810000 Digital Modes simplex ]
+[2020-05-26 17:28:37,259] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [1999000-2000000 Beacons simplex mode: CW , 1999000-2000000 Beacons simplex ]
+[2020-05-26 17:28:37,259] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [3500000-4000000 80 Meter Band simplex , 3500000-4000000 80 Meter Band simplex ]
+[2020-05-26 17:28:37,260] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [7000000-7300000 40 Meter Band simplex , 7000000-7300000 40 Meter Band simplex ]
+[2020-05-26 17:28:37,260] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [10100000-10150000 30 Meter Band simplex , 10100000-10150000 30 Meter Band simplex ]
+[2020-05-26 17:28:37,260] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [10130000-10140000 All narrow band digimodes simplex , 10130000-10140000 RTTY simplex mode: RTTY ]
+[2020-05-26 17:28:37,260] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [10140000-10150000 All modes, digimodes, no phone simplex , 10140000-10150000 Packet simplex ]
+[2020-05-26 17:28:37,261] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [14000000-14350000 20 Meter Band simplex , 14000000-14350000 20 Meter Band simplex ]
+[2020-05-26 17:28:37,261] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [18068000-18168000 17 Meter Band simplex , 18068000-18168000 17 Meter Band simplex ]
+[2020-05-26 17:28:37,262] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [21000000-21450000 15 Meter Band simplex , 21000000-21450000 15 Meter Band simplex ]
+[2020-05-26 17:28:37,262] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [24890000-24990000 12 Meter Band simplex , 24890000-24990000 12 Meter Band simplex ]
+[2020-05-26 17:28:37,263] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [28000000-28070000 CW simplex mode: CW , 28000000-28070000 CW simplex mode: CW ]
+[2020-05-26 17:28:37,263] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [28150000-28190000 All narrow band modes, digimodes simplex , 28150000-28190000 CW simplex mode: CW ]
+[2020-05-26 17:28:37,263] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [29000000-29200000 All modes, AM preferred simplex mode: AM , 29000000-29200000 AM simplex mode: AM ]
+[2020-05-26 17:28:37,264] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [29300000-29510000 Satellite downlink simplex , 29300000-29510000 Satellite Downlinks simplex ]
+[2020-05-26 17:28:37,264] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [1800000-2000000 160 Meter Band simplex , 1800000-2000000 160 Meter Band simplex mode: CW ]
+[2020-05-26 17:28:37,264] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [1800000-1810000 Digimodes simplex , 1800000-1810000 Digital Modes simplex ]
+[2020-05-26 17:28:37,264] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [1999000-2000000 Beacons simplex mode: CW , 1999000-2000000 Beacons simplex ]
+[2020-05-26 17:28:37,264] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [3500000-4000000 80 Meter Band simplex , 3500000-4000000 80 Meter Band simplex ]
+[2020-05-26 17:28:37,264] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [7000000-7300000 40 Meter Band simplex , 7000000-7300000 40 Meter Band simplex ]
+[2020-05-26 17:28:37,265] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [10100000-10150000 30 Meter Band simplex , 10100000-10150000 30 Meter Band simplex ]
+[2020-05-26 17:28:37,265] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [10130000-10140000 All narrow band digimodes simplex , 10130000-10140000 RTTY simplex mode: RTTY ]
+[2020-05-26 17:28:37,265] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [10140000-10150000 All modes, digimodes, no phone simplex , 10140000-10150000 Packet simplex ]
+[2020-05-26 17:28:37,265] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [14000000-14350000 20 Meter Band simplex , 14000000-14350000 20 Meter Band simplex ]
+[2020-05-26 17:28:37,265] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [18068000-18168000 17 Meter Band simplex , 18068000-18168000 17 Meter Band simplex ]
+[2020-05-26 17:28:37,265] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [21000000-21450000 15 Meter Band simplex , 21000000-21450000 15 Meter Band simplex ]
+[2020-05-26 17:28:37,266] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [24890000-24990000 12 Meter Band simplex , 24890000-24990000 12 Meter Band simplex ]
+[2020-05-26 17:28:37,266] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [28000000-28070000 CW simplex mode: CW , 28000000-28070000 CW simplex mode: CW ]
+[2020-05-26 17:28:37,266] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [28150000-28190000 All narrow band modes, digimodes simplex , 28150000-28190000 CW simplex mode: CW ]
+[2020-05-26 17:28:37,266] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [29000000-29200000 All modes, AM preferred simplex mode: AM , 29000000-29200000 AM simplex mode: AM ]
+[2020-05-26 17:28:37,266] chirp.ui.bandplans - WARNING: Bandplan North American Band Plan has duplicates [29300000-29510000 Satellite downlink simplex , 29300000-29510000 Satellite Downlinks simplex ]
+[2020-05-26 17:28:37,283] chirp.drivers.uv5r - DEBUG: _firmware_version_from_image: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,283] chirp.drivers.uv5r - DEBUG: @_is_orig, version_tag: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: DTCS Code supported: True
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: DTCS Rx Code supported: True
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: DTCS Pol supported: True
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: Mode supported: True
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: Offset supported: True
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: Name supported: True
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: Tune Step supported: False
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: Name supported: True
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: ToneSql supported: True
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: Cross Mode supported: True
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: Comment supported: False
+[2020-05-26 17:28:37,284] chirp.ui.memedit - INFO: DTCS Code supported: True
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: DTCS Rx Code supported: True
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: DTCS Pol supported: True
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: Mode supported: True
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: Offset supported: True
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: Name supported: True
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: Tune Step supported: False
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: Name supported: True
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: ToneSql supported: True
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: Cross Mode supported: True
+[2020-05-26 17:28:37,285] chirp.ui.memedit - INFO: Comment supported: False
+[2020-05-26 17:28:37,331] chirp.drivers.uv5r - DEBUG: _firmware_version_from_image: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,331] chirp.drivers.uv5r - DEBUG: @_is_orig, version_tag: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,331] chirp.drivers.uv5r - DEBUG: _firmware_version_from_image: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,331] chirp.drivers.uv5r - DEBUG: @_is_orig, version_tag: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,332] chirp.drivers.uv5r - DEBUG: _firmware_version_from_image: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,332] chirp.drivers.uv5r - DEBUG: @_is_orig, version_tag: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,333] chirp.drivers.uv5r - DEBUG: _firmware_version_from_image: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:37,333] chirp.drivers.uv5r - DEBUG: @_is_orig, version_tag: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:28:45,316] chirp.ui.mainapp - DEBUG: Opening port after pre_upload prompt.
+[2020-05-26 17:28:46,312] chirp.ui.clone - DEBUG: Clone thread started
+[2020-05-26 17:28:46,312] chirp.drivers.uv5r - INFO: Sending Magic: 000: 50 bb ff 20 12 07 25 00   P.....%.
+
+[2020-05-26 17:28:46,389] chirp.drivers.uv5r - DEBUG: '\x00'
+[2020-05-26 17:28:46,389] chirp.drivers.uv5r - ERROR: uv5r._ident_radio: Radio did not respond
+[2020-05-26 17:28:48,395] chirp.drivers.uv5r - INFO: Sending Magic: 000: 50 bb ff 01 25 98 4d 00   P...%.M.
+
+[2020-05-26 17:28:49,480] chirp.drivers.uv5r - ERROR: uv5r._ident_radio: Radio did not respond
+[2020-05-26 17:28:51,485] chirp.drivers.uv5r - INFO: Sending Magic: 000: 50 0d 0c 20 16 03 28 00   P.....(.
+
+[2020-05-26 17:28:52,566] chirp.ui.reporting - DEBUG: Reporting exception
+[2020-05-26 17:28:52,567] chirp.ui.common - ERROR: -- Exception: --
+[2020-05-26 17:28:52,567] chirp.ui.common - ERROR: Traceback (most recent call last):
+  File "/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/Resources/chirp/chirp/ui/clone.py", line 254, in run
+    self.__radio.sync_out()
+  File "/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/Resources/chirp/chirp/drivers/uv5r.py", line 818, in sync_out
+    _do_upload(self)
+  File "/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/Resources/chirp/chirp/drivers/uv5r.py", line 602, in _do_upload
+    ident = _ident_radio(radio)
+  File "/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/Resources/chirp/chirp/drivers/uv5r.py", line 538, in _ident_radio
+    raise error
+RadioError: Radio did not respond
+
+[2020-05-26 17:28:52,567] chirp.ui.common - ERROR: ----------------
+[2020-05-26 17:28:52,567] chirp.ui.clone - ERROR: Clone failed: Radio did not respond
+[2020-05-26 17:28:52,574] chirp.ui.clone - DEBUG: Clone thread ended
+[2020-05-26 17:28:52,594] chirp.ui.reporting - DEBUG: Reporting model usage: Baofeng_UV-5R,upload,True
+[2020-05-26 17:28:52,594] chirp.ui.reporting - DEBUG: Reporting exception
+[2020-05-26 17:28:52,595] chirp.ui.inputdialog - ERROR: --- Exception Dialog: Radio did not respond ---
+[2020-05-26 17:28:52,595] chirp.ui.inputdialog - ERROR: Traceback (most recent call last):
+  File "/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/MacOS/../Resources/chirp/chirpw", line 76, in <module>
+    os.putenv("LANG", langs[0])
+IndexError: list index out of range
+
+[2020-05-26 17:28:52,595] chirp.ui.inputdialog - ERROR: ----------------------------
+[2020-05-26 17:29:00,934] chirp.ui.mainapp - DEBUG: Opening port after pre_upload prompt.
+[2020-05-26 17:29:02,109] chirp.ui.clone - DEBUG: Clone thread started
+[2020-05-26 17:29:02,109] chirp.drivers.uv5r - INFO: Sending Magic: 000: 50 bb ff 20 12 07 25 00   P.....%.
+
+[2020-05-26 17:29:02,195] chirp.drivers.uv5r - INFO: Valid response, got this:
+[2020-05-26 17:29:02,195] chirp.drivers.uv5r - DEBUG: 000: aa 36 74 04 00 05 20 dd   .6t.....
+
+[2020-05-26 17:29:02,198] chirp.drivers.uv5r - DEBUG: _firmware_version_from_image: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:29:02,520] chirp.drivers.uv5r - INFO: Image Version is 'BFS311 BFB297 '
+[2020-05-26 17:29:02,520] chirp.drivers.uv5r - INFO: Radio Version is 'BFS311 BFB297 '
+[2020-05-26 17:29:23,920] chirp.ui.clone - DEBUG: Clone thread ended
+[2020-05-26 17:29:23,939] chirp.ui.reporting - DEBUG: Reporting model usage: Baofeng_UV-5R,upload,True
+[2020-05-26 17:30:24,330] chirp.ui.mainapp - DEBUG: Opening port after pre_upload prompt.
+[2020-05-26 17:30:25,571] chirp.ui.clone - DEBUG: Clone thread started
+[2020-05-26 17:30:25,571] chirp.drivers.uv5r - INFO: Sending Magic: 000: 50 bb ff 20 12 07 25 00   P.....%.
+
+[2020-05-26 17:30:25,654] chirp.drivers.uv5r - DEBUG: '\x00'
+[2020-05-26 17:30:25,655] chirp.drivers.uv5r - ERROR: uv5r._ident_radio: Radio did not respond
+[2020-05-26 17:30:27,660] chirp.drivers.uv5r - INFO: Sending Magic: 000: 50 bb ff 01 25 98 4d 00   P...%.M.
+
+[2020-05-26 17:30:28,748] chirp.drivers.uv5r - ERROR: uv5r._ident_radio: Radio did not respond
+[2020-05-26 17:30:30,751] chirp.drivers.uv5r - INFO: Sending Magic: 000: 50 0d 0c 20 16 03 28 00   P.....(.
+
+[2020-05-26 17:30:30,752] chirp.ui.reporting - DEBUG: Reporting exception
+[2020-05-26 17:30:30,752] chirp.ui.common - ERROR: -- Exception: --
+[2020-05-26 17:30:30,752] chirp.ui.common - ERROR: Traceback (most recent call last):
+  File "/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/Resources/chirp/chirp/ui/clone.py", line 254, in run
+    self.__radio.sync_out()
+  File "/private/var/folders/st/0jt7hv0s3zb4q0hsvk2n_y880000gn/T/AppTranslocation/974D7F2F-2BDD-4C01-942F-BEF73B66F181/d/CHIRP.app/Contents/Resources/chirp/chirp/drivers/uv5r.py", line 822, in sync_out
+    raise errors.RadioError("Failed to communicate with radio: %s" % e)
+RadioError: Failed to communicate with radio: Attempting to use a port that is not open
+
+[2020-05-26 17:30:30,752] chirp.ui.common - ERROR: ----------------
+[2020-05-26 17:30:30,752] chirp.ui.clone - ERROR: Clone failed: Failed to communicate with radio: Attempting to use a port that is not open
+[2020-05-26 17:30:30,752] chirp.ui.clone - DEBUG: Clone thread ended
+[2020-05-26 17:30:38,524] chirp.ui.mainapp - DEBUG: Opening port after pre_upload prompt.
+[2020-05-26 17:30:39,686] chirp.ui.clone - DEBUG: Clone thread started
+[2020-05-26 17:30:39,686] chirp.drivers.uv5r - INFO: Sending Magic: 000: 50 bb ff 20 12 07 25 00   P.....%.
+
+[2020-05-26 17:30:39,772] chirp.drivers.uv5r - INFO: Valid response, got this:
+[2020-05-26 17:30:39,772] chirp.drivers.uv5r - DEBUG: 000: aa 36 74 04 00 05 20 dd   .6t.....
+
+[2020-05-26 17:30:39,774] chirp.drivers.uv5r - DEBUG: _firmware_version_from_image: 000: 42 46 53 33 31 31 20 42   BFS311.B
+008: 46 42 32 39 37 20 00 00   FB297...
+
+[2020-05-26 17:30:40,092] chirp.drivers.uv5r - INFO: Image Version is 'BFS311 BFB297 '
+[2020-05-26 17:30:40,092] chirp.drivers.uv5r - INFO: Radio Version is 'BFS311 BFB297 '
+[2020-05-26 17:31:01,186] chirp.ui.clone - DEBUG: Clone thread ended
+[2020-05-26 17:31:01,204] chirp.ui.reporting - DEBUG: Reporting model usage: Baofeng_UV-5R,upload,True
+[2020-05-26 17:36:08,532] chirp.ui.mainapp - DEBUG: Closing 0
+[2020-05-26 17:36:08,532] chirp.ui.common - DEBUG: RadioThread exiting
