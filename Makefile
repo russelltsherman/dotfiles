@@ -7,7 +7,7 @@ DOTFILE_NAMES := $(subst ./dotfiles/, , $(shell find ./dotfiles -maxdepth 1 -nam
 DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
 
 ## initialize project
-bootstrap:
+bootstrap: init
 	-make brew
 	make binscripts
 	make dotfiles
@@ -60,6 +60,7 @@ zsh:
 
 /etc/hosts:
 	sudo wget -O /etc/hosts https://someonewhocares.org/hosts/hosts
+.PHONY: /etc/hosts
 
 ~/.%: # create symlink form ~/.dotfile and ./dotfiles/.dotfile
 	cd ~ && ln -sv $(current_dir)/dotfiles/$(notdir $@) $@
