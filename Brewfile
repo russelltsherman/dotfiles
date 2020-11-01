@@ -126,6 +126,14 @@ brew "kubectl"
 # https://helm.sh/
 brew "kubernetes-helm"
 
+# Lazier way to manage everything docker
+# https://github.com/jesseduffield/lazydocker
+brew "lazydocker"
+
+# Simple terminal UI for git commands
+# https://github.com/jesseduffield/lazygit/
+brew "lazygit"
+
 # Sophisticated file transfer program
 # https://lftp.yar.ru/
 brew "lftp"
@@ -150,10 +158,6 @@ brew "mutt"
 # https://www.nano-editor.org/
 brew "nano"
 
-# Fast, highly customisable system info script
-# https://github.com/dylanaraps/neofetch
-brew "neofetch"
-
 # Utility for managing network connections
 # https://netcat.sourceforge.io/
 brew "netcat"
@@ -162,17 +166,21 @@ brew "netcat"
 # https://newsboat.org/
 brew "newsboat"
 
+# Ambitious Vim-fork focused on extensibility and agility
+# https://neovim.io/
+brew "neovim"
+
 # Port scanning utility for large networks
 # https://nmap.org/
 brew "nmap"
 
+# POSIX-compliant bash script to manage multiple active node.js versions
+# https://github.com/nvm-sh/nvm
+brew "nvm"
+
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
 # https://openvpn.net/index.php/download/community-downloads.html
 brew "openvpn"
-
-# gopass is a simple but powerful password manager for your terminal.
-# https://www.gopass.pw/
-brew "gopass"
 
 # Kubernetes CLI To Manage Your Clusters In Style!
 # https://k9scli.io/
@@ -222,9 +230,10 @@ brew "screen"
 # https://www.shellcheck.net/
 brew "shellcheck"
 
-# Text interface for Git repositories
-# http://jonas.nitro.dk/tig/
-brew "tig"
+# CLI that provides on-demand secrets access for common DevOps tools.
+# https://github.com/cyberark/summon
+tap "cyberark/tools"
+brew "summon"
 
 # Terminal multiplexer
 # https://tmux.github.io/
@@ -241,10 +250,6 @@ brew "ttyrec"
 # Ncurses based file manager with vi like keybindings
 # https://vifm.info/
 brew "vifm"
-
-# Vi 'workalike' with many additional features
-# https://www.vim.org/
-brew "vim"
 
 # Executes a program periodically, showing output fullscreen
 # https://gitlab.com/procps-ng/procps
@@ -265,6 +270,10 @@ brew "yarn"
 # https://developers.yubico.com/yubikey-personalization/
 brew "ykpers"
 
+# Process YAML documents from the CLI
+# https://github.com/mikefarah/yq
+brew "yq"
+
 # Additional completion definitions for zsh
 # https://github.com/zsh-users/zsh-completions
 brew "zsh-completions"
@@ -272,10 +281,6 @@ brew "zsh-completions"
 #########################
 # GUI Applications
 #########################
-
-# A tiling window manager for macOS
-# https://ianyh.com/amethyst/
-cask "amethyst"
 
 # Arduino IDE
 # https://www.arduino.cc
@@ -289,9 +294,9 @@ cask "armory"
 # https://github.com/99designs/aws-vault
 cask "aws-vault"
 
-# Dash gives you instant offline access to 200+ API documentation sets.
-# https://kapeli.com/dash
-cask "dash"
+# Open Source Password Management
+# https://bitwarden.com/
+cask "bitwarden"
 
 # DiffMerge is an application to visually compare and merge files on Windows, OS X and Linux.
 # https://www.sourcegear.com/diffmerge
@@ -334,10 +339,6 @@ cask "gpg-suite"
 # http://growl.info/downloads
 cask "growlnotify"
 
-# itsycal is a nice menu bar clock replacement that features a calendar with events from iCal
-# https://www.mowglii.com/itsycal/
-cask "itsycal"
-
 # A terminal emulator for OS X that does amazing things
 # https://www.iterm2.com
 cask "iterm2"
@@ -357,10 +358,6 @@ cask "kindle"
 # One command for an instant, secure URL to your localhost server through any NAT or firewall.
 # https://ngrok.com/
 cask "ngrok"
-
-# POSIX-compliant bash script to manage multiple active node.js versions
-# https://github.com/nvm-sh/nvm
-brew "nvm"
 
 # File system integration made easy
 # https://osxfuse.github.io/
@@ -402,11 +399,6 @@ cask "slack"
 # osx window management/tiling
 # https://www.spectacleapp.com
 cask "spectacle"
-
-# CLI that provides on-demand secrets access for common DevOps tools.
-# https://github.com/cyberark/summon
-tap "cyberark/tools"
-brew "summon"
 
 # Quicklook plugin to inspect package files
 # https://www.mothersruin.com/software/SuspiciousPackage/
