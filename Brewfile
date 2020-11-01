@@ -10,10 +10,6 @@ brew "ag"
 # http://beyondgrep.com/
 brew "ack"
 
-# The fastest shell plugin manager
-# http://getantibody.github.io
-brew "getantibody/tap/antibody"
-
 # Official Amazon AWS command-line interface
 # https://aws.amazon.com/cli/
 brew "awscli"
@@ -165,10 +161,6 @@ brew "netcat"
 # RSS/Atom feed reader for text terminals
 # https://newsboat.org/
 brew "newsboat"
-
-# Ambitious Vim-fork focused on extensibility and agility
-# https://neovim.io/
-brew "neovim"
 
 # Port scanning utility for large networks
 # https://nmap.org/
@@ -439,4 +431,3 @@ cask "vlc"
 # The XQuartz project is an open-source effort to develop a version of the X.Org X Window System that runs on OS X.
 # https://www.xquartz.org
 cask "xquartz"
-
