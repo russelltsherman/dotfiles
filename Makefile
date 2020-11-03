@@ -39,6 +39,22 @@ sudo/prompt:
 	sudo rm -rf /etc/sudoers.d/$(shell whoami)
 .PHONY: sudo/prompt
 
+## install terraform and terragrunt
+terraform:
+	# Install tfenv
+	-git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+	-ln -s ~/.tfenv/bin/* /usr/local/bin # Add tfenv to your path
+	# install terraform versions
+	tfenv install 0.12.29
+	tfenv use 0.12.29
+	# Install tgenv
+	-git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv
+	-ln -s ~/.tgenv/bin/* /usr/local/bin # Add tgenv to your path
+	# Install tgenv versions
+	tgenv install 0.23.40
+	tgenv use 0.23.40
+.PHONY: terraform
+
 ## pull upstream changes
 update: refresh-build-harness
 	git pull
