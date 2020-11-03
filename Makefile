@@ -11,6 +11,10 @@ bootstrap: init
 	-make brew
 	make binscripts
 	make dotfiles
+	make terraform
+	make vim
+	make vscode
+	make zsh
 	pip install -r requirements.txt
 	~/.rvm/scripts/rvm
 .PHONY: bootstrap
