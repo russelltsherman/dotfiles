@@ -86,6 +86,10 @@ brew "gnupg", link: false
 # https://golang.org
 brew "go"
 
+# Slightly more awesome Standard Unix Password Manager for Teams
+# https://github.com/gopasspw/gopass
+brew "gopass"
+
 # GNU grep, egrep and fgrep
 # https://www.gnu.org/software/grep/
 brew "grep"
