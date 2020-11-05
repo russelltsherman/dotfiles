@@ -11,6 +11,7 @@ bootstrap: init
 	-make brew
 	make binscripts
 	make dotfiles
+	make gitconfig
 	make terraform
 	make vim
 	make vscode
@@ -34,6 +35,14 @@ cleandotfiles: # if there are existing symlinks for our dotfiles in ~/ remove th
 dotfiles: cleandotfiles \
 	$(DOTFILES) # iterate our list of dotfiles and ensure they are symlinked
 .PHONY: dotfiles
+
+## include our supplemental global gitconfig into users global gitconfig
+gitconfig:
+	# link .gitignore to global git config
+	git config --global core.excludesfile ./.gitignore
+	# link .gitconfig_globbal to global git config
+	git config --global include.path ./.gitconfig_global
+.PHONY: gitconfig
 
 sudo/noprompt:
 	echo "$(shell whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$(shell whoami)
