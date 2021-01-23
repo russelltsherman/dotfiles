@@ -32,5 +32,8 @@ Temporary Items
 *.swp
 *.swo
 
+# ignore vscode project config
+.vscode/*
+
 # ignore TODO files
 TODO*
