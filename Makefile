@@ -14,6 +14,7 @@ bootstrap: init
 	make gitconfig
 	make terraform
 	make vim
+	make tmux
 	make vscode
 	make zsh
 	pip install -r requirements.txt
@@ -74,6 +75,10 @@ update: refresh-build-harness
 	-rvm get stable
 	make bootstrap
 .PHONY: update
+
+tmux:
+	curl https://raw.githubusercontent.com/russelltsherman/tmux/master/bin/bootstrap | bash
+.PHONY: tmux
 
 vim:
 	curl https://raw.githubusercontent.com/russelltsherman/vim/master/bin/bootstrap | bash
