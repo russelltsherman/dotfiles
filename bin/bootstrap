@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# allow for automated install of xcode cli tools and git clone of baseline repo
+# allow for automated install of xcode cli tools and git clone of repo
 
 set -o errtrace
 set -o functrace
@@ -8,6 +8,10 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+export GIT_ORG="russelltsherman"
+export GIT_PROJECT="dotfiles"
+export GIT_BRANCH="main"
+export GIT_SRC="${HOME}/src"
 
 if [ "$(uname -s)" == "Darwin" ]
 then
@@ -32,38 +36,37 @@ echo ""
 echo "#######################################################################"
 echo "clone or update dotfiles repo"
 echo "#######################################################################"
-if [ -d  "${HOME}/dotfiles" ]
+if [ -d  "${GIT_SRC}/github.com/${GIT_ORG}/${GIT_PROJECT}" ]
 then
-  # dotfiles repo clone exists.. update
-  ( cd "${HOME}/dotfiles" || exit; git pull --rebase )
+  # git repo clone exists.. update
+  (
+    cd "${GIT_SRC}/github.com/${GIT_ORG}/${GIT_PROJECT}" || exit;
+    git pull --rebase
+  )
 else
-  # clone dotfiles repo
-  git clone https://github.com/russelltsherman/dotfiles "${HOME}/dotfiles"
+  mkdir -p "${GIT_SRC}/github.com/${GIT_ORG}"
+  # clone git repo
+  git clone "https://github.com/${GIT_ORG}/${GIT_PROJECT}" \
+    "${GIT_SRC}/github.com/${GIT_ORG}/${GIT_PROJECT}"
 fi
 
 echo ""
 echo "#######################################################################"
 echo "allow passwordless sudo"
 echo "#######################################################################"
-make -C "${HOME}/dotfiles" sudo/noprompt
-
-echo ""
-echo "#######################################################################"
-echo "initialize baseline build harness"
-echo "#######################################################################"
-make -C "${HOME}/dotfiles" init
+make -C "${GIT_SRC}/github.com/${GIT_ORG}/${GIT_PROJECT}" sudo/noprompt
 
 echo ""
 echo "#######################################################################"
 echo "execute baseline bootstrap"
 echo "#######################################################################"
-make -C "${HOME}/dotfiles" bootstrap
+make -C "${GIT_SRC}/github.com/${GIT_ORG}/${GIT_PROJECT}" bootstrap
 
 echo ""
 echo "#######################################################################"
 echo "remove passwordless sudo"
 echo "#######################################################################"
-make -C "${HOME}/dotfiles" sudo/prompt
+make -C "${GIT_SRC}/github.com/${GIT_ORG}/${GIT_PROJECT}" sudo/prompt
 
 echo ""
 echo "#######################################################################"
