@@ -1,26 +1,6 @@
-# Command-line tools for working with Architecture Decision Records
-# https://github.com/npryce/adr-tools
-brew "adr-tools"
-
-# Code-search similar to ack
-# https://github.com/ggreer/the_silver_searcher
-brew "ag"
-
 # Search tool like grep, but optimized for programmers
 # http://beyondgrep.com/
 brew "ack"
-
-# Official Amazon AWS command-line interface
-# https://aws.amazon.com/cli/
-brew "awscli"
-
-# open source secrets management
-# https://bitwarden.com/
-brew "bitwarden-cli"
-
-# Calico CLI tool
-# https://www.projectcalico.org
-brew "calicoctl"
 
 # CloudFlare's PKI toolkit
 # https://cfssl.org/
@@ -34,14 +14,6 @@ brew "clang-format"
 # https://www.gnu.org/software/coreutils
 brew "coreutils"
 
-# direnv is an environment switcher for the shell.
-# https://direnv.net/
-brew "direnv"
-
-# A tool for developers to create cloud-native applications on Kubernetes.
-# https://github.com/Azure/draft
-brew "azure/draft/draft"
-
 # XML-based font configuration API for X Windows
 # https://wiki.freedesktop.org/www/Software/fontconfig/
 brew "fontconfig"
@@ -50,25 +22,13 @@ brew "fontconfig"
 # https://www.gnu.org/software/findutils/
 brew "findutils"
 
-# Command-line fuzzy finder written in Go
-# https://github.com/junegunn/fzf
-brew "fzf"
-
 # GNU awk utility
 # https://www.gnu.org/software/gawk/
 brew "gawk"
 
-# Access GitHub's .gitignore boilerplates
-# https://github.com/simonwhitaker/gibo
-brew "gibo"
-
 # enable transparent encryption/decryption for files in a git repo
 # https://www.agwa.name/projects/git-crypt/
 brew "git-crypt"
-
-# Extensions to follow Vincent Driessen's branching model
-# https://github.com/nvie/gitflow
-brew "git-flow"
 
 # GNU implementation of the famous stream editor
 # https://www.gnu.org/software/sed/
@@ -81,14 +41,6 @@ brew "gnu-which"
 # GNU Pretty Good Privacy (PGP) package
 # https://gnupg.org/
 brew "gnupg", link: false
-
-# Open source programming language to build simple/reliable/efficient software
-# https://golang.org
-brew "go"
-
-# Slightly more awesome Standard Unix Password Manager for Teams
-# https://github.com/gopasspw/gopass
-brew "gopass"
 
 # GNU grep, egrep and fgrep
 # https://www.gnu.org/software/grep/
@@ -110,30 +62,6 @@ brew "imagesnap"
 # https://github.com/brona/iproute2mac
 brew "iproute2mac"
 
-# Manage your Java environment
-# https://www.jenv.be/
-brew "jenv"
-
-# Lightweight and flexible command-line JSON processor
-# https://stedolan.github.io/jq/
-brew "jq"
-
-# Kubernetes command-line interface
-# https://kubernetes.io/
-brew "kubectl"
-
-# The Kubernetes package manager
-# https://helm.sh/
-brew "kubernetes-helm"
-
-# Lazier way to manage everything docker
-# https://github.com/jesseduffield/lazydocker
-brew "lazydocker"
-
-# Simple terminal UI for git commands
-# https://github.com/jesseduffield/lazygit/
-brew "lazygit"
-
 # Sophisticated file transfer program
 # https://lftp.yar.ru/
 brew "lftp"
@@ -146,41 +74,13 @@ brew "make"
 # https://github.com/mas-cli/mas
 brew "mas"
 
-# Run a Kubernetes cluster locally
-# https://minikube.sigs.k8s.io/
-brew "minikube"
-
 # Mongrel of mail user agents (part elm, pine, mush, mh, etc.)
 # http://www.mutt.org/
 brew "mutt"
 
-# Free (GNU) replacement for the Pico text editor
-# https://www.nano-editor.org/
-brew "nano"
-
-# Utility for managing network connections
-# https://netcat.sourceforge.io/
-brew "netcat"
-
 # RSS/Atom feed reader for text terminals
 # https://newsboat.org/
 brew "newsboat"
-
-# Port scanning utility for large networks
-# https://nmap.org/
-brew "nmap"
-
-# POSIX-compliant bash script to manage multiple active node.js versions
-# https://github.com/nvm-sh/nvm
-brew "nvm"
-
-# SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
-# https://openvpn.net/index.php/download/community-downloads.html
-brew "openvpn"
-
-# Kubernetes CLI To Manage Your Clusters In Style!
-# https://k9scli.io/
-brew "derailed/k9s/k9s"
 
 # Tools for one-time password authentication systems
 # https://www.nongnu.org/oath-toolkit/
@@ -190,25 +90,9 @@ brew "oath-toolkit"
 # https://github.com/GPGTools/pinentry-mac
 brew "pinentry-mac"
 
-# Show ps output as a tree
-# http://www.thp.uni-duisburg.de/pstree/
-brew "pstree"
-
 # Monitor data's progress through a pipe
 # https://www.ivarch.com/programs/pv.shtml
 brew "pv"
-
-# Python version management
-# https://github.com/pyenv/pyenv
-brew "pyenv"
-
-# Pyenv plugin to manage virtualenv
-# https://github.com/pyenv/pyenv-virtualenv
-brew "pyenv-virtualenv"
-
-# Interpreted, interactive, object-oriented programming language
-# https://www.python.org/
-brew "python"
 
 # Library for command-line editing
 # https://tiswww.case.edu/php/chet/readline/rltop.html
@@ -222,18 +106,10 @@ brew "rsync"
 # https://www.gnu.org/software/screen
 brew "screen"
 
-# Static analysis and lint tool, for (ba)sh scripts
-# https://www.shellcheck.net/
-brew "shellcheck"
-
 # CLI that provides on-demand secrets access for common DevOps tools.
 # https://github.com/cyberark/summon
 tap "cyberark/tools"
 brew "summon"
-
-# Terminal multiplexer
-# https://tmux.github.io/
-brew "tmux"
 
 # Display directories as trees (with optional color/HTML output)
 # http://mama.indstate.edu/users/ice/tree/
@@ -259,16 +135,9 @@ brew "watchman"
 # https://www.gnu.org/software/wget/
 brew "wget", arge: [ "--with-iri" ]
 
-# JavaScript package manager https://yarnpkg.com/
-brew "yarn"
-
 # YubiKey personalization library and tool
 # https://developers.yubico.com/yubikey-personalization/
 brew "ykpers"
-
-# Process YAML documents from the CLI
-# https://github.com/mikefarah/yq
-brew "yq"
 
 # Additional completion definitions for zsh
 # https://github.com/zsh-users/zsh-completions
@@ -322,10 +191,6 @@ cask "gimp"
 # Google Chrome web Browser
 # https://www.google.com/chrome/
 cask "google-chrome"
-
-# Google Cloud Cli
-# https://cloud.google.com/sdk/
-cask "google-cloud-sdk"
 
 # One simple package with everything you need, to protect your emails and files.
 # https://gpgtools.org

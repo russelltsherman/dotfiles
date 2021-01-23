@@ -12,13 +12,11 @@ bootstrap: init
 	make binscripts
 	make dotfiles
 	make gitconfig
-	make terraform
 	make vim
 	make tmux
 	make vscode
 	make zsh
 	pip install -r requirements.txt
-	~/.rvm/scripts/rvm
 .PHONY: bootstrap
 
 binscripts: cleanbinscripts \
@@ -53,22 +51,6 @@ sudo/prompt:
 	sudo rm -rf /etc/sudoers.d/$(shell whoami)
 .PHONY: sudo/prompt
 
-## install terraform and terragrunt
-terraform:
-	# Install tfenv
-	-git clone https://github.com/tfutils/tfenv.git ~/.tfenv
-	-ln -s ~/.tfenv/bin/* /usr/local/bin # Add tfenv to your path
-	# install terraform versions
-	tfenv install 0.12.29
-	tfenv use 0.12.29
-	# Install tgenv
-	-git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv
-	-ln -s ~/.tgenv/bin/* /usr/local/bin # Add tgenv to your path
-	# Install tgenv versions
-	tgenv install 0.23.40
-	tgenv use 0.23.40
-.PHONY: terraform
-
 ## pull upstream changes
 update: refresh-build-harness
 	git pull
@@ -102,7 +84,3 @@ zsh:
 ~/bin/%: # create symlink form ~/bin/binscript and ./bin/binscript
 	cd ~ && ln -sv $(current_dir)/bin/$(notdir $@) $@
 
-~/.rvm/scripts/rvm:
-	gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-	\curl -sSL https://get.rvm.io | bash -s stable --rails
-	sudo usermod -a -G rvm $$(whoami)
