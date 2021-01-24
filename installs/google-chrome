@@ -12,5 +12,5 @@ then
   sudo dpkg -i google-chrome-stable_current_amd64.deb
   rm google-chrome-stable_current_amd64.deb
 
-  apt-get install -y --fix-broken
+  sudo apt-get install -y --fix-broken
 fi
