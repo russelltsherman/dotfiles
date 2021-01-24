@@ -22,13 +22,15 @@ git clone https://github.com/asdf-vm/asdf.git $ASDF_DIR --branch v0.8.0
 # shellcheck disable=SC1090
 source "$ASDF_DIR/asdf.sh"
 
+pkg::install::asdf golang https://github.com/kennyp/asdf-golang.git
+pkg::install::asdf python https://github.com/danhper/asdf-python.git
+
 pkg::install::asdf adr-tools https://github.com/russelltsherman/asdf-adr-tools.git
 pkg::install::asdf draft https://github.com/kristoflemmens/asdf-draft.git
 pkg::install::asdf eksctl https://github.com/russelltsherman/asdf-eksctl.git
 pkg::install::asdf fzf https://github.com/russelltsherman/asdf-fzf.git
 pkg::install::asdf gcloud https://github.com/jthegedus/asdf-gcloud.git
 pkg::install::asdf github-cli https://github.com/russelltsherman/asdf-github-cli.git
-pkg::install::asdf golang https://github.com/kennyp/asdf-golang.git
 pkg::install::asdf goreleaser https://github.com/kforsthoevel/asdf-goreleaser.git
 pkg::install::asdf helm https://github.com/Antiarchitect/asdf-helm.git
 pkg::install::asdf hugo https://bitbucket.org/mgladdish/asdf-gohugo.git
@@ -44,7 +46,6 @@ pkg::install::asdf neovim https://github.com/richin13/asdf-neovim.git
 pkg::install::asdf operator-sdk https://github.com/Medium/asdf-operator-sdk
 pkg::install::asdf packer https://github.com/Banno/asdf-hashicorp.git
 pkg::install::asdf popeye https://github.com/nlamirault/asdf-popeye.git
-pkg::install::asdf python https://github.com/danhper/asdf-python.git
 pkg::install::asdf ruby https://github.com/asdf-vm/asdf-ruby.git
 pkg::install::asdf skaffold https://github.com/kristoflemmens/asdf-skaffold.git
 pkg::install::asdf sqlite https://github.com/cLupus/asdf-sqlite.git
