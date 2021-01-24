@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1090
+source "$DIR/../../lib/sh"
+
+
+chk::osx && pkg::install::brew::cask "slack"
+
+if chk::debian
+then
+  wget --quiet https://downloads.slack-edge.com/linux_releases/slack-desktop-4.11.3-amd64.deb -O slack.deb
+  sudo dpkg -i slack.deb
+  rm slack.deb
+
+  apt-get install -y --fix-broken
+fi

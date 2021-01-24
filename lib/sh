@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
+
+xdg_dir() {
+  local dir="$1"
+  # shellcheck disable=SC2005
+  echo "$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.${dir}" || printf %s "${XDG_CONFIG_HOME}/${dir}")"
+}
+
+# chk::debian returns true if this OS is Debian Linux
+# usage:
+#     chk::debian && echo::green "this is Debian Linux"
+chk::debian() {
+  uname -a | grep "Debian" &> /dev/null
+}
+
+# chk::linux returns true if this OS is Linux
+# usage:
+#     chk::linux && echo::green "this is Linux"
+chk::linux() {
+  uname -a | grep "Linux" &> /dev/null
+}
+
+# chk::osx returns true if this OS is Darwin
+# usage:
+#     chk::osx && echo::green "this is Mac OS"
+chk::osx() {
+  uname -a | grep "Darwin" &> /dev/null
+}
+
+# chk::ubuntu returns true if this OS is Ubuntu Linux
+# usage:
+#     chk::ubuntu && echo::green "this is Ubuntu Linux"
+chk::ubuntu() {
+  uname -a | grep "Ubuntu" &> /dev/null
+}
+
+# chk::empty returns true if a given value is empty
+# usage:
+#     chk::empty "xx" || echo::red "not empty"
+chk::empty() {
+  local var="$1"
+  [ -z "$var" ]
+}
+
+# install asdf plugin and latest version
+# USAGE:
+#   pkg::install::asdf pluginname pluginrepo
+pkg::install::asdf() {
+  local pkg="${1}"
+  local repo="${2}"
+  asdf plugin-add "$pkg" "$repo"
+  asdf install "$pkg" "$(asdf list-all "$pkg" | grep -v a | grep -v e | grep -v c | grep -v y | tail -1 | xargs)"
+  asdf global "$pkg" "$(asdf list "$pkg" | tail -1 | xargs)"
+}
+
+# install package using apt install
+# USAGE:
+#   pkg::install::debian packagename [reponame]
+pkg::install::debian() {
+  local pkg="${1}"
+  local repo="${2}"
+  chk::empty "$repo" || sudo apt-add-repository --yes --update "$repo"
+  sudo apt install -y "$pkg"
+}
+
+# install package using homebrew
+# USAGE:
+#   pkg::install::brew packagename
+pkg::install::brew() {
+  local pkg="${1}"
+  brew install "$pkg"
+}
+
+# install package using homebrew cask
+# USAGE:
+#   pkg::install::brew::cask packagename
+pkg::install::brew::cask() {
+  local pkg="${1}"
+  brew install --cask "$pkg"
+}
+
+# install package using apt install
+# USAGE:
+#   pkg::install::debian packagename [reponame]
+pkg::install::debian() {
+  local pkg="${1}"
+  local repo="${2}"
+
+  chk::empty "$repo" || sudo apt-add-repository --yes --update "$repo"
+  sudo apt install -y "$pkg"
+}
+
+# install package
+# USAGE:
+#   pkg::install packagename [reponame]
+pkg::install() {
+  local pkg="${1}"
+  local repo="${2}"
+
+  if chk::osx
+  then
+    pkg::install::brew "$pkg"
+  fi
+
+  if chk::ubuntu || chk::debian
+  then
+    pkg::install::debian "$pkg" "$repo"
+  fi
+}

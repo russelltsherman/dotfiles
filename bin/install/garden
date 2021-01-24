@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1090
+source "$DIR/../../lib/sh"
+
+GARDEN_DIR="$(xdg_dir "garden")"
+export GARDEN_DIR
+
+version="0.12.11"
+platform=""
+
+chk::osx && platform="macos"
+chk::linux && platform="linux"
+
+wget https://github.com/garden-io/garden/releases/download/$version/garden-$version-$platform-amd64.tar.gz
+tar -xvf garden-$version-$platform-amd64.tar.gz
+mv "$platform-amd64" "$GARDEN_DIR"
+rm garden-$version-$platform-amd64.tar.gz
+ln -s "$GARDEN_DIR/garden" ~/bin/garden

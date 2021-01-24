@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1090
+source "$DIR/../../lib/sh"
+
+
+chk::osx && pkg::install::brew::cask "signal"
+
+if chk::debian
+then
+  wget -O- https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+  sudo add-apt-repository "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main"
+  sudo apt update && sudo apt install -y signal-desktop
+fi
