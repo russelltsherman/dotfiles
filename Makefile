@@ -83,19 +83,19 @@ update: refresh-build-harness
 .PHONY: update
 
 tmux:
-	curl https://raw.githubusercontent.com/russelltsherman/tmux/main/bin/bootstrap | bash
+	curl -fsSL https://raw.githubusercontent.com/russelltsherman/tmux/main/bin/bootstrap | bash
 .PHONY: tmux
 
 vim:
-	curl https://raw.githubusercontent.com/russelltsherman/vim/main/bin/bootstrap | bash
+	curl -fsSL https://raw.githubusercontent.com/russelltsherman/vim/main/bin/bootstrap | bash
 .PHONY: vim
 
 vscode:
-	curl https://raw.githubusercontent.com/russelltsherman/vscode/main/bin/bootstrap | bash
+	curl -fsSL https://raw.githubusercontent.com/russelltsherman/vscode/main/bin/bootstrap | bash
 .PHONY: vscode
 
 zsh:
-	curl https://raw.githubusercontent.com/russelltsherman/zsh/main/bin/bootstrap | bash
+	curl -fsSL https://raw.githubusercontent.com/russelltsherman/zsh/main/bin/bootstrap | bash
 .PHONY: zsh
 
 /etc/hosts:
