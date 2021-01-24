@@ -11,6 +11,8 @@ source "$ASDF_DIR/asdf.sh"
 
 pkg::install::asdf direnv https://github.com/russelltsherman/asdf-direnv
 
+mkdir -p ${XDG_CONFIG_HOME}/direnv
+
 cat > ${XDG_CONFIG_HOME}/direnv/direnvrc <<- EOM
 # makes the use asdf feature available
 source "\$(asdf direnv hook asdf)"
