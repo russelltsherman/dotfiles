@@ -44,26 +44,26 @@ gitconfig:
 .PHONY: gitconfig
 
 installs:
-	bin/installs/_asdf
-	bin/installs/ansible
-	bin/installs/aws
-	bin/installs/aws-vault
-	bin/installs/direnv
-	bin/installs/docker
-	bin/installs/flash
-	bin/installs/gibo
-	bin/installs/google-chrome
-	bin/installs/keypass
-	bin/installs/krew
-	bin/installs/lazydocker
-	bin/installs/lazygit
-	bin/installs/nodejs
-	bin/installs/signal
-	bin/installs/slack
-	bin/installs/ulauncher
-	bin/installs/vagrant
-	bin/installs/virtualbox
-	bin/installs/visual-studio-code
+	bin/install/_asdf
+	bin/install/ansible
+	bin/install/aws
+	bin/install/aws-vault
+	bin/install/direnv
+	bin/install/docker
+	bin/install/flash
+	bin/install/gibo
+	bin/install/google-chrome
+	bin/install/keypass
+	bin/install/krew
+	bin/install/lazydocker
+	bin/install/lazygit
+	bin/install/nodejs
+	bin/install/signal
+	bin/install/slack
+	bin/install/ulauncher
+	bin/install/vagrant
+	bin/install/virtualbox
+	bin/install/visual-studio-code
 
 .PHONY: installs
 
