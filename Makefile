@@ -44,26 +44,26 @@ gitconfig:
 .PHONY: gitconfig
 
 installs:
-	bin/install/_asdf
-	bin/install/ansible
-	bin/install/aws
-	bin/install/aws-vault
-	bin/install/direnv
-	bin/install/docker
-	bin/install/flash
-	bin/install/gibo
-	bin/install/google-chrome
-	bin/install/keypass
-	bin/install/krew
-	bin/install/lazydocker
-	bin/install/lazygit
-	bin/install/nodejs
-	bin/install/signal
-	bin/install/slack
-	bin/install/ulauncher
-	bin/install/vagrant
-	bin/install/virtualbox
-	bin/install/visual-studio-code
+	installs/_asdf
+	installs/ansible
+	installs/aws
+	installs/aws-vault
+	installs/direnv
+	installs/docker
+	installs/flash
+	installs/gibo
+	installs/google-chrome
+	installs/keypass
+	installs/krew
+	installs/lazydocker
+	installs/lazygit
+	installs/nodejs
+	installs/signal
+	installs/slack
+	installs/ulauncher
+	installs/vagrant
+	installs/virtualbox
+	installs/visual-studio-code
 
 .PHONY: installs
 
@@ -72,7 +72,7 @@ sudo/noprompt:
 .PHONY: sudo/noprompt
 
 sudo/prompt:
-	sudo rm -rf /etc/sudoers.d/$(shell whoami)
+	[ "$(shell whoami)" != "vagrant" ] && sudo rm -rf /etc/sudoers.d/$(shell whoami)
 .PHONY: sudo/prompt
 
 ## pull upstream changes
