@@ -8,7 +8,7 @@ DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
 
 ## initialize project
 bootstrap: init
-	-make brew
+	make installs
 	make binscripts
 	make dotfiles
 	make gitconfig
@@ -42,6 +42,30 @@ gitconfig:
 	# link .gitconfig_globbal to global git config
 	git config --global include.path ./.gitconfig_global
 .PHONY: gitconfig
+
+installs:
+	bin/installs/_asdf
+	bin/installs/ansible
+	bin/installs/aws
+	bin/installs/aws-vault
+	bin/installs/direnv
+	bin/installs/docker
+	bin/installs/flash
+	bin/installs/gibo
+	bin/installs/google-chrome
+	bin/installs/keypass
+	bin/installs/krew
+	bin/installs/lazydocker
+	bin/installs/lazygit
+	bin/installs/nodejs
+	bin/installs/signal
+	bin/installs/slack
+	bin/installs/ulauncher
+	bin/installs/vagrant
+	bin/installs/virtualbox
+	bin/installs/visual-studio-code
+
+.PHONY: installs
 
 sudo/noprompt:
 	echo "$(shell whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$(shell whoami)
