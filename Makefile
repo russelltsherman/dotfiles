@@ -53,7 +53,7 @@ installs:
 	installs/flash
 	installs/gibo
 	installs/google-chrome
-	installs/keypass
+	installs/keybase
 	installs/krew
 	installs/lazydocker
 	installs/lazygit
