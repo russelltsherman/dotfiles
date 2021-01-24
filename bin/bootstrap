@@ -58,7 +58,7 @@ make -C "${GIT_SRC}/github.com/${GIT_ORG}/${GIT_PROJECT}" sudo/noprompt
 
 echo ""
 echo "#######################################################################"
-echo "execute baseline bootstrap"
+echo "execute bootstrap"
 echo "#######################################################################"
 make -C "${GIT_SRC}/github.com/${GIT_ORG}/${GIT_PROJECT}" bootstrap
 
