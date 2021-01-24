@@ -6,7 +6,7 @@ source "$DIR/../../lib/sh"
 
 chk::osx && pkg::install::brew::cask "visual-studio-code"
 
-if chk::debian
+if chk::debian || chk::ubuntu
 then
   wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
