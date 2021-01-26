@@ -44,6 +44,7 @@ gitconfig:
 .PHONY: gitconfig
 
 installs:
+	installs/python
 	installs/_asdf
 	# installs/ansible
 	# installs/aws
