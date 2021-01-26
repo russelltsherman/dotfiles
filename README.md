@@ -12,7 +12,7 @@
 
 # Dotfiles
 
-baseline provisioning for OSX workstations
+provisioning for workstations
 
 ## Quick Start
 
@@ -61,9 +61,9 @@ Please use the [issue tracker](https://github.com/russelltsherman/dotfiles/issue
 
 PRs are welcome. We follow the typical "git-flow" Git workflow.
 
-1.  **Clone** the project to your own machine
-1.  **Commit** changes to your own branch
-1.  **Push** your work back up to your fork
-1.  Submit a **Pull Request** so that we can review your changes
+1. **Clone** the project to your own machine
+1. **Commit** changes to your own branch
+1. **Push** your work back up to your fork
+1. Submit a **Pull Request** so that we can review your changes
 
 **NOTE:** Be sure to merge the latest upstream changes before making a pull request!

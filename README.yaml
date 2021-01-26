@@ -9,7 +9,7 @@ name: Dotfiles
 
 # Short description of this project
 description: |-
-  baseline provisioning for OSX workstations
+  provisioning for workstations
 
 # Canonical GitHub repo
 github_repo: russelltsherman/dotfiles
