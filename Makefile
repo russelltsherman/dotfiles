@@ -45,25 +45,26 @@ gitconfig:
 
 installs:
 	installs/_asdf
-	installs/ansible
-	installs/aws
-	installs/aws-vault
+	# installs/ansible
+	# installs/aws
+	# installs/aws-vault
 	installs/direnv
 	installs/docker
-	installs/flash
-	installs/gibo
+	# installs/flash
+	# installs/gibo
 	installs/google-chrome
 	installs/keybase
-	installs/krew
-	installs/lazydocker
-	installs/lazygit
-	installs/nodejs
+	# installs/krew
+	# installs/lazydocker
+	# installs/lazygit
+	# installs/nodejs
 	installs/signal
 	installs/slack
 	installs/ulauncher
-	installs/vagrant
-	installs/virtualbox
+	# installs/vagrant
+	# installs/virtualbox
 	installs/visual-studio-code
+	installs/zsh
 
 .PHONY: installs
 
