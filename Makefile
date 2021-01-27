@@ -58,6 +58,7 @@ installs:
 	# installs/krew
 	# installs/lazydocker
 	# installs/lazygit
+	installs/mfa
 	# installs/nodejs
 	installs/signal
 	installs/slack
