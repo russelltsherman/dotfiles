@@ -7,9 +7,13 @@ source "$DIR/../lib/sh"
 chk::osx && pkg::install::brew 'coreutils'
 chk::osx && pkg::install::brew 'gpg'
 
-chk::debian && pkg::install::debian 'curl dirmngr gpg'
+chk::linux && pkg::install::debian 'curl dirmngr gpg'
+
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 
 bash -c '${ASDF_DATA_DIR}/plugins/nodejs/bin/import-release-team-keyring'
 bash -c '${ASDF_DATA_DIR}/plugins/nodejs/bin/import-previous-release-team-keyring'
 
-pkg::install::asdf nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install "nodejs" "$(asdf list-all "nodejs" | grep -v a | grep -v e | grep -v c | grep -v y | tail -1 | xargs)"
+
+asdf global "nodejs" "$(asdf list "nodejs" | tail -1 | xargs)"

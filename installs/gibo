@@ -7,8 +7,5 @@ source "$DIR/../lib/sh"
 GIBO_DIR="$(xdg_dir "gibo")"
 export GIBO_DIR
 
-echo $GIBO_DIR
-exit
-
 git clone https://github.com/simonwhitaker/gibo.git $GIBO_DIR
 ln -s $GIBO_DIR/gibo ~/bin/gibo

@@ -7,7 +7,7 @@ source "$DIR/../lib/sh"
 
 chk::osx && pkg::install::brew::cask "signal"
 
-if chk::debian || chk::ubuntu
+if chk::linux
 then
   wget -O- https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main"

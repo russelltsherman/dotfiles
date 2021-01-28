@@ -6,7 +6,7 @@ source "$DIR/../lib/sh"
 
 chk::osx && pkg::install::brew::cask "keybase"
 
-if chk::ubuntu || chk::debian
+if chk::linux
 then
   wget --quiet https://prerelease.keybase.io/keybase_amd64.deb
   sudo dpkg -i keybase_amd64.deb

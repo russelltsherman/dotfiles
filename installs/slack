@@ -7,7 +7,7 @@ source "$DIR/../lib/sh"
 
 chk::osx && pkg::install::brew::cask "slack"
 
-if chk::debian || chk::ubuntu
+if chk::linux
 then
   wget --quiet https://downloads.slack-edge.com/linux_releases/slack-desktop-4.11.3-amd64.deb -O slack.deb
   sudo dpkg -i slack.deb

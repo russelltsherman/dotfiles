@@ -7,4 +7,4 @@ source "$DIR/../lib/sh"
 
 chk::osx && pkg::install::brew::cask "virtualbox"
 
-chk::debian && pkg::install::debian "virtualbox"
+chk::linux && pkg::install::debian "virtualbox"

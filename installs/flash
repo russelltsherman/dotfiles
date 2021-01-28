@@ -6,7 +6,7 @@ source "$DIR/../lib/sh"
 
 pkg::install "pv"
 
-chk::debian && pkg::install::debian "curl hdparm unzip"
+chk::linux && pkg::install::debian "curl hdparm unzip"
 
 wget https://github.com/hypriot/flash/releases/download/2.7.0/flash -O ~/bin/flash
 chmod +x ~/bin/flash

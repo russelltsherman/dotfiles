@@ -6,7 +6,7 @@ source "$DIR/../lib/sh"
 
 chk::osx && pkg::install::brew::cask "docker"
 
-if chk::debian || chk::ubuntu
+if chk::linux
 then
   sudo apt-get update
   sudo apt-get install -y \

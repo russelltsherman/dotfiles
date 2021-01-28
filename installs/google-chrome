@@ -6,7 +6,7 @@ source "$DIR/../lib/sh"
 
 chk::osx && pkg::install::brew::cask "google-chrome"
 
-if chk::ubuntu || chk::debian
+if chk::linux
 then
   wget --quiet https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   sudo dpkg -i google-chrome-stable_current_amd64.deb
