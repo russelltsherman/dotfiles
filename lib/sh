@@ -12,7 +12,6 @@ ASDF_DIR="$(xdg_dir "asdf")"
 export ASDF_DIR
 export ASDF_DATA_DIR="${HOME}/.asdf"
 
-git clone https://github.com/asdf-vm/asdf.git $ASDF_DIR --branch v0.8.0
 # shellcheck disable=SC1090
 source "$ASDF_DIR/asdf.sh"
 
