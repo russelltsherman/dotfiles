@@ -8,6 +8,7 @@ DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
 
 ## initialize project
 bootstrap:
+	make brew
 	make installs
 	make binscripts
 	make dotfiles
