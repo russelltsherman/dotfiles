@@ -44,23 +44,12 @@ gitconfig:
 	git config --global include.path ./.gitconfig_global
 .PHONY: gitconfig
 
-installs:
-	installs/python
-	installs/_asdf
-	installs/aws
-	installs/direnv
-	installs/docker
-	installs/flash
-	installs/gibo
-	installs/google-chrome
-	installs/keybase
-	installs/signal
-	installs/slack
-	installs/ulauncher
-	installs/vagrant
-	installs/virtualbox
-	installs/visual-studio-code
-
+LC_COLLATE=C;
+# ensure this works as expected in linux environment then refactor this to execute install scripts
+installs: installs/*
+	for file in $^; do \
+		echo $${file}; \
+	done
 .PHONY: installs
 
 sudo/noprompt:
