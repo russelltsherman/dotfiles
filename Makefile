@@ -46,27 +46,19 @@ gitconfig:
 installs:
 	installs/python
 	installs/_asdf
-	# installs/ansible
 	installs/aws
-	installs/aws-vault
 	installs/direnv
 	installs/docker
 	installs/flash
 	installs/gibo
 	installs/google-chrome
 	installs/keybase
-	# installs/krew
-	# installs/lazydocker
-	# installs/lazygit
-	installs/mfa
-	installs/nodejs
 	installs/signal
 	installs/slack
 	installs/ulauncher
 	installs/vagrant
 	installs/virtualbox
 	installs/visual-studio-code
-	installs/zsh
 
 .PHONY: installs
 

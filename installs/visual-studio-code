@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 # shellcheck disable=SC1090
 source "$DIR/../lib/sh"
 
-chk::osx && pkg::install::brew::cask "visual-studio-code"
+chk::linux || exit 0
 
-if chk::linux
-then
-  wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo apt-key add -
-  sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
-  sudo apt update && sudo apt install -y code # or code-insiders
-fi
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
+sudo apt update && sudo apt install -y code # or code-insiders

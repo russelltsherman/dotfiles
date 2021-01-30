@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 # shellcheck disable=SC1090
 source "$DIR/../lib/sh"
 
-chk::osx && pkg::install::brew::cask "dropbox"
+chk::linux || exit 0
 
-if chk::linux
-then
-  ( cd ~/ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - )
-  wget https://www.dropbox.com/download?dl=packages/dropbox.py -O ~/bin/dropbox
-  # ~/.dropbox-dist/dropboxd
-fi
+( cd ~/ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - )
+wget https://www.dropbox.com/download?dl=packages/dropbox.py -O ~/bin/dropbox
+# ~/.dropbox-dist/dropboxd

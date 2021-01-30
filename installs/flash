@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 # shellcheck disable=SC1090
 source "$DIR/../lib/sh"
 
-pkg::install "pv"
+chk::linux || exit 0
 
-chk::linux && pkg::install::debian "curl hdparm unzip"
+sudo apt-get install -y curl hdparm pv unzip
 
 wget https://github.com/hypriot/flash/releases/download/2.7.0/flash -O ~/bin/flash
 chmod +x ~/bin/flash

@@ -2,10 +2,14 @@
 
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 
+#
+# usage:
+#     xdg_dir "asdf"
+
 xdg_dir() {
   local dir="$1"
-  # shellcheck disable=SC2005
-  echo "$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.${dir}" || printf %s "${XDG_CONFIG_HOME}/${dir}")"
+
+  return "$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.${dir}" || printf %s "${XDG_CONFIG_HOME}/${dir}")"
 }
 
 ASDF_DIR="$(xdg_dir "asdf")"
@@ -60,59 +64,4 @@ pkg::install::asdf() {
   asdf plugin-add "$pkg" "$repo"
   asdf install "$pkg" "$(asdf list-all "$pkg" | grep -v a | grep -v e | grep -v c | grep -v y | tail -1 | xargs)"
   asdf global "$pkg" "$(asdf list "$pkg" | tail -1 | xargs)"
-}
-
-# install package using apt install
-# USAGE:
-#   pkg::install::debian packagename [reponame]
-pkg::install::debian() {
-  local pkg="${1}"
-  local repo="${2}"
-  chk::empty "$repo" || sudo apt-add-repository --yes --update "$repo"
-  sudo apt install -y "$pkg"
-}
-
-# install package using homebrew
-# USAGE:
-#   pkg::install::brew packagename
-pkg::install::brew() {
-  local pkg="${1}"
-  brew install "$pkg"
-}
-
-# install package using homebrew cask
-# USAGE:
-#   pkg::install::brew::cask packagename
-pkg::install::brew::cask() {
-  local pkg="${1}"
-  brew install --cask "$pkg"
-}
-
-# install package using apt install
-# USAGE:
-#   pkg::install::debian packagename [reponame]
-pkg::install::debian() {
-  local pkg="${1}"
-  local repo="${2}"
-
-  chk::empty "$repo" || sudo apt-add-repository --yes --update "$repo"
-  sudo apt install -y "$pkg"
-}
-
-# install package
-# USAGE:
-#   pkg::install packagename [reponame]
-pkg::install() {
-  local pkg="${1}"
-  local repo="${2}"
-
-  if chk::osx
-  then
-    pkg::install::brew "$pkg"
-  fi
-
-  if chk::linux
-  then
-    pkg::install::debian "$pkg" "$repo"
-  fi
 }
