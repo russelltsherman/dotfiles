@@ -7,7 +7,7 @@ DOTFILE_NAMES := $(subst ./dotfiles/, , $(shell find ./dotfiles -maxdepth 1 -nam
 DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
 
 ## initialize project
-bootstrap: init
+bootstrap:
 	make installs
 	make binscripts
 	make dotfiles
