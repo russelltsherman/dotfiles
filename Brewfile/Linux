@@ -30,7 +30,9 @@ brew "ttyrec"
 brew "vifm"
 brew "watch"
 brew "watchman"
-brew "wget", arge: [ "--with-iri" ]
+brew "whalebrew"
 brew "ykpers"
 brew "zsh"
 brew "zsh-completions"
+
+whalebrew "whalebrew/wget"
