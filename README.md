@@ -20,7 +20,7 @@ On a fresh mac you won't have git or other required dependencies installed..
 open a Terminal and run...
 
 ```sh
-curl https://raw.githubusercontent.com/russelltsherman/dotfiles/main/bin/bootstrap | bash
+curl -fsSL https://raw.githubusercontent.com/russelltsherman/dotfiles/main/bin/bootstrap | bash
 ```
 
 ## Usage
