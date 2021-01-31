@@ -35,16 +35,16 @@ asdf global "nodejs" "$(asdf list "nodejs" | tail -1 | xargs)"
 
 pkg::install::asdf operator-sdk https://github.com/Medium/asdf-operator-sdk
 pkg::install::asdf packer https://github.com/Banno/asdf-hashicorp.git
-pkg::install::asdf popeye https://github.com/nlamirault/asdf-popeye.git
+# pkg::install::asdf popeye https://github.com/nlamirault/asdf-popeye.git
 pkg::install::asdf python https://github.com/danhper/asdf-python.git
 pkg::install::asdf ruby https://github.com/asdf-vm/asdf-ruby.git
-pkg::install::asdf skaffold https://github.com/kristoflemmens/asdf-skaffold.git
+# pkg::install::asdf skaffold https://github.com/kristoflemmens/asdf-skaffold.git
 pkg::install::asdf sqlite https://github.com/cLupus/asdf-sqlite.git
-pkg::install::asdf stern https://github.com/russelltsherman/asdf-stern
+# pkg::install::asdf stern https://github.com/russelltsherman/asdf-stern
 pkg::install::asdf terraform https://github.com/Banno/asdf-hashicorp.git
 pkg::install::asdf terragrunt https://github.com/lotia/asdf-terragrunt.git
-pkg::install::asdf tilt https://github.com/eaceaser/asdf-tilt.git
+# pkg::install::asdf tilt https://github.com/eaceaser/asdf-tilt.git
 pkg::install::asdf tmux https://github.com/aphecetche/asdf-tmux.git
 pkg::install::asdf vendir https://github.com/k14s/asdf-k14s.git
-pkg::install::asdf waypoint https://github.com/Banno/asdf-hashicorp.git
+# pkg::install::asdf waypoint https://github.com/Banno/asdf-hashicorp.git
 pkg::install::asdf yarn https://github.com/twuni/asdf-yarn.git
