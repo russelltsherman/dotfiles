@@ -15,12 +15,12 @@ bootstrap:
 	make dotfiles
 	make libfiles
 	make gitconfig
-	# make installs
-	# make vim
-	# make tmux
-	# make vscode
+	make installs
+	make vim
+	make tmux
+	make vscode
 	make zsh
-	pip install -r requirements.txt
+	pip3 install -r requirements.txt
 .PHONY: bootstrap
 
 binscripts: cleanbinscripts \
