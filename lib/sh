@@ -9,7 +9,8 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 xdg_dir() {
   local dir="$1"
 
-  return "$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.${dir}" || printf %s "${XDG_CONFIG_HOME}/${dir}")"
+  # shellcheck disable=SC2005
+  echo "$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.${dir}" || printf %s "${XDG_CONFIG_HOME}/${dir}")"
 }
 
 ASDF_DIR="$(xdg_dir "asdf")"
@@ -17,7 +18,7 @@ export ASDF_DIR
 export ASDF_DATA_DIR="${HOME}/.asdf"
 
 # shellcheck disable=SC1090
-source "$ASDF_DIR/asdf.sh"
+source "${ASDF_DIR}/asdf.sh"
 
 # chk::debian returns true if this OS is Debian Linux
 # usage:
