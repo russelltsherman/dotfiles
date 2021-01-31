@@ -5,3 +5,10 @@
 
 ## Perform any clean-up or post-setup actions
 
+chk::linux || exit 0
+
+echo "==> Set Launchbar favorites"
+dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'slack.desktop', 'signal-desktop.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'rhythmbox.desktop', 'virtualbox.desktop', 'yelp.desktop']"
+
+echo "==> Change user shell to zsh"
+sudo chsh --shell /usr/local/bin/zsh vagrant
