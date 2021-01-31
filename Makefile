@@ -100,3 +100,6 @@ zsh:
 ~/bin/%: # create symlink form ~/bin/binscript and ./bin/binscript
 	cd ~ && ln -sv $(current_dir)/bin/$(notdir $@) $@
 
+~/lib/%: # create symlink form ~/lib/libfile and ./lib/libfile
+	cd ~ && ln -sv $(current_dir)/lib/$(notdir $@) $@
+
