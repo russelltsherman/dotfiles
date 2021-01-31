@@ -8,16 +8,16 @@ DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
 
 ## initialize project
 bootstrap:
-	make brew
-	make installs
-	make binscripts
-	make dotfiles
-	make gitconfig
-	make vim
-	make tmux
-	make vscode
-	make zsh
-	pip install -r requirements.txt
+	-make brew
+	-make installs
+	-make binscripts
+	-make dotfiles
+	-make gitconfig
+	-make vim
+	-make tmux
+	-make vscode
+	-make zsh
+	-pip install -r requirements.txt
 .PHONY: bootstrap
 
 binscripts: cleanbinscripts \
