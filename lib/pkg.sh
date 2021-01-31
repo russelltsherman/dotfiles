@@ -40,7 +40,7 @@ pkg::install::debian() {
   local repo="${2}"
 
   chk::empty "$repo" || sudo apt-add-repository --yes --update "$repo"
-  sudo apt-get install -y "$pkg"
+  sudo sudo apt-get -q install -y "$pkg"
 }
 
 # install package
