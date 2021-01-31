@@ -53,7 +53,7 @@ gitconfig:
 
 ## iterate install scripts in installs directory
 installs:
-	LC_COLLATE=C; for file in installs/*; do echo "calling install file $${file}"; $${file}; done
+	LC_COLLATE=C; for file in installs/*; do echo ""; echo "executing $${file}"; echo ""; $${file}; done
 .PHONY: installs
 
 libfiles: cleanlibfiles \
