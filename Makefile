@@ -47,12 +47,9 @@ gitconfig:
 	git config --global include.path ./.gitconfig_global
 .PHONY: gitconfig
 
-LC_COLLATE=C;
-# ensure this works as expected in linux environment then refactor this to execute install scripts
-installs: installs/*
-	for file in $^; do \
-		echo $${file}; \
-	done
+## iterate install scripts in installs directory
+installs:
+	LC_COLLATE=C; for file in installs/*; do $${file}; done
 .PHONY: installs
 
 cleanlibfiles: # if there are existing symlinks for our dotfiles in ~/ remove them
