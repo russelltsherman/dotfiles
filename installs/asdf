@@ -5,6 +5,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # shellcheck disable=SC1090
 source "$DIR/../lib/sh"
 
+# many asdf plugins rely on jq
+pkg::install::asdf jq https://github.com/russelltsherman/asdf-jq.git
+
 pkg::install::asdf adr-tools https://github.com/russelltsherman/asdf-adr-tools.git
 pkg::install::asdf draft https://github.com/kristoflemmens/asdf-draft.git
 pkg::install::asdf eksctl https://github.com/russelltsherman/asdf-eksctl.git
@@ -18,7 +21,6 @@ pkg::install::asdf hugo https://bitbucket.org/mgladdish/asdf-gohugo.git
 pkg::install::asdf istioctl https://github.com/rafik8/asdf-istioctl.git
 pkg::install::asdf java https://github.com/halcyon/asdf-java
 pkg::install::asdf jmespath https://github.com/skyzyx/asdf-jmespath
-pkg::install::asdf jq https://github.com/russelltsherman/asdf-jq.git
 pkg::install::asdf k9s https://github.com/looztra/asdf-k9s
 pkg::install::asdf kubectl https://github.com/Banno/asdf-kubectl.git
 pkg::install::asdf maven https://github.com/halcyon/asdf-maven.git
