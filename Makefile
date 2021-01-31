@@ -5,6 +5,8 @@ BINSCRIPT_NAMES := $(subst ./, , $(shell find ./bin -maxdepth 1 -type f \( ! -in
 BINSCRIPTS := $(addprefix ~/, $(BINSCRIPT_NAMES))
 DOTFILE_NAMES := $(subst ./dotfiles/, , $(shell find ./dotfiles -maxdepth 1 -name ".*"))
 DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
+LIBFILE_NAMES := $(subst ./lib/, , $(shell find ./lib -maxdepth 1 -name ".*"))
+LIBFILES := $(addprefix ~/, $(LIBFILE_NAMES))
 
 ## initialize project
 bootstrap:
@@ -12,6 +14,7 @@ bootstrap:
 	-make installs
 	-make binscripts
 	-make dotfiles
+	-make libfiles
 	-make gitconfig
 	-make vim
 	-make tmux
@@ -51,6 +54,14 @@ installs: installs/*
 		echo $${file}; \
 	done
 .PHONY: installs
+
+cleanlibfiles: # if there are existing symlinks for our dotfiles in ~/ remove them
+	@for file in $(LIBFILE_NAMES) ; do if [ -L ~/$$file ];then rm ~/$$file; fi; done
+.PHONY: cleanlibfiles
+
+libfiles: cleanlibfiles \
+	$(LIBFILES) # iterate our list of dotfiles and ensure they are symlinked
+.PHONY: libfiles
 
 sudo/noprompt:
 	echo "$(shell whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$(shell whoami)
