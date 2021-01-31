@@ -16,5 +16,9 @@ chk::linux || exit 0
 echo "==> Set Launchbar favorites"
 dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'slack.desktop', 'signal-desktop.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'rhythmbox.desktop', 'virtualbox.desktop', 'yelp.desktop']"
 
+echo "==> Screensaver settings"
+dconf write /org/gnome/desktop/screensaver/idle-activation-enabled false
+dconf write /org/gnome/desktop/screensaver/lock-enabled false
+
 echo "==> Change user shell to zsh"
 sudo chsh --shell $(grep zsh /etc/shells | tail -1) vagrant
