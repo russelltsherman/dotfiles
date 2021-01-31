@@ -28,12 +28,16 @@ binscripts: cleanbinscripts \
 .PHONY: binscripts
 
 cleanbinscripts: # if there are existing symlinks for our dotfiles in ~/ remove them
-	@for file in $(BINSCRIPT_NAMES) ; do if [ -L ~/$$file ];then rm ~/$$file; fi; done
+	@for file in $(BINSCRIPT_NAMES) ; do if [ -L ~/$${file} ];then rm ~/$${file}; fi; done
 .PHONY: cleanbinscripts
 
 cleandotfiles: # if there are existing symlinks for our dotfiles in ~/ remove them
-	@for file in $(DOTFILE_NAMES) ; do if [ -L ~/$$file ];then rm ~/$$file; fi; done
+	@for file in $(DOTFILE_NAMES) ; do if [ -L ~/$${file} ];then rm ~/$${file}; fi; done
 .PHONY: cleandotfiles
+
+cleanlibfiles: # if there are existing symlinks for our dotfiles in ~/ remove them
+	@for file in $(LIBFILE_NAMES) ; do if [ -L ~/$${file} ];then rm ~/$${file}; fi; done
+.PHONY: cleanlibfiles
 
 dotfiles: cleandotfiles \
 	$(DOTFILES) # iterate our list of dotfiles and ensure they are symlinked
@@ -49,12 +53,8 @@ gitconfig:
 
 ## iterate install scripts in installs directory
 installs:
-	LC_COLLATE=C; for file in installs/*; do $${file}; done
+	LC_COLLATE=C; for file in installs/*; do echo "calling install file $${file}"; $${file}; done
 .PHONY: installs
-
-cleanlibfiles: # if there are existing symlinks for our dotfiles in ~/ remove them
-	@for file in $(LIBFILE_NAMES) ; do if [ -L ~/$$file ];then rm ~/$$file; fi; done
-.PHONY: cleanlibfiles
 
 libfiles: cleanlibfiles \
 	$(LIBFILES) # iterate our list of dotfiles and ensure they are symlinked
