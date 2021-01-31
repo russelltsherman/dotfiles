@@ -10,12 +10,12 @@ LIBFILES := $(addprefix ~/, $(LIBFILE_NAMES))
 
 ## initialize project
 bootstrap:
-	-make brew
-	-make installs
 	-make binscripts
 	-make dotfiles
 	-make libfiles
 	-make gitconfig
+	-make brew
+	-make installs
 	-make vim
 	-make tmux
 	-make vscode
