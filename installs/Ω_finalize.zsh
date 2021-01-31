@@ -20,5 +20,7 @@ echo "==> Screensaver settings"
 dconf write /org/gnome/desktop/screensaver/idle-activation-enabled false
 dconf write /org/gnome/desktop/screensaver/lock-enabled false
 
+dconf write /com/ubuntu/update-notifier/show-livepatch-status-icon false
+
 echo "==> Change user shell to zsh"
 sudo chsh --shell $(grep zsh /etc/shells | tail -1) vagrant
