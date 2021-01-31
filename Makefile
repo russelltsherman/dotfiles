@@ -16,9 +16,9 @@ bootstrap:
 	make libfiles
 	make gitconfig
 	make installs
-	make vim
-	make tmux
-	make vscode
+	# make vim
+	# make tmux
+	# make vscode
 	make zsh
 	pip3 install -r requirements.txt
 .PHONY: bootstrap
