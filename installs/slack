@@ -11,4 +11,4 @@ wget --quiet https://downloads.slack-edge.com/linux_releases/slack-desktop-4.11.
 sudo dpkg -i slack.deb
 rm slack.deb
 
-sudo sudo apt-get -q install -y --fix-broken
+sudo sudo apt-get -qq install -y --fix-broken

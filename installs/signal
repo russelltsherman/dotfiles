@@ -9,4 +9,4 @@ chk::linux || exit 0
 
 wget -O- https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main"
-sudo sudo apt-get -q update && sudo sudo apt-get -q install -y signal-desktop
+sudo sudo apt-get -qq update && sudo sudo apt-get -qq install -y signal-desktop

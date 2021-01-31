@@ -11,4 +11,4 @@ wget --quiet https://dl.google.com/linux/direct/google-chrome-stable_current_amd
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 rm google-chrome-stable_current_amd64.deb
 
-sudo sudo apt-get -q install -y --fix-broken
+sudo sudo apt-get -qq install -y --fix-broken

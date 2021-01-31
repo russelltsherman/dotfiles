@@ -7,4 +7,4 @@ source "$DIR/../lib/sh"
 
 chk::linux || exit 0
 
-sudo sudo apt-get -q update && sudo sudo apt-get -q install -y kicad
+sudo sudo apt-get -qq update && sudo sudo apt-get -qq install -y kicad
