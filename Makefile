@@ -10,17 +10,17 @@ LIBFILES := $(addprefix ~/, $(LIBFILE_NAMES))
 
 ## initialize project
 bootstrap:
-	-make brew
-	-make binscripts
-	-make dotfiles
-	-make libfiles
-	-make gitconfig
-	-make installs
-	-make vim
-	-make tmux
-	-make vscode
-	-make zsh
-	-pip install -r requirements.txt
+	make brew
+	make binscripts
+	make dotfiles
+	make libfiles
+	make gitconfig
+	# make installs
+	# make vim
+	# make tmux
+	# make vscode
+	make zsh
+	pip install -r requirements.txt
 .PHONY: bootstrap
 
 binscripts: cleanbinscripts \
