@@ -5,5 +5,14 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # shellcheck disable=SC1090
 source "$DIR/../lib/sh"
 
-sudo ln -s /usr/bin/pip3 /usr/bin/pip
-sudo ln -s /usr/bin/python3 /usr/bin/python
+if chk::osx
+then
+  sudo ln -s /usr/bin/pip3 /usr/bin/pip
+  sudo ln -s /usr/bin/python3 /usr/bin/python
+fi
+
+if chk::linux
+then
+  sudo ln -s /home/linuxbrew/.linuxbrew/bin/pip3 /home/linuxbrew/.linuxbrew/bin/pip
+  sudo ln -s /home/linuxbrew/.linuxbrew/bin/python3 /home/linuxbrew/.linuxbrew/bin/python
+fi
