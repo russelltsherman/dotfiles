@@ -5,7 +5,7 @@ BINSCRIPT_NAMES := $(subst ./, , $(shell find ./bin -maxdepth 1 -type f \( ! -in
 BINSCRIPTS := $(addprefix ~/, $(BINSCRIPT_NAMES))
 DOTFILE_NAMES := $(subst ./dotfiles/, , $(shell find ./dotfiles -maxdepth 1 -name ".*"))
 DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
-LIBFILE_NAMES := $(subst ./lib/, , $(shell find ./lib -maxdepth 1 -name ".*"))
+LIBFILE_NAMES := $(subst ./lib/, , $(shell find ./lib -maxdepth 1 -name "*.sh"))
 LIBFILES := $(addprefix ~/, $(LIBFILE_NAMES))
 
 ## initialize project
@@ -20,7 +20,7 @@ bootstrap:
 	# make tmux
 	# make vscode
 	make zsh
-	pip3 install -r requirements.txt
+	which pip; which brew; pip install -r requirements.txt
 .PHONY: bootstrap
 
 binscripts: cleanbinscripts \
@@ -94,7 +94,7 @@ zsh:
 	sudo wget -O /etc/hosts https://someonewhocares.org/hosts/hosts
 .PHONY: /etc/hosts
 
-~/.%: # create symlink form ~/.dotfile and ./dotfiles/.dotfile
+~/.%: # create symlink from ~/.dotfile and ./dotfiles/.dotfile
 	cd ~ && ln -sv $(current_dir)/dotfiles/$(notdir $@) $@
 
 ~/bin/%: # create symlink form ~/bin/binscript and ./bin/binscript
