@@ -13,6 +13,6 @@ fi
 
 if chk::linux
 then
-  sudo ln -s /home/linuxbrew/.linuxbrew/bin/pip3 /home/linuxbrew/.linuxbrew/bin/pip
-  sudo ln -s /home/linuxbrew/.linuxbrew/bin/python3 /home/linuxbrew/.linuxbrew/bin/python
+  sudo ln -s /home/linuxbrew/.linuxbrew/bin/pip3 /usr/bin/pip
+  sudo ln -s /home/linuxbrew/.linuxbrew/bin/python3 /usr/bin/python
 fi
