@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+# shellcheck disable=SC1090
+source "$DIR/../lib/sh"
+
+# asdf
+# Manage multiple runtime versions with a single CLI tool
+
+# Bash, Zsh, Fish
+# Node.js, Ruby, Python, Elixir … your favourite language?
+# Extend with a simple plugin system
+
+# see a curated list of plugins
+# https://github.com/asdf-vm/asdf-plugins
+
+ASDF_DIR="$(xdg_dir "asdf")"
+export ASDF_DIR
+export ASDF_DATA_DIR="${HOME}/.asdf"
+
+git clone https://github.com/asdf-vm/asdf.git $ASDF_DIR --branch v0.8.0
+
+# shellcheck disable=SC1090
+source "$ASDF_DIR/asdf.sh"
+
+grep -qF -- "source $ASDF_DIR/asdf.sh" ~/.bashrc || echo "source $ASDF_DIR/asdf.sh" >> ~/.bashrc
