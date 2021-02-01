@@ -2,6 +2,7 @@ tap "cyberark/tools"
 tap "homebrew/cask-fonts"
 
 brew "ack"
+brew "asdf"
 brew "aws-vault"
 brew "clang-format"
 brew "coreutils"

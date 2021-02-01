@@ -1,4 +1,5 @@
 brew "ack"
+brew "asdf"
 brew "aws-vault"
 brew "clang-format"
 brew "coreutils"
