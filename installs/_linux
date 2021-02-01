@@ -27,3 +27,11 @@ sudo apt-get -qq update && sudo apt-get -qq install \
   wget \
   xz-utils \
   zlib1g-dev
+
+rm -rf ~/Videos/
+rm -rf ~/Music/
+rm -rf ~/Documents/
+rm -rf ~/Downloads/
+rm -rf ~/Pictures/
+rm -rf ~/Public/
+rm -rf ~/Templates/
