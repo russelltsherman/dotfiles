@@ -5,14 +5,16 @@ BINSCRIPT_NAMES := $(subst ./, , $(shell find ./bin -maxdepth 1 -type f \( ! -in
 BINSCRIPTS := $(addprefix ~/, $(BINSCRIPT_NAMES))
 DOTFILE_NAMES := $(subst ./dotfiles/, , $(shell find ./dotfiles -maxdepth 1 -name ".*"))
 DOTFILES := $(addprefix ~/, $(DOTFILE_NAMES))
-LIBFILE_NAMES := $(subst ./lib/, , $(shell find ./lib -maxdepth 1 -name "*.sh"))
+LIBFILE_NAMES := $(subst ./, , $(shell find ./lib -maxdepth 1 -name "*.sh"))
 LIBFILES := $(addprefix ~/, $(LIBFILE_NAMES))
 
 ## initialize project
 bootstrap:
 	make brew
+	mkdir -p ~/bin
 	make binscripts
 	make dotfiles
+	mkdir -p ~/lib
 	make libfiles
 	make gitconfig
 	make installs
