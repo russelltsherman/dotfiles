@@ -18,11 +18,11 @@ bootstrap:
 	make libfiles
 	make gitconfig
 	make installs
-	# make vim
-	# make tmux
-	# make vscode
+	make vim
+	make tmux
+	make vscode
 	make zsh
-	which pip; which brew; pip install -r requirements.txt
+	pip install -r requirements.txt
 .PHONY: bootstrap
 
 binscripts: cleanbinscripts \
