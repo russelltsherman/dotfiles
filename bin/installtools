@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1090
-source ~/lib/sh
+# install asdf plugin and latest version
+# USAGE:
+#   pkg::install::asdf pluginname pluginrepo
+pkg::install::asdf() {
+  local pkg="${1}"
+  local repo="${2}"
+  asdf plugin-add "$pkg" "$repo"
+  asdf install "$pkg" "$(asdf list-all "$pkg" | grep -v a | grep -v e | grep -v c | grep -v y | tail -1 | xargs)"
+  asdf global "$pkg" "$(asdf list "$pkg" | tail -1 | xargs)"
+}
 
+# some asdf plugins rely on jq
 pkg::install::asdf jq https://github.com/russelltsherman/asdf-jq.git
 
 pkg::install::asdf adr-tools https://github.com/russelltsherman/asdf-adr-tools.git
@@ -30,7 +39,7 @@ bash -c '${ASDF_DATA_DIR}/plugins/nodejs/bin/import-previous-release-team-keyrin
 asdf install "nodejs" "$(asdf list-all "nodejs" | grep -v a | grep -v e | grep -v c | grep -v y | tail -1 | xargs)"
 asdf global "nodejs" "$(asdf list "nodejs" | tail -1 | xargs)"
 
-pkg::install::asdf operator-sdk https://github.com/Medium/asdf-operator-sdk
+pkg::install::asdf operator-sdk https://github.com/russelltsherman/asdf-operator-sdk
 pkg::install::asdf packer https://github.com/Banno/asdf-hashicorp.git
 pkg::install::asdf popeye https://github.com/nlamirault/asdf-popeye.git
 pkg::install::asdf python https://github.com/danhper/asdf-python.git

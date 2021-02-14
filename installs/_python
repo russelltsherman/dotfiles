@@ -7,8 +7,11 @@ source "$DIR/../lib/sh"
 
 if chk::osx
 then
-  sudo ln -s /usr/bin/pip3 /usr/bin/pip
-  sudo ln -s /usr/bin/python3 /usr/bin/python
+  ln -s /usr/bin/pip3 ~/bin/pip
+  ln -s /usr/bin/python3 ~/bin/python
+
+  grep -qF -- "export PATH=$HOME/bin:$PATH" ~/.bashrc || echo "export PATH=$HOME/bin:$PATH" >> ~/.bashrc
+  source $HOME/.bashrc
 fi
 
 if chk::linux
