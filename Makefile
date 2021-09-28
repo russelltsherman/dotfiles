@@ -17,6 +17,8 @@ bootstrap:
 	mkdir -p ~/lib
 	make libfiles
 	make gitconfig
+	make docker
+	make kubernetes
 	make installs
 	make vim
 	make tmux
@@ -41,6 +43,10 @@ cleanlibfiles: # if there are existing symlinks for our dotfiles in ~/ remove th
 	@for file in $(LIBFILE_NAMES) ; do if [ -L ~/$${file} ];then rm ~/$${file}; fi; done
 .PHONY: cleanlibfiles
 
+docker:
+	curl -fsSL https://raw.githubusercontent.com/russelltsherman/docker/main/bin/bootstrap | bash
+.PHONY: docker
+
 dotfiles: cleandotfiles \
 	$(DOTFILES) # iterate our list of dotfiles and ensure they are symlinked
 .PHONY: dotfiles
@@ -57,6 +63,10 @@ gitconfig:
 installs:
 	LC_COLLATE=C; for file in installs/*; do echo ""; echo "executing $${file}"; echo ""; $${file}; done
 .PHONY: installs
+
+kubernetes:
+	curl -fsSL https://raw.githubusercontent.com/russelltsherman/kubernetes/main/bin/bootstrap | bash
+.PHONY: docker
 
 libfiles: cleanlibfiles \
 	$(LIBFILES) # iterate our list of dotfiles and ensure they are symlinked
