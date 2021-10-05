@@ -2,7 +2,7 @@
 *build-harness
 
 # ignore homebrew bundle lockfile
-Brewfile.lock.json
+*.lock.json
 
 # ignore vim bundles
 dotfiles/.vim/bundle/*
