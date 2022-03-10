@@ -38,3 +38,8 @@ Temporary Items
 # ignore TODO files
 TODO*
 NOTE*
+
+# ignore direnv
+.envrc
+.vars
+.secrets
