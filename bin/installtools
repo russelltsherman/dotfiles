@@ -38,6 +38,7 @@ asdf global "nodejs" "$(asdf list "nodejs" | tail -1 | xargs)"
 pkg::install::asdf packer https://github.com/Banno/asdf-hashicorp.git
 pkg::install::asdf python https://github.com/danhper/asdf-python.git
 pkg::install::asdf ruby https://github.com/asdf-vm/asdf-ruby.git
+pkg::install::asdf skaffold https://github.com/kristoflemmens/asdf-skaffold.git
 pkg::install::asdf terragrunt https://github.com/ohmer/asdf-terragrunt
 pkg::install::asdf terraform https://github.com/asdf-community/asdf-hashicorp.git
 pkg::install::asdf tilt https://github.com/eaceaser/asdf-tilt.git
