@@ -27,6 +27,7 @@ pkg::install::asdf hugo https://bitbucket.org/mgladdish/asdf-gohugo.git
 pkg::install::asdf java https://github.com/halcyon/asdf-java
 pkg::install::asdf jmespath https://github.com/skyzyx/asdf-jmespath
 pkg::install::asdf k9s https://github.com/russelltsherman/asdf-k9s
+pkg::install::asdf kind https://github.com/russelltsherman/asdf-kind.git
 pkg::install::asdf neovim https://github.com/richin13/asdf-neovim.git
 
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
