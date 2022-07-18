@@ -43,3 +43,6 @@ NOTE*
 .envrc
 .vars
 .secrets
+
+# ignore asdf versions file
+.tool-versions
