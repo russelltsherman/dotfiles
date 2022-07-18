@@ -2,14 +2,14 @@
 
 ACTION=${1:-"create"}
 SUBJECT="/C=US/ST=Texas/L=Austin/O=OpsBots LLC/OU=DevOps Department/CN=opsbots.org/emailAddress=support@opsbots.org"
+CERTS_DIR="$HOME"/.certs
 
-mkdir -p "$HOME"/.certs
-cd "$HOME"/.certs || exit
+mkdir -p "$CERTS_DIR"
 
 case $ACTION in
   create) 
 
-    if [ ! -f ca-key.pem ]
+    if [ ! -f "$CERTS_DIR"/ca-key.pem ]
     then
         # Create TLS Certificate Authority
 
@@ -31,19 +31,19 @@ case $ACTION in
         # And then adding -extensions v3_ca to the open ssl cert generation will result generating a correct CA certificate.
 
         # Generate a private key for the CA: 
-        openssl genrsa -out ca-key.pem 4096
+        openssl genrsa -out "$CERTS_DIR"/ca-key.pem 4096
 
         # Generate the X509 certificate for the CA: 
         openssl req \
             -x509 \
             -days 3650 \
             -extensions v3_ca \
-            -key ca-key.pem \
+            -key "$CERTS_DIR"/ca-key.pem \
             -new \
             -nodes \
             -sha256 \
             -subj "$SUBJECT" \
-            -out ca-cert.pem
+            -out "$CERTS_DIR"/ca-cert.pem
     else
         echo "ca-key exists, skipping create"
     fi
@@ -51,8 +51,8 @@ case $ACTION in
     # create kubernetes secret for opsbots ca
     kubectl create ns cert-manager
     kubectl create secret tls opsbots-tls-ca \
-        --cert=ca-cert.pem \
-        --key=ca-key.pem \
+        --cert="$CERTS_DIR"/ca-cert.pem \
+        --key="$CERTS_DIR"/ca-key.pem \
         --namespace cert-manager
 
     ;;
@@ -62,7 +62,7 @@ case $ACTION in
     # Adding the Root Certificate to macOS System Keychain
     sudo security add-trusted-cert -d \
         -r trustRoot \
-        -k "/Library/Keychains/System.keychain" ca-cert.pem
+        -k "/Library/Keychains/System.keychain" "$CERTS_DIR"/ca-cert.pem
 
     # Adding the Root Certificate to Linux
     # If it isn’t already installed, install the ca-certificates package.
