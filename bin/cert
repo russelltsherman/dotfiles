@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# Create certificates for local development 
+# which are signed by our private trusted certificate authority
+# since our workstation trusts our private CA
+# all certs generated in this way will also be trusted
+
+if [ "$#" -ne 1 ]
+then
+  echo "Usage: Must supply a fully qualified domain name"
+  exit 1
+fi
+
+DOMAIN=${1}
+SECRET="${DOMAIN//./-}-tls"
+SUBJECT="/C=US/ST=Texas/L=Austin/O=OpsBots LLC/OU=DevOps Department/CN=opsbots.org/emailAddress=support@opsbots.org"
+
+cd "$HOME"/.certs || exit
+
+echo "create private key for $DOMAIN"
+openssl genrsa -out "$DOMAIN".key 4096
+
+echo "create certificate signing request for $DOMAIN"
+openssl req -new \
+    -subj "$SUBJECT" \
+    -key "$DOMAIN".key \
+    -out "$DOMAIN".csr
+
+# create an [X509 V3 certificate extension config](https://www.openssl.org/docs/man1.0.2/man1/x509.html) file, which is used to define the [Subject Alternative Name (SAN)](https://www.digicert.com/faq/subject-alternative-name.htm) for the certificate. 
+cat > "$DOMAIN".ext << EOF
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = $DOMAIN
+EOF
+
+echo "sign certificate using CA"
+openssl x509 -req -in "$DOMAIN".csr \
+    -CA ca-cert.pem \
+    -CAkey ca-key.pem \
+    -CAcreateserial \
+    -days 825 \
+    -out "$DOMAIN".crt \
+    -sha256 \
+    -extfile "$DOMAIN".ext
+
+echo "create k8s secret for $SECRET"
+kubectl create secret tls "$SECRET" \
+    --cert="$DOMAIN".crt \
+    --key="$DOMAIN".key

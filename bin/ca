@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+
+ACTION=${1:-"create"}
+SUBJECT="/C=US/ST=Texas/L=Austin/O=OpsBots LLC/OU=DevOps Department/CN=opsbots.org/emailAddress=support@opsbots.org"
+
+mkdir -p "$HOME"/.certs
+cd "$HOME"/.certs || exit
+
+case $ACTION in
+  create) 
+
+    if [ ! -f ca-key.pem ]
+    then
+        # Create TLS Certificate Authority
+
+        # Create a private certificate signing authority
+        # this CA will trusted by our local workstation
+        # and used to sign other certificates for local development
+
+        # https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/
+
+        # On MacOS the default OpenSSL config does not include the configuration for 
+        # v3_ca certificate generation. 
+
+        # edit /etc/ssl/openssl.cnf file and add the following extension information
+        # [ v3_ca ]
+        # basicConstraints        = critical,CA:TRUE
+        # subjectKeyIdentifier    = hash
+        # authorityKeyIdentifier  = keyid:always,issuer:always
+
+        # And then adding -extensions v3_ca to the open ssl cert generation will result generating a correct CA certificate.
+
+        # Generate a private key for the CA: 
+        openssl genrsa -out ca-key.pem 4096
+
+        # Generate the X509 certificate for the CA: 
+        openssl req \
+            -x509 \
+            -days 3650 \
+            -extensions v3_ca \
+            -key ca-key.pem \
+            -new \
+            -nodes \
+            -sha256 \
+            -subj "$SUBJECT" \
+            -out ca-cert.pem
+    else
+        echo "ca-key exists, skipping create"
+    fi
+
+    # create kubernetes secret for opsbots ca
+    kubectl create ns cert-manager
+    kubectl create secret tls opsbots-tls-ca \
+        --cert=ca-cert.pem \
+        --key=ca-key.pem \
+        --namespace cert-manager
+
+    ;;
+
+  trust)
+
+    # Adding the Root Certificate to macOS System Keychain
+    sudo security add-trusted-cert -d \
+        -r trustRoot \
+        -k "/Library/Keychains/System.keychain" ca-cert.pem
+
+    # Adding the Root Certificate to Linux
+    # If it isn’t already installed, install the ca-certificates package.
+    # sudo apt-get install -y ca-certificates
+    # Copy the myCA.pem file to the /usr/local/share/ca-certificates directory as a myCA.crt file.
+    # sudo cp ~/certs/myCA.pem /usr/local/share/ca-certificates/myCA.crt
+    # Update the certificate store.
+    # sudo update-ca-certificates
+
+    # Adding the Root Certificate to Windows 10
+    # Open the “Microsoft Management Console” by using the Windows + R keyboard combination, typing mmc and clicking Open
+    # Go to File > Add/Remove Snap-in
+    # Click Certificates and Add
+    # Select Computer Account and click Next
+    # Select Local Computer then click Finish
+    # Click OK to go back to the MMC window
+    # Double-click Certificates (local computer) to expand the view
+    # Select Trusted Root Certification Authorities, right-click on Certificates in the middle column under “Object Type” and select All Tasks then Import
+    # Click Next then Browse. Change the certificate extension dropdown next to the filename field to All Files (*.*) and locate the myCA.pem file, click Open, then Next
+    # Select Place all certificates in the following store. “Trusted Root Certification Authorities store” is the default. Click Next then click Finish to complete the wizard.
+    # If everything went according to plan, you should see your CA certificate listed under Trusted Root Certification Authorities > Certificates.
+
+    # Adding the Root Certificate to iOS 14
+    # If you use something like ngrok to browse to your local development sites on mobile devices, you might need to add the root certificate to these devices. On iOS devices you can do so fairly easily by following these steps:
+
+    # Email the root certificate to yourself, so you can access it on your iOS device. Make sure to use the default Mail app to access the email.
+    # Tap on the attachment in the email on your iOS device. It will prompt you to review the profile in the Settings app.
+    # Open the Settings app and click Profile Downloaded near the top.
+    # Click Install in the top right, and then Install again on the Warning screen.
+    # Once installed, hit Close and go back to the main Settings page.
+    # Go to General > About.
+    # Scroll to the bottom and click on Certificate Trust Settings.
+    # Enable your root certificate under “ENABLE FULL TRUST FOR ROOT CERTIFICATES”.
+
+    ;;
+
+  delete|destroy) 
+
+    sudo security remove-trusted-cert -d ca-cert.pem
+
+    kubectl delete secret opsbots-tls-ca \
+        --namespace cert-manager
+
+    ;;
+
+  *)
+    
+    echo "unrecognied action"
+    exit 0
+
+    ;;
+
+esac

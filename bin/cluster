@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+
+ACTION=${1:-"create"}
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+# set max cores to count of available cores
+MAX_CORES=$(sysctl -n hw.ncpu)
+# set max ram to 75% of available memory
+MAX_RAM=$(( $(sysctl -n hw.memsize) / $((1024**3)) / 4 * 3 ))
+PROFILE=k8s-mlops
+
+case $ACTION in
+  create) 
+
+    # running multiple nodes can have issues with pv permissions
+    # https://github.com/kubernetes/minikube/issues/12360
+
+    minikube addons enable ingress --profile="$PROFILE"
+
+    # Create Private Certificate Signing Authority
+    "$HOME"/bin/ca
+
+    # Install metrics server
+    make -C "${PROJECT_ROOT}/helm/metrics-server" deploy
+
+    ## Install certificate manager
+    make -C "${PROJECT_ROOT}/helm/cert-manager" deploy
+
+    ## Install simple nginx app
+    # "$PROJECT_ROOT"/bin/cert nginx.minikube.local
+    kubectl apply --filename=./manifests/nginx/deployment.yaml
+    echo "$(minikube ip) nginx.minikube.local"  | sudo tee -a /etc/hosts
+
+    ## Install Kubernetes Dashboard
+    make -C "${PROJECT_ROOT}/helm/kubernetes-dashboard" deploy
+    kubectl apply --filename="${PROJECT_ROOT}/helm/kubernetes-dashboard/ingress.yaml"
+    echo "$CLUSTER_IP kubernetes-dashboard.minikube.local"  | sudo tee -a /etc/hosts
+
+    ;;
+
+  dashboard)
+
+    TOKENNAME=$(kubectl -n kube-system get serviceaccount/dashboard-admin -o jsonpath='{.secrets[0].name}')
+    TOKEN=$(kubectl -n kube-system get secret "$TOKENNAME" -o jsonpath='{.data.token}' | base64 --decode)
+
+    echo "$TOKEN"
+
+    open https://kubernetes-dashboard.minikube.local/
+
+    ;;
+
+  delete|destroy) 
+
+    minikube delete
+    ;;
+
+  ip)
+
+    minikube ip
+    ;;
+
+  ssh)
+
+    minikube ssh
+    ;;
+  
+  start)
+
+    minikube start \
+      --cpus="$MAX_CORES" \
+      --disk-size='100g' \
+      --driver='hyperkit' \
+      --kubernetes-version='stable' \
+      --memory="${MAX_RAM}g" \
+      --nodes=1
+
+    ;;
+
+  stop)
+
+    minikube stop
+    ;;
+
+  *)
+
+    echo "unrecognied action"
+    exit 0
+    ;;
+
+esac
