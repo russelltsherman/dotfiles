@@ -192,3 +192,12 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
+
+[includeIf "gitdir:~/src/github.com/finbotsdev/"]
+  path = ~/src/github.com/finbotsdev/.gitconfig
+
+[includeIf "gitdir:~/src/github.com/opsbot/"]
+  path = ~/src/github.com/opsbot/.gitconfig
+
+[includeIf "gitdir:~/src/github.com/russelltsherman/"]
+  path = ~/src/github.com/russelltsherman/.gitconfig
