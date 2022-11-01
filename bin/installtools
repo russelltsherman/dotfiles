@@ -51,3 +51,4 @@ pkg::install::asdf vagrant https://github.com/Banno/asdf-hashicorp
 pkg::install::asdf vendir https://github.com/k14s/asdf-k14s
 pkg::install::asdf waypoint https://github.com/Banno/asdf-hashicorp
 pkg::install::asdf yarn https://github.com/twuni/asdf-yarn
+pkg::install::asdf yq
